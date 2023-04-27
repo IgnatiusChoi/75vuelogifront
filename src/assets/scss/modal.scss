@@ -1,0 +1,44 @@
+
+.overlay{
+  opacity: 0.5;
+  background-color: black;
+  z-index: 9998;
+}
+.paymentModal,{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: 9999;
+
+  min-height: 300px;
+}
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: 0;
+
+  min-height: 300px;
+}
+
+.fade-enter{
+  opacity:0.5
+}
+.fade-enter-active,
+.fade-leave-active{
+  transition:opacity 0.3s ease-out;
+}
+.fade-leave-to{
+  opacity: 0;
+}
+

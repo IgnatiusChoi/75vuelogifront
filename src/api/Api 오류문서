@@ -1,0 +1,10 @@
+ex) 아래같이 CORS 문제 발생시
+1.Access to XMLHttpRequest at 'http://localhost:8282/acc/account/slips20220318SLIP00009' from origin 'http://localhost:8081' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource
+--> 'http://localhost:8282/acc/account/slips20220318SLIP00009' 자세히 보면  마지막 slips20220318SLIP00009 이부분에 /가 없어서 위와 같은 오류가 났음.
+--> 수정 // 무엇을 수정한건지??
+* 실수했던거
+1. 스프링 리프레쉬가 안됐다
+2. 이름이 HR에 있는것과 중복이라 컴파일 에러가 떴다(전부 고침)
+3. sql resultmap 이름을 잘못 설정했다
+4. sql 변수 타입을 전부 string으로 줬다
+5. sql resultmap 타입을 얘 전용 TO가 아닌 복사해온 TO를 썼다
