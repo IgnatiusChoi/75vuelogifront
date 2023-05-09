@@ -7,13 +7,6 @@ function searchCompanyList() {
     return logiApi.get('/compinfo/customer/list')
 }
 
-// 사업장정보
-function searchWorkplaceList() {
-    return logiApi.get('/compinfo/workplace/list'),
-    {params: {companyCode: 'COM-01'}}
-}
-
-
 
 // 부서정보
 function searchDeptList(payload) {
@@ -24,6 +17,36 @@ function searchDeptList(payload) {
             workplaceCode: payload.workplaceCode
         }
     })
+}
+
+
+// 사업장정보
+function searchWorkplace(workplaceCode) {
+    return logiApi.get('/base/workplaceInfo',
+        {params: {workplaceCode: workplaceCode }
+        })
+}
+
+// 사업장목록
+function searchWorkplaceList() {
+    return logiApi.get('/base/workplaceList')
+}
+
+
+function insertWorkplace(payload) {
+    console.log(payload)
+    console.log("payload")
+    return logiApi.post('/base/workplace', payload )
+}
+
+function deleteWorkplace(workplaceCode) {
+    return logiApi.delete('/base/workplaceCode',
+        {params: {workplaceCode: workplaceCode }
+        })
+}
+
+function updateWorkplace(payload) {
+    return logiApi.post('/base/workplaceupdate', payload)
 }
 
 
@@ -46,4 +69,9 @@ export {
     searchWorkplaceList,
     searchDeptList,
     searchClientList,
+    searchWorkplace,
+    deleteWorkplace,
+    insertWorkplace,
+    updateWorkplace
+
 }
