@@ -3,32 +3,34 @@
     <contract-info-grid>
       <template v-slot:header>
         <h2
-          class="mb-md-1"
-          style="width: 50px"
+            class="mb-md-1"
+            style="width: 50px"
         >
           수주
         </h2>
+      </template>
+      <template v-slot:searchDate>
         <b-input-group
-          class="mb-md-1"
-          style="width: 170px; margin: 0 10px 0 10px;"
+            class="mb-md-1"
+            style="width: 170px; margin: 0 10px 0 0;"
         >
           <b-form-input
-            v-model="startDate"
-            type="text"
-            placeholder="YYYY-MM-DD"
-            autocomplete="off"
-            show-decade-nav
+              v-model="startDate"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              autocomplete="off"
+              show-decade-nav
           />
           <b-input-group-append style="height: 37px;">
             <b-form-datepicker
-              v-model="startDate"
-              show-decade-nav
-              button-only
-              button-variant="outline-primary"
-              right
-              size="sm"
-              locale="en-US"
-              aria-controls="example-input"
+                v-model="startDate"
+                show-decade-nav
+                button-only
+                button-variant="outline-primary"
+
+                size="sm"
+                locale="en-US"
+                aria-controls="example-input"
             />
           </b-input-group-append>
         </b-input-group>
@@ -38,84 +40,88 @@
         </h2>
 
         <b-input-group
-          class="mb-md-1"
-          style="width: 170px; margin: 0 10px 0 10px;"
+            class="mb-md-1"
+            style="width: 170px; margin: 0 10px 0 10px;"
         >
           <b-form-input
-            v-model="endDate"
-            type="text"
-            placeholder="YYYY-MM-DD"
-            autocomplete="off"
-            show-decade-nav
+              v-model="endDate"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              autocomplete="off"
+              show-decade-nav
           />
           <b-input-group-append style="height: 37px;">
             <b-form-datepicker
-              v-model="endDate"
-              show-decade-nav
-              button-only
-              button-variant="outline-primary"
-              right
-              size="sm"
-              locale="en-US"
-              aria-controls="example-input"
+                v-model="endDate"
+                show-decade-nav
+                button-only
+                button-variant="outline-primary"
+                right
+                size="sm"
+                locale="en-US"
+                aria-controls="example-input"
             />
           </b-input-group-append>
         </b-input-group>
         <b-button
-          variant="primary"
-          size="md"
-          class="mb-md-1"
-          @click="searchContract('searchByDate')"
+            variant="primary"
+            size="md"
+            class="mb-md-1"
+            @click="searchContract('searchByDate')"
         >
           검색
         </b-button>
+      </template>
+
+      <template v-slot:companySearch>
 
         <b-form-input
-          id="company-code"
-          v-model="companyCode"
-          disabled
-          name="companyCode"
-          placeholder="companyCode"
-          style="width: 150px"
-          class="mb-md-1 ml-1"
+            id="company-code"
+            v-model="companyCode"
+            disabled
+            name="companyCode"
+            placeholder="companyCode"
+            style="width: 150px"
+            class="mb-md-1 ml-1"
         />
         <b-button
-          v-b-modal.companyCode
-          variant="primary"
-          size="md"
-          class="mb-md-1 ml-1"
+            v-b-modal.companyCode
+            variant="primary"
+            size="md"
+            class="mb-md-1 ml-1"
         >
           회사코드로 검색
         </b-button>
+
         <b-modal
-          id="companyCode"
-          title="Scrollable Content"
-          cancel-variant="outline-secondary"
+            id="companyCode"
+            title="Scrollable Content"
+            cancel-variant="outline-secondary"
         >
           <b-card
-            class="scrollStyle"
-            style="margin:auto; overflow-y: scroll; height: 50vh; padding-left: 50px"
+              class="scrollStyle"
+              style="margin:auto; overflow-y: scroll; height: 50vh; padding-left: 50px"
           >
             <b-form-radio-group
-              v-model="searchCompanyCodeOption"
-              :options="options"
-              class="demo-inline-spacing mb-1"
-              value-field="value"
-              text-field="text"
-              disabled-field="disabled"
+                v-model="searchCompanyCodeOption"
+                :options="options"
+                class="demo-inline-spacing mb-1"
+                value-field="value"
+                text-field="text"
+                disabled-field="disabled"
             />
             <b-table
-              hover
-              selectable
-              :select-mode="'single'"
-              :fields="fields"
-              :items="customerCodeList"
-              @row-clicked="companyCodeClick"
+                hover
+                selectable
+                :select-mode="'single'"
+                :fields="fields"
+                :items="customerCodeList"
+                @row-clicked="companyCodeClick"
             />
           </b-card>
         </b-modal>
-
       </template>
+
     </contract-info-grid>
     <contract-detail-info-grid>
       <template v-slot:header>
@@ -190,10 +196,14 @@ export default {
   watch: {
     searchCompanyCodeOption(newValue) {
       if (newValue !== '') {
+
+        console.log("7777777777")
+        console.log(newValue)
         const searchOption = { searchCondition: newValue, workplaceCode: this.companyCode }
         console.log(`watchDispatch${searchOption.searchCondition}`)
         this.$store.dispatch('hr/company/searchCustomerList', searchOption)
       }
+
     },
   },
   mounted() {
@@ -226,7 +236,6 @@ export default {
       ],
     },
     ]
-    console.log(tableColumns)
     this.$store.dispatch('logi/sales/setTable', tableColumns)
 
     const date = new Date()
@@ -265,31 +274,31 @@ export default {
 </style>
 
 <style lang="scss">
-  .scrollStyle::-webkit-scrollbar-track
-  {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: rgba(50,60,150,1);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
-  }
+.scrollStyle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: rgba(50,60,150,1);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
+}
 
-  .scrollStyle::-webkit-scrollbar
-  {
-    width: 10px;
-    background-color: rgba(50,50,150,0);
-  }
+.scrollStyle::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: rgba(50,50,150,0);
+}
 
-  .scrollStyle::-webkit-scrollbar-thumb
-  {
-    background-clip: padding-box;
-    border: 4px solid transparent;
-    border-radius: 10px;
-    /*    background-image: -webkit-gradient(linear,
-    left bottom,
-    left top,
-    color-stop(0.44, rgb(122,153,217)),
-    color-stop(0.72, rgb(73,125,189)),
-    color-stop(0.86, rgb(28,58,148)));*/
-    background-color: #7367f0;
-  }
+.scrollStyle::-webkit-scrollbar-thumb
+{
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  /*    background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.44, rgb(122,153,217)),
+  color-stop(0.72, rgb(73,125,189)),
+  color-stop(0.86, rgb(28,58,148)));*/
+  background-color: #7367f0;
+}
 </style>
