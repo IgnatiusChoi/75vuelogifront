@@ -1,19 +1,14 @@
-"use strict";
-exports.__esModule = true;
-exports.Mps = void 0;
-var mutation_1 = require("@/store/logi/production/mps/mutation");
-var action_1 = require("@/store/logi/production/mps/action");
-var Mps = /** @class */ (function () {
-    function Mps() {
-        this.contractDetailList = [];
-    }
-    return Mps;
-}());
-exports.Mps = Mps;
-var Production = {
+
+import mutations from '@/store/logi/production/mps/mutation.js'
+import actions from '@/store/logi/production/mps/action.js'
+
+export default {
     namespaced: true,
-    state: new Mps(),
-    mutations: mutation_1["default"],
-    actions: action_1["default"]
-};
-exports["default"] = Production;
+    state: {
+        contractDetailList: [],
+    },
+
+  mutations,
+  actions,
+
+}
