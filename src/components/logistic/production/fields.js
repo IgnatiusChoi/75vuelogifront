@@ -1,14 +1,14 @@
 export const Mps = [
-  { key: 'contractDetailNo', label: '수주상세일련번호' },
-  { key: 'contractType', label: '유형' },
-  { key: 'contractDate', label: '수주일자' },
-  { key: 'estimateAmount', label: '견적수량' },
-  { key: 'stockAmountUse', label: '초기납품' },
-  { key: 'productionRequirement', label: '제작수량' },
-  { key: 'mpsPlanDate', label: '계획일자' },
-  { key: 'scheduledEndDate', label: '출하예정일' },
-  { key: 'dueDateOfContract', label: '납기일' },
-  { key: 'itemName', label: '품목명' },
+  { key: 'contractDetailNo', label: '수주상세일련번호', thClass:"text-center" },
+  { key: 'contractType', label: '유형', thClass:"text-center" },
+  { key: 'contractDate', label: '수주일자' , thClass:"text-center"},
+  { key: 'estimateAmount', label: '견적수량' , thClass:"text-center"},
+  { key: 'stockAmountUse', label: '초기납품' , thClass:"text-center"},
+  { key: 'productionRequirement', label: '제작수량' , thClass:"text-center"},
+  { key: 'mpsPlanDate', label: '계획일자', thClass:"text-center"},
+  { key: 'scheduledEndDate', label: '출하예정일', thClass:"text-center" },
+  { key: 'dueDateOfContract', label: '납기일' , thClass:"text-center"},
+  { key: 'itemName', label: '품목명' , thClass:"text-center"},
 ]
 
 export const searchMpsList = [
