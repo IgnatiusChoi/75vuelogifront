@@ -6,22 +6,21 @@ export default {
   state: {
     itemList: [],
     codeList: [],
-
+    companyCode:[],
     warehouseList: [],
     warehouseDetailList: [],
+    deptList: [],
+    DeptInfo:[],
 
     grid: [],
     detailGrid: [],
     tableColumns: [],
     detailTableColumns: [],
-    companyInfo: [],
-    nClientList: [],
-    fClientList: [],
+
 
   },
   getters: {
   },
-
 
   mutations,
 
