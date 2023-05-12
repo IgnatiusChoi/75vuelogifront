@@ -5,7 +5,7 @@ export const Mps = [
   { key: 'estimateAmount', label: '견적수량' , thClass:"text-center"},
   { key: 'stockAmountUse', label: '초기납품' , thClass:"text-center"},
   { key: 'productionRequirement', label: '제작수량' , thClass:"text-center"},
-  { key: 'mpsPlanDate', label: '계획일자', thClass:"text-center"},
+  { key: 'mpsPlanDate', label: 'MPS 계획일', thClass:"text-center"},
   { key: 'scheduledEndDate', label: '출하예정일', thClass:"text-center" },
   { key: 'dueDateOfContract', label: '납기일' , thClass:"text-center"},
   { key: 'itemName', label: '품목명' , thClass:"text-center"},

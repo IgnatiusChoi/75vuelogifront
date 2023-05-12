@@ -13,4 +13,9 @@ export default {
     }
   },
 
+  SEARCH_MPS_LIST(state, mpsList){
+    const months = mpsList.map(item => parseInt(item.mpsPlanDate.split('-')[1]));
+    state.MpsCount = months
+  }
+
 }
