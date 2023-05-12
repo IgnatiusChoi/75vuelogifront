@@ -1,4 +1,6 @@
-import { logiApi } from '../index'
+import {accountApi, hrApi, logiApi} from '../index'
+//Api
+const CompanyCode ='/company/searchCompany'
 
 function searchItem(divisionCode) {
   console.log(divisionCode)
@@ -26,29 +28,23 @@ function getWarehouseList() {
 function deleteWarehouseList(payload) {
   return logiApi.post('/base/warehousebatchListProcess2', payload)
 }
-//회사 정보 조회
-function getCompanyInfo(){
-  return logiApi.get('/base/getcompanyInfo')
-}
+
 
 function getWarehouseDetailList(warehouseCode) {
   console.log(warehouseCode)
   return logiApi.get('/purchase/warehouseStockList',warehouseCode)
 }
 
-function searchClientList() {
-  return logiApi.get('/base/searchClientList')
+function SelectCompanyCode() {
+  return hrApi.get(`${CompanyCode}`)
 }
 
-function insertClient(data){
-  return logiApi.post('base/insertClient',data)
+function getDeptInfo() {
+  return logiApi.get(`/base/getdeptInfo`)
 }
 
-function deleteClient(data){
-  return logiApi.post('base/deleteClient',data)
-}
+
 
 export {
-  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList, getCompanyInfo, searchClientList,
-    insertClient, deleteClient
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode
 }

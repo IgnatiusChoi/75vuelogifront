@@ -14,19 +14,17 @@ export default {
     state.grid = gridRow
   },
 
+  LogiCompany(state, companyCode){
+    state.companyCode = companyCode
+    console.log(companyCode)
+  },
+
+  GET_DEPT_INFO(state, payload){
+    state.deptInfo = payload
+  },
+
   GET_WAREHOUSE_DETAIL_LIST(state,payload){
     state.warehouseDetailList=payload
-  },
-
-  GET_COMPANY_INFO(state, payload) {
-    state.companyInfo = payload
-  },
-
-  SEARCH_CLIENT_LIST(state, payload){
-    state.nClientList = payload
-  },
-  RESET_CLIENT(state){
-    state.nClientList=[]
   },
 
   // logi 모듈에서 warehouseList 상태를 삭제하는 mutation 함수
