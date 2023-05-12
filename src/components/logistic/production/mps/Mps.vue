@@ -101,6 +101,7 @@ export default {
   },
   data() {
     return {
+
       getContractDetail: null,
       contractDetail: null,
       mpsPlanDate: null,
@@ -119,38 +120,39 @@ export default {
   methods: {
     ...mapActions('logi/mps', ['SEARCH_CONTRACT_DETAIL_IN_MPS_AVAILABLE', 'CONVERT_CONTRACT_DETAIL_TO_MPS']),
     ...mapActions('common/utils', ['OPEN_ALERT_DIALOG']),
-    /*    openAlert() {
-      const alertDialogInfo = {
-        timeout: 3000,
-        emoji: '🙏🏻',
-        title: '성공적으로 등록되었어요!',
-        firstLineText: 'MRP로 넘어가세요!',
-      }
-      this.OPEN_ALERT_DIALOG(alertDialogInfo)
-    }, */
-    extractDate() {
 
+
+    extractDate() {
       this.startDate = this.rangeDate.split('to')[0].trim()
       this.endDate = this.rangeDate.split('to')[1].trim()
     },
+
     searchContractDetailInMpsAvailable() {
+      console.log(this.contractDetailList)
+      console.log("this.contractDetailList")
       if (this.rangeDate == null) {
         throw new Error('날짜부터 고르고 진행하이소')
       }
-
       this.extractDate()
-      this.alert = '수주등록 시 수주유형과 요청자를 입력하지 않았다면 조회되지 않습니다'
+      this.alert = '견적/수주등록 시 입력하지 않은 값이 있다면 조회되지 않습니다'
 
       const payload = { searchCondition: 'contractDate', startDate: this.startDate, endDate: this.endDate }
       this.SEARCH_CONTRACT_DETAIL_IN_MPS_AVAILABLE(payload)
     },
+
     handleInput(payload) {
+
       this.contractDetail = payload
+      console.log(this.contractDetail);
+      console.log("this.contractDetail")
+
     },
+
     registerMPS() {
       if (this.contractDetail[0].mpsPlanDate === null && this.contractDetail[0].scheduledEndDate === null) {
         throw new Error('계획일자, 출하예정일 선택')
       } else {
+
         this.CONVERT_CONTRACT_DETAIL_TO_MPS(this.contractDetail[0])
         this.$toast({
           component: ToastificationContent,
