@@ -1,3 +1,4 @@
+<!--
 <template>
   <div v-if="playerType === 'player'">
     <b-card
@@ -353,11 +354,11 @@
               </ol>
             </div>
             <div class="center">
-              <!--              <div class="outer button">
+              &lt;!&ndash;              <div class="outer button">
                 <button>Hover Me</button>
                 <span />
                 <span />
-              </div>-->
+              </div>&ndash;&gt;
               <div class="outer circle">
                 <button>
                   Made By<br>
@@ -614,7 +615,7 @@ export default {
         this.songIndex = selectedMusicIndex + 1
         this.previousSong()
       } else if (selectedMusicIndex === this.songIndex) {
-        this.songIndex--
+        this.songIndex&#45;&#45;
         this.nextSong()
       }
     },
@@ -786,3 +787,4 @@ export default {
   @import '../../../assets/scss/musicPlayer';
 
 </style>
+-->

@@ -1,7 +1,7 @@
 {
-  "name": "vuexy-vuejs-react-html-laravel-admin-dashboard-template",
+  "name": "test",
   "version": "6.4.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -74,7 +74,6 @@
     "vuex-module-decorators": "^2.0.0"
   },
   "devDependencies": {
-   
     "@vue/cli-plugin-babel": "~4.5.9",
     "@vue/cli-plugin-eslint": "~4.5.9",
     "@vue/cli-plugin-router": "~4.5.9",
@@ -93,15 +92,12 @@
   },
   "description": "**Vuexy – Vuejs, React, HTML & Laravel Admin Dashboard Template** – is the most developer friendly & highly customizable Admin Dashboard Template based on Bootstrap 4, Bootstrap Vue & Reactstrap.",
   "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/072072/VueERP.git"
-  },
+  "repository": "git+https://github.com/072072/VueERP.git",
   "keywords": [
     "c"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "n",
+  "license": "n",
   "bugs": {
     "url": "https://github.com/072072/VueERP/issues"
   },
