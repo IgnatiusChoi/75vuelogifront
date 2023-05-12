@@ -1,7 +1,6 @@
 import {accountApi, hrApi, logiApi} from '../index'
 //Api
 const CompanyCode ='/company/searchCompany'
-const Departments = '/base/deptList'
 
 function searchItem(divisionCode) {
   console.log(divisionCode)
@@ -40,12 +39,12 @@ function SelectCompanyCode() {
   return hrApi.get(`${CompanyCode}`)
 }
 
-function SelectDepartmentCode() {
-  return hrApi.get(`${Departments}`)
+function getDeptInfo() {
+  return logiApi.get(`/base/getdeptInfo`)
 }
 
 
 
 export {
-  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,SelectCompanyCode,SelectDepartmentCode
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode
 }

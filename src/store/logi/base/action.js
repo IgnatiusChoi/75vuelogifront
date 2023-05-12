@@ -1,5 +1,10 @@
 import {
-  searchItem, getStandardUnitPrice,getWarehouseList,deleteWarehouseList,SelectCompanyCode,SelectDepartmentCode
+  searchItem,
+  getStandardUnitPrice,
+  getWarehouseList,
+  deleteWarehouseList,
+  SelectCompanyCode,
+  getDeptInfo
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
@@ -63,13 +68,12 @@ export default {
       throw new Error(err)
     }
   },
-  async FETCH_ALL_DepartmentCode({ commit }) { // 객체로 넘어오면 {}
+
+  async GET_DEPT_INFO({ commit }) { // 객체로 넘어오면 {}
     try {
-      const response = await SelectDepartmentCode()
-      console.log(response)
-      commit('deptList', response.data.list)
-      // eslint-disable-next-line no-undef
-      return response.data
+      const {data} = await getDeptInfo();
+      commit('GET_DEPT_INFO', data.deptInfo)
+      console.log(data.deptInfo)
     } catch (err) {
       throw new Error(err)
     }

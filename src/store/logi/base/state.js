@@ -9,9 +9,7 @@ export default {
     companyCode:[],
     warehouseList: [],
     warehouseDetailList: [],
-    deptList: [],
-    DeptInfo:[],
-
+    deptInfo:[],
     grid: [],
     detailGrid: [],
     tableColumns: [],

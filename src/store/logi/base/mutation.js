@@ -19,9 +19,8 @@ export default {
     console.log(companyCode)
   },
 
-  deptList(state, Departments){
-    state.DeptInfo = Departments
-    console.log(Departments)
+  GET_DEPT_INFO(state, payload){
+    state.deptInfo = payload
   },
 
   GET_WAREHOUSE_DETAIL_LIST(state,payload){
