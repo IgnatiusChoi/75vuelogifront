@@ -28,7 +28,10 @@ function getWarehouseList() {
 function deleteWarehouseList(payload) {
   return logiApi.post('/base/warehousebatchListProcess2', payload)
 }
-
+//회사 정보 조회
+function getCompanyInfo(){
+  return logiApi.get('/base/getcompanyInfo')
+}
 
 function getWarehouseDetailList(warehouseCode) {
   console.log(warehouseCode)
@@ -42,9 +45,20 @@ function SelectCompanyCode() {
 function getDeptInfo() {
   return logiApi.get(`/base/getdeptInfo`)
 }
+function searchClientList() {
+  return logiApi.get('/base/searchClientList')
+}
 
+function insertClient(data){
+  return logiApi.post('base/insertClient',data)
+}
+
+function deleteClient(data){
+  return logiApi.post('base/deleteClient',data)
+}
 
 
 export {
-  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
+  insertClient, deleteClient, searchClientList, getCompanyInfo
 }

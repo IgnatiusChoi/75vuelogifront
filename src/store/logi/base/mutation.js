@@ -10,6 +10,17 @@ export default {
     state.detailTableColumns = tableColumns[0].detailTableColumns
   },
 
+  GET_COMPANY_INFO(state, payload) {
+    state.companyInfo = payload
+  },
+
+  SEARCH_CLIENT_LIST(state, payload){
+    state.nClientList = payload
+  },
+  RESET_CLIENT(state){
+    state.nClientList=[]
+  },
+
   setGrid(state, gridRow) {
     state.grid = gridRow
   },
