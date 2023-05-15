@@ -29,6 +29,7 @@
 
       <b-button
           variant="primary"
+          @click="updateContainer"
       >
         입고
       </b-button>
@@ -88,6 +89,13 @@ export default {
       // The following will be an empty string until a valid date is entered
       this.selected = ctx.selectedYMD
     },
+    updateContainer(){
+      this.$swal.fire(
+            '입고 완료!',
+            '입고가 완료되었습니다.',
+            'success'
+        ).then(this.$emit('page-refresh'))
+    }
   },
   created() {
   },
@@ -95,7 +103,9 @@ export default {
     const date = new Date()
     const year = date.getFullYear()
     const month = date.getMonth() + 1
+    const lastday = new Date(year, month, 0).getDate()
     this.startDate = `${year}-${month}-01`
+    this.endDate = `${year}-${month}-${lastday}`
     console.log("mounted 실행")
     this.$store.dispatch('logi/stock/SEARCH_STOCK_LIST')
   },
