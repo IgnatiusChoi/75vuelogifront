@@ -5,7 +5,7 @@ const ProductionRoute = [
     name: 'mps',
     component: () => import('@/views/logistic/production/mps/MpsPage'),
     meta: {
-      pageTitle: 'Mps 조회/등록',
+      pageTitle: 'Mps 등록',
       breadcrumb: [
         {
           text: '생산관리',

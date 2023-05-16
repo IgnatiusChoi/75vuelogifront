@@ -1,4 +1,6 @@
-import { logiApi } from '../index'
+import {accountApi, hrApi, logiApi} from '../index'
+//Api
+const CompanyCode ='/company/searchCompany'
 
 function searchItem(divisionCode) {
   console.log(divisionCode)
@@ -36,6 +38,13 @@ function getWarehouseDetailList(warehouseCode) {
   return logiApi.get('/purchase/warehouseStockList',warehouseCode)
 }
 
+function SelectCompanyCode() {
+  return hrApi.get(`${CompanyCode}`)
+}
+
+function getDeptInfo() {
+  return logiApi.get(`/base/getdeptInfo`)
+}
 function searchClientList() {
   return logiApi.get('/base/searchClientList')
 }
@@ -48,7 +57,8 @@ function deleteClient(data){
   return logiApi.post('base/deleteClient',data)
 }
 
+
 export {
-  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList, getCompanyInfo, searchClientList,
-    insertClient, deleteClient
+  searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
+  insertClient, deleteClient, searchClientList, getCompanyInfo
 }

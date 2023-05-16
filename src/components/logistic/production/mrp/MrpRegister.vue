@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="font-family: '배달의민족 도현'">
     <div
       style="margin: 30px 0 0 -14px; width: 550px; display: flex"
     >
@@ -7,8 +7,8 @@
         <b-form-group>
           <flat-pickr
             v-model="rangeDate"
-            placeholder="신청일자"
-            class="form-control"
+            placeholder="MPS 계획일자 (기간)선택"
+            class="form-control custom-placeholder"
             :config="{ mode: 'range'}"
           />
         </b-form-group>
@@ -173,4 +173,9 @@ export default {
 </script>
 <style  lang="scss">
 @import '@core/scss/vue/libs/vue-flatpicker.scss';
+
+.custom-placeholder::placeholder {
+  color: #ed5017;
+  text-align: center;
+}
 </style>

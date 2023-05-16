@@ -28,7 +28,16 @@ function convertContractDetailToMps(payload) {
 }
 
 /**
- *  소요량전개 등록/취합 Tab-MRP등록
+ * 차트 데이터 용 MPS List 조회
+ */
+function searchMps(){
+  return logiApi.get('/production/searchMpsList')
+}
+
+
+
+/**
+ *  소요량전개 등록/취합 -> MRP등록 -> MPS조회 버튼
  */
 // Mps조회
 function searchMpsList(payload) {
@@ -124,5 +133,6 @@ export {
   showWorkInfoList,
   searchWorkOrderList,
   productionPerformanceInfoList,
-  showWorkOrderDialog
+  showWorkOrderDialog,
+  searchMps
 }

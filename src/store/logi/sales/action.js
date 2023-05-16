@@ -1,6 +1,6 @@
 import {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract,
-  searchDeliverableContractList, addNewEstimate,
+  searchDeliverableContractList, addNewEstimate, searchInputContract
 } from '@/api/logi/sales'
 
 export default {
@@ -34,6 +34,18 @@ export default {
       throw new Error(err)
     }
   },
+
+  async searchInputContract({ commit }, searchedData) {
+    try {
+      console.log("searchedData")
+      console.log(searchedData)
+      commit('searchGrid', searchedData)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+
+
   setTable({ commit }, tableColumns) {
     commit('setTable', tableColumns)
   },

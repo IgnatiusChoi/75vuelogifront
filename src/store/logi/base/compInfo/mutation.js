@@ -1,13 +1,17 @@
 export default {
 
-    SEARCH_COMPANY_LIST,
-    SEARCH_WORKPLACE_LIST,
-    SEARCH_DEPT_LIST,
-    SEARCH_CLIENT_LIST,
+    SEARCH_WORKPLACE(state, workplaceListDetail) {
+        state.workplaceListDetail = workplaceListDetail;
+    },
 
+    SEARCH_WORKPLACE_LIST(state, workplaceList) {
+        state.workplaceList = workplaceList;
+    },
 
-
-
+    setTable(state, tableColumns) {
+        state.tableColumns = tableColumns[0].tableColumns
+        state.detailTableColumns = tableColumns[0].detailTableColumns
+    },
 
 }
 

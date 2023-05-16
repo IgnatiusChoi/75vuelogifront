@@ -14,6 +14,7 @@ function searchEstimateInfo(payload) {
       startDate,
       endDate,
       dateSearchCondition,
+
     },
   })
 }
@@ -39,6 +40,16 @@ function searchContractDetail(contractNo) {
     },
   })
 }
+
+function searchInputContract(contractNo) {
+  return logiApi.get("/sales/searchInputContract", {
+    params: {
+      contractNo,
+    },
+  });
+}
+
+
 function searchEstimateInContractAvailable(sendDate) {
   return logiApi.get('/sales/searchEstimateInContractAvailable', {
     params: {
@@ -73,9 +84,10 @@ function searchDeliverableContractList(searchData) {
 }
 function addNewEstimate(newEstimate) {
   console.log(newEstimate)
+  console.log("newEstimateDFF")
   return logiApi.post('/sales/addNewEstimates', newEstimate)
 }
 export {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract, addNewEstimate,
-  searchDeliverableContractList,
+  searchDeliverableContractList, searchInputContract
 }

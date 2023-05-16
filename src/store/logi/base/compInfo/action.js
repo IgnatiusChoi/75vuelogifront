@@ -1,8 +1,13 @@
 import {
   searchCompanyList,
+  searchWorkplace,
   searchWorkplaceList,
   searchDeptList,
   searchClientList,
+  deleteWorkplace,
+  insertWorkplace,
+  updateWorkplace
+
 } from "@/api/logi/compinfo";
 // 액션을 위한 api 통신 대상
 
@@ -21,10 +26,57 @@ export default {
   },
 
 
-  async SEARCH_WORKPLACE_LIST({ commit },payload) {
+  /** 사업장 정보 **/
+  async SEARCH_WORKPLACE({ commit }, workplaceCode) {
+    try {
+      console.log("____")
+      console.log(workplaceCode)
+      const res = await searchWorkplace(workplaceCode)
+      console.log("res.data.workplaceInfo")
+      console.log(res.data.workplaceInfo)
+      commit('SEARCH_WORKPLACE', res.data.workplaceInfo)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+
+  /** 사업장 목록 **/
+  async SEARCH_WORKPLACE_LIST({ commit }) {
     const res = await searchWorkplaceList()
-    const result=res.data
-    commit('SEARCH_WORKPLACE_LIST', itemList)
+    console.log("res")
+    console.log(res)
+    commit('SEARCH_WORKPLACE_LIST', res.data.workplaceList)
+  },
+
+  /** 사업장 추가 **/
+  async INSERT_WORKPLACE(_, payload) {
+    console.log(payload)
+    console.log("payload")
+    console.log(typeof payload)
+    console.log("typeof payload")
+    await insertWorkplace(payload);
+  },
+
+  /** 사업장 삭제 **/
+  async DELETE_WORKPLACE(_, workplaceCode) {
+    console.log(workplaceCode)
+    console.log("workplaceCode")
+
+    await deleteWorkplace(workplaceCode);
+  },
+
+  /** 사업장 수정 **/
+  async UPDATE_WORKPLACE(_, payload) {
+    const result = {};
+    for (let i = 0; i < payload.length && i < 22; i++) {
+      const key = payload[i][0];
+      const value = payload[i][1];
+      result[key] = value;
+    }
+
+    console.log(result)
+    console.log("result")
+    await updateWorkplace(result);
   },
 
 
@@ -39,6 +91,10 @@ export default {
     commit('SEARCH_CLIENT_LIST', itemList)
   },
 
+
+  setTable({ commit }, tableColumns) {
+    commit('setTable', tableColumns)
+  },
 
 
 

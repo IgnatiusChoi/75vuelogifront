@@ -2,9 +2,9 @@
 
   <!-- Table Container Card -->
   <b-card
-    id="scrollStyle"
-    no-body
-    style="font-family: '배달의민족 도현'; overflow-x: scroll; max-height: 500px"
+      id="scrollStyle"
+      no-body
+      style="font-family: '배달의민족 도현'; overflow-x: scroll; max-height: 500px"
   >
 
     <div class="m-2">
@@ -12,9 +12,9 @@
       <b-row>
         <!-- Table Top -->
         <b-col
-          cols="12"
-          md="6"
-          class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
+            cols="12"
+            md="6"
+            class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
         >
           <slot name="header" />
 
@@ -24,74 +24,74 @@
       <b-row /></div>
 
     <b-table
-      hover
-      :items="detailGrid"
-      :fields="detailTableColumns"
-      style="width: 1700px; overflow-y: scroll;"
-      show-empty
-      empty-text="No matching records found"
-      selectable
-      select-mode="single"
-      @row-selected="onRowSelected"
+        hover
+        :items="detailGrid"
+        :fields="detailTableColumns"
+        style="width: 1700px; overflow-y: scroll;"
+        show-empty
+        empty-text="No matching records found"
+        selectable
+        select-mode="single"
+        @row-selected="onRowSelected"
     />
 
     <transition
-      name="fade"
-      mode="out-in"
+        name="fade"
+        mode="out-in"
     >
       <CommonModal
-        v-if="modal"
-        @close="closeModal"
+          v-if="modal"
+          @close="closeModal"
       >
         <template v-slot:header>
           <b-col>수정해주십시오</b-col>
         </template>
         <template v-slot:body>
           <b-col
-            cols="12"
-            md="10"
-            class="d-flex justify-content-start mb-3"
+              cols="12"
+              md="10"
+              class="d-flex justify-content-start mb-3"
           >
             <div style="width: 110px; ">
               <label style="font-size: 15px; float:right; margin-top:8px"><span style="color:hotpink">*</span>&nbsp 납기일 : &nbsp</label>
             </div>
             <b-col>
               <b-input-group
-                style="width: 200px;"
+                  style="width: 200px;"
               >
                 <b-form-input
-                  v-model="selectedDueDateOfEstimate"
-                  type="text"
-                  placeholder="납기일"
-                  autocomplete="off"
-                  show-decade-nav
-                  style="width: 140px"
-                  :state="selectedDueDateOfEstimateStatus"
+                    v-model="selectedDueDateOfEstimate"
+                    type="text"
+                    placeholder="납기일"
+                    autocomplete="off"
+                    show-decade-nav
+                    style="width: 140px"
+                    :state="selectedDueDateOfEstimateStatus"
                 />
                 <B-form-valid-feedback
-                  tooltip
-                  class="mb-3"
-                  style="margin-left:-5px"
+                    tooltip
+                    class="mb-3"
+                    style="margin-left:-5px"
                 >
                   {{ dueDateOfEstimateCheckMsg }}
                 </B-form-valid-feedback>
                 <b-form-invalid-feedback
-                  tooltip
-                  class="mb-3"
-                  style="margin-left:-5px"
+                    tooltip
+                    class="mb-3"
+                    style="margin-left:-5px"
                 >
                   {{ dueDateOfEstimateCheckMsg }}
                 </b-form-invalid-feedback>
                 <b-input-group-append style="height: 37px;">
                   <b-form-datepicker
-                    v-model="selectedDueDateOfEstimate"
-                    show-decade-nav
-                    button-only
-                    button-variant="outline-primary"
-                    right
-                    size="sm"
-                    locale="en-US"
-                    aria-controls="example-input"
+                      v-model="selectedDueDateOfEstimate"
+                      show-decade-nav
+                      button-only
+                      button-variant="outline-primary"
+                      right
+                      size="sm"
+                      locale="en-US"
+                      aria-controls="example-input"
                   />
                 </b-input-group-append>
               </b-input-group>
@@ -101,18 +101,18 @@
 
         <template v-slot:footer>
           <b-button
-            variant="primary"
-            size="md"
-            class="mb-md-1"
-            @click="closeModal"
+              variant="primary"
+              size="md"
+              class="mb-md-1"
+              @click="closeModal"
           >
             취소
           </b-button>
           <b-button
-            variant="primary"
-            size="md"
-            class="mb-md-1"
-            @click="editdueDateOfEstimate"
+              variant="primary"
+              size="md"
+              class="mb-md-1"
+              @click="editdueDateOfEstimate"
           >
             입력
           </b-button>
@@ -257,66 +257,66 @@ export default {
 }
 </script>
 
-    <style
-      lang="scss"
-      scoped
-    >
-      .per-page-selector {
-      width: 90px;
-      }
+<style
+    lang="scss"
+    scoped
+>
+.per-page-selector {
+  width: 90px;
+}
 
-      .invoice-filter-select {
-      min-width: 190px;
+.invoice-filter-select {
+  min-width: 190px;
 
-      ::v-deep .vs__selected-options {
-      flex-wrap: nowrap;
-      }
+  ::v-deep .vs__selected-options {
+    flex-wrap: nowrap;
+  }
 
-      ::v-deep .vs__selected {
-      width: 100px;
-      }
-      }
-    </style>
+  ::v-deep .vs__selected {
+    width: 100px;
+  }
+}
+</style>
 
-    <style lang="scss">
-      @import 'src/@core/scss/vue/libs/vue-select';
+<style lang="scss">
+@import 'src/@core/scss/vue/libs/vue-select';
 
-      #scrollStyle::-webkit-scrollbar-track
-      {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      background-color: rgba(50,60,150,1);
-      border-radius: 10px;
-      box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
-      }
+#scrollStyle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: rgba(50,60,150,1);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
+}
 
-      #scrollStyle::-webkit-scrollbar
-      {
-      width: 10px;
-      background-color: rgba(50,50,150,0);
-      }
+#scrollStyle::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: rgba(50,50,150,0);
+}
 
-      #scrollStyle::-webkit-scrollbar-thumb
-      {
-      background-clip: padding-box;
-      border: 4px solid transparent;
-      border-radius: 10px;
-      /*    background-image: -webkit-gradient(linear,
-      left bottom,
-      left top,
-      color-stop(0.44, rgb(122,153,217)),
-      color-stop(0.72, rgb(73,125,189)),
-      color-stop(0.86, rgb(28,58,148)));*/
-      background-color: #7367f0;
-      }
+#scrollStyle::-webkit-scrollbar-thumb
+{
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  /*    background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.44, rgb(122,153,217)),
+  color-stop(0.72, rgb(73,125,189)),
+  color-stop(0.86, rgb(28,58,148)));*/
+  background-color: #7367f0;
+}
 
-      .fade-enter{
-          opacity:0.5
-      }
-      .fade-enter-active,
-      .fade-leave-active{
-          transition:opacity 0.3s ease-out;
-      }
-      .fade-leave-to{
-          opacity: 0;
-      }
-    </style>
+.fade-enter{
+  opacity:0.5
+}
+.fade-enter-active,
+.fade-leave-active{
+  transition:opacity 0.3s ease-out;
+}
+.fade-leave-to{
+  opacity: 0;
+}
+</style>

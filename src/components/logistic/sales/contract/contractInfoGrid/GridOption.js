@@ -49,6 +49,18 @@ export default function useInvoicesList() {
     return 'primary'
   }
 
+  const searchResults = computed(() => {
+    if (!searchQuery.value) {
+      return grid
+    } else {
+      return grid.filter((row) => {
+        return Object.values(row).some((value) => {
+          return String(value).toLowerCase().includes(searchQuery.value.toLowerCase())
+        })
+      })
+    }
+  })
+
   return {
     fetchInvoices,
     perPage,
@@ -59,6 +71,8 @@ export default function useInvoicesList() {
     sortBy,
     isSortDirDesc,
     refInvoiceListTable,
+
+    searchResults,
 
     resolveClientAvatarVariant,
 
