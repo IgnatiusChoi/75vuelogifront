@@ -1,7 +1,8 @@
 import {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract,
-  searchDeliverableContractList, addNewEstimate, searchInputContract
+  searchDeliverableContractList, addNewEstimate,Selectsalesplane,InsertSalesplan,searchInputContract
 } from '@/api/logi/sales'
+import {SelectDepartmentCode} from "@/api/logi/base";
 
 export default {
   async searchContract({ commit }, date) {
@@ -9,16 +10,21 @@ export default {
       const res = await searchContract(date)
       const gridRow = res.data.gridRowJson
       commit('setGrid', gridRow)
-
+      console.log(gridRow)
       // return res
     } catch (err) {
       throw new Error(err)
     }
   },
-  async SEARCH_ESTIMATE_INFO({ commit }, payload) { // 객체로 넘어오면 {}
+  async SEARCH_ESTIMATE_INFO({ commit }, payload) {
+    // 객체로 넘어오면 {}
+    // 견적일련번호
     try {
-      const { data } = await searchEstimateInfo(payload)
-      commit('SEARCH_INFO', data.gridRowJson) /* field가 맵핑하는게 배열이기 때문에 그대로 보내줌 */
+      const  {data}  = await searchEstimateInfo(payload)
+      console.log(data)
+      commit('SEARCH_INFO', data.gridRowJson)
+      console.log(data.gridRowJson[0])
+      console.log(JSON.stringify(data.gridRowJson[0]) )/* field가 맵핑하는게 배열이기 때문에 그대로 보내줌 */
       return data
     } catch (err) {
       throw new Error(err)
@@ -30,6 +36,7 @@ export default {
       const res = await searchContractDetail(contractNo)
       const gridRow = res.data.gridRowJson
       commit('setDetailGrid', gridRow)
+      console.log(gridRow)
     } catch (err) {
       throw new Error(err)
     }
@@ -92,5 +99,29 @@ export default {
       throw new Error(err)
     }
   },
+
+  async FETCH_ALL_SalesPlane({ commit }) {
+    try {
+      const response = await Selectsalesplane()
+      console.log("이거다",response.data.gridRowJson[0])
+      commit('salesplane', response.data.gridRowJson)
+      // eslint-disable-next-line no-undef
+      console.log(this.salesplane)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+
+  async INSERT_SALES_PLAN({ commit }, payload) {
+    console.log('INSERT_SALES_PLAN???');
+    try {
+      const response = await InsertSalesplan(payload);
+      console.log(response); // 응답 확인
+      /*commit('SET_SALES_PLAN', response.data);*/
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
 
 }

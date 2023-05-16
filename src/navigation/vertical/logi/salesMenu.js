@@ -35,7 +35,7 @@ export default [
       },
       {
         title: '판매 계획',
-        route: 'dashboard-analytics',
+        route: 'salesplan',
       },
 
     ],
