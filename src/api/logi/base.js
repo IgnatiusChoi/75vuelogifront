@@ -56,21 +56,9 @@ function insertClient(data){
 function deleteClient(data){
   return logiApi.post('base/deleteClient',data)
 }
-function searchCodeList(){
-  return logiApi.get('base/searchCodeList')
-}
-function addCode(payload){
-  return logiApi.post('base/batchListProcess', {
-    divisionCodeNo: payload[0].divisionCodeNo,
-    codeType: payload[0].codeType,
-    divisionCodeName: payload[0].divisionCodeName,
-    codeChangeAvailable: payload[0].codeChangeAvailable,
-    description: payload[0].description,
-    status: payload[0].status
-  })
-}
+
 
 export {
   searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
-  insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode
+  insertClient, deleteClient, searchClientList, getCompanyInfo
 }

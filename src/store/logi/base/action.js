@@ -8,13 +8,10 @@ import {
   getCompanyInfo,
   searchClientList,
   insertClient,
-  deleteClient,
-  searchCodeList,
-  addCode
+  deleteClient
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
-import {searchCustomerInfoList} from "@/api/account/base";
 
 export default {
   async SEARCH_ITEM({ commit }, divisionCode) {
@@ -122,24 +119,6 @@ export default {
   },
   resetSearch({commit}){
     commit('RESET_CLIENT')
-  },
-  async SEARCH_CODE_LIST({commit}){
-    try {
-      const {data} = await searchCodeList()
-      console.log(data.codeList)
-      console.log(Array.from(data))
-      commit('SET_CODE', data.codeList)
-      return data
-    } catch (err){
-      throw new Error(err)
-    }
-  },
-  async addCode({commit},payload){
-    try {
-      return await addCode(payload)
-    } catch (err){
-      throw new Error(err)
-    }
   }
 
 

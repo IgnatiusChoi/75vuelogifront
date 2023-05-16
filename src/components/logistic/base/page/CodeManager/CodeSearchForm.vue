@@ -106,7 +106,7 @@ export default {
         {key: 'divisionCodeNo', label: '코드번호', sortable: true},
         {key: 'codeType', label: '코드타입', sortable: true},
         {key: 'divisionCodeName', label: '코드이름', sortable: true},
-        {key: 'codeChangeAvailable', label: '변경가능여부', sortable: true},
+        {key: 'codeChangeAvailable', label: '코드변경사항', sortable: true},
         {key: 'description', label: '설명', sortable: true},
       ]
     }]
@@ -120,7 +120,7 @@ export default {
     },
     getGridData(){
       console.log("getGridData")
-      this.$store.dispatch('logi/base/SEARCH_CODE_LIST')
+      // this.$store.dispatch('account/base/SEARCH_CUSTOMER_INFO_LIST')
     },
     deleteData(customerCode){
       console.log("deleteData")
