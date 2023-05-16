@@ -8,7 +8,6 @@
   >
 
     <div class="m-2">
-
       <b-row>
         <!-- Table Top -->
         <b-col
@@ -21,21 +20,23 @@
         </b-col>
       </b-row>
 
-      <b-row /></div>
-
-
+      <b-row />
+    </div>
 
     <b-table
         hover
-        :items="detailGrid"
-        :fields="detailTableColumns"
+        selectable
         style="width: 1700px; overflow-y: scroll;"
         show-empty
         empty-text="No matching records found"
+        :items="workPlaceDetailList"
+        :fields="workPlaceDetailColumns"
+        @row-clicked="workPlaceDetailClick"
     />
 
   </b-card>
 </template>
+
 <script>
 import {
   BCard, BRow, BCol, BFormInput, BButton, BTable, BMedia, BAvatar, BLink,
@@ -45,6 +46,8 @@ import {
 import BCardCode from '@core/components/b-card-code/BCardCode.vue'
 import { mapActions, mapState } from 'vuex'
 import vSelect from 'vue-select'
+import {workOrderList, workOrderSimultaion, workSite} from "@/components/logistic/production/fields";
+import {workPlaceDetailColumns} from "@/components/logistic/production/fields";
 
 export default {
   components: {
@@ -69,19 +72,19 @@ export default {
   computed: {
     // ...mapActions('logi/sales', ['searchContract']), 메소드에 선언해야함
     ...mapState({
-      detailGrid: state => state.logi.sales.detailGrid,
-      detailTableColumns: state =>   state.logi.sales.detailTableColumns,
-
+      workPlaceDetailList: state => state.logi.workInstruction.workPlaceDetailList,
     }),
   },
-  data() {
-    return {
-      contractDetailRow: [],
-    }
-  },
+  data: () => ({
+    workPlaceDetailColumns,
+  }),
   methods: {
-
-  },
+    workPlaceDetailClick(rowData){
+      console.log(rowData)
+      this.$emit('selectedData', rowData);
+      //this.selected =payloadPayload
+    },
+  }
 }
 </script>
 

@@ -19,6 +19,12 @@ export default {
     state.detailGrid = []
     state.grid = gridRow
   },
+
+  searchGrid(state, searchData) {
+    state.searchGrid = searchData
+
+  },
+
   setDetailGrid(state, gridRow) {
     state.detailGrid = gridRow
   },

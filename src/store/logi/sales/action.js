@@ -1,6 +1,6 @@
 import {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract,
-  searchDeliverableContractList, addNewEstimate,Selectsalesplane,InsertSalesplan
+  searchDeliverableContractList, addNewEstimate,Selectsalesplane,InsertSalesplan,searchInputContract
 } from '@/api/logi/sales'
 import {SelectDepartmentCode} from "@/api/logi/base";
 
@@ -41,6 +41,18 @@ export default {
       throw new Error(err)
     }
   },
+
+  async searchInputContract({ commit }, searchedData) {
+    try {
+      console.log("searchedData")
+      console.log(searchedData)
+      commit('searchGrid', searchedData)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+
+
   setTable({ commit }, tableColumns) {
     commit('setTable', tableColumns)
   },

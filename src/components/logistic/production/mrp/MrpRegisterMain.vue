@@ -10,7 +10,7 @@
             size="16"
             class="mr-0 mr-sm-50"
           />
-          <span class="d-none d-sm-inline">MRP등록</span>
+          <span class="d-none d-sm-inline">MRP 등록</span>
         </template>
         <!--  내용물 컴포넌트       -->
         <MrpRegister />

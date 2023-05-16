@@ -2,9 +2,10 @@ import router from '@/router/index'
 import mps from '@/store/logi/production/mps/state'
 import mrp from '@/store/logi/production/mrp/state'
 import order from '@/store/logi/purchase/order/state'
-import workInstruction from '@/store/logi/production/workInstruction/state'
+import workInstruction from './production/workInstruction/state'
 import sales from './sales/state'
 import base from './base/state'
+import compInfo from './base/compInfo/state'
 import outsource from './outsourc/state'
 import bom from '@/store/logi/purchase/bom/state'
 import stock from '@/store/logi/purchase/stock/state'
@@ -21,6 +22,6 @@ export default {
   mutations: {
   },
   modules: {
-    sales, mps, mrp, workInstruction, base, order, outsource, bom, stock
+    sales, mps, mrp, workInstruction, base, order, outsource, bom, stock, compInfo
   },
 }

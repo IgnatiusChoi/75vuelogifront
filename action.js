@@ -3,18 +3,13 @@ import {
   getStandardUnitPrice,
   getWarehouseList,
   deleteWarehouseList,
-  SelectCompanyCode,
-  getDeptInfo,
   getCompanyInfo,
   searchClientList,
   insertClient,
   deleteClient,
-  searchCodeList,
-  addCode
+  SelectDepartmentCode
 } from '@/api/logi/base'
-import {selectSlips} from "@/api/account/account";
-import {searchDeptList} from "@/api/logi/compinfo";
-import {searchCustomerInfoList} from "@/api/account/base";
+// import {searchClientList} from "@/api/logi/compinfo";
 
 export default {
   async SEARCH_ITEM({ commit }, divisionCode) {
@@ -63,19 +58,7 @@ export default {
       throw new Error(err)
     }
   },
-
-  async FETCH_ALL_CompanyCode({ commit }) { // 객체로 넘어오면 {}
-    try {
-      const response = await SelectCompanyCode()
-      console.log(response)
-      commit('LogiCompany', response.data.gridRowJson)
-      // eslint-disable-next-line no-undef
-      return response.data
-    } catch (err) {
-      throw new Error(err)
-    }
-  },
-
+  //회사 정보 조회
   async GET_COMPANY_INFO ({commit}){
     try {
       const {data} = await getCompanyInfo();
@@ -86,19 +69,22 @@ export default {
     }
   },
 
-  async GET_DEPT_INFO({ commit }) { // 객체로 넘어오면 {}
+  async FETCH_ALL_DepartmentCode({ commit }) { // 객체로 넘어오면 {}
     try {
-      const {data} = await getDeptInfo();
-      commit('GET_DEPT_INFO', data.deptInfo)
-      console.log(data.deptInfo)
+      const response = await SelectDepartmentCode()
+      console.log(response)
+      commit('deptList', response.data.list)
+      // eslint-disable-next-line no-undef
+      return response.data
     } catch (err) {
       throw new Error(err)
     }
   },
+
   async SEARCH_CLIENT_LIST({ commit }) {
     try{
-      const {data} = await searchClientList()
-      commit('SEARCH_CLIENT_LIST', data.clientInfo)
+    const {data} = await searchClientList()
+    commit('SEARCH_CLIENT_LIST', data.clientInfo)
     } catch (err) {
       throw new Error(err)
     }
@@ -122,26 +108,7 @@ export default {
   },
   resetSearch({commit}){
     commit('RESET_CLIENT')
-  },
-  async SEARCH_CODE_LIST({commit}){
-    try {
-      const {data} = await searchCodeList()
-      console.log(data.codeList)
-      console.log(Array.from(data))
-      commit('SET_CODE', data.codeList)
-      return data
-    } catch (err){
-      throw new Error(err)
-    }
-  },
-  async addCode({commit},payload){
-    try {
-      return await addCode(payload)
-    } catch (err){
-      throw new Error(err)
-    }
   }
-
 
 
 

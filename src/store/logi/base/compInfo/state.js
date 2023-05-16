@@ -6,7 +6,10 @@ export default {
   state: {
 
     companyList: [],
+
     workplaceList: [],
+    workplaceListDetail: [],
+
     deptList: [],
     nClientList: [],
     fClientList: [],

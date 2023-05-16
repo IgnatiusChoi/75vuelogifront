@@ -7,6 +7,7 @@ export default {
     estimateList: [],
     estimateDetailList: [],
     grid: [],
+    searchGrid: [],
     detailGrid: [],
     tableColumns: [],
     detailTableColumns: [],

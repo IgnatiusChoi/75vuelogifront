@@ -1,29 +1,27 @@
 export const Mps = [
-  { key: 'contractDetailNo', label: '수주상세일련번호' },
-  { key: 'contractType', label: '유형' },
-  { key: 'contractDate', label: '수주일자' },
-  { key: 'estimateAmount', label: '견적수량' },
-  { key: 'stockAmountUse', label: '초기납품' },
-  { key: 'productionRequirement', label: '제작수량' },
-  { key: 'mpsPlanDate', label: '계획일자' },
-  { key: 'scheduledEndDate', label: '출하예정일' },
-  { key: 'dueDateOfContract', label: '납기일' },
-  { key: 'itemName', label: '품목명' },
+  { key: 'contractDetailNo', label: '수주상세일련번호', thClass:"text-center" },
+  { key: 'contractType', label: '유형', thClass:"text-center" },
+  { key: 'contractDate', label: '수주일자' , thClass:"text-center"},
+  { key: 'estimateAmount', label: '견적수량' , thClass:"text-center"},
+  { key: 'stockAmountUse', label: '재고사용량' , thClass:"text-center"},
+  { key: 'productionRequirement', label: '생산요청수량' , thClass:"text-center"},
+  { key: 'mpsPlanDate', label: 'MPS 계획일', thClass:"text-center"},
+  { key: 'scheduledEndDate', label: '출하예정일', thClass:"text-center" },
+  { key: 'dueDateOfContract', label: '납기일' , thClass:"text-center"},
+  { key: 'itemName', label: '품목명' , thClass:"text-center"},
 ]
 
 export const searchMpsList = [
   { key: 'mpsNo', label: '주생산계획번호' },
-  { key: 'mpsPlanClassification', label: '계획구분' },
   { key: 'contractDetailNo', label: '수주상세일련번호' },
+  { key: 'mpsPlanClassification', label: '계획구분' },
   { key: 'itemCode', label: '품목코드' },
   { key: 'itemName', label: '품목명' },
-  { key: 'unitOfMps', label: '단위' },
-  { key: 'mpsPlanDate', label: '계획일자' },
-  { key: 'dueDateOfMps', label: '출하예정일' },
-  { key: 'mpsPlanAmount', label: '계획수량' },
-  { key: 'itemName', label: '납기일' },
-  { key: 'scheduledEndDate', label: '예정마감일자' },
-  { key: 'mrpApplyStatus', label: 'MRP적용상태' },
+  { key: 'mpsPlanAmount', label: 'MPS 계획수량' },
+  { key: 'mpsPlanDate', label: 'MPS 계획일자' },
+  { key: 'dueDateOfMps', label: '납기일' },
+  { key: 'scheduledEndDate', label: '출하예정일' },
+  { key: 'mrpApplyStatus', label: 'MRP 적용상태' },
   { key: 'description', label: '비고' },
 ]
 
@@ -129,4 +127,23 @@ export const workOrderSimultaion = [
   {label: '재고량(재고소요이후)', key: 'stockAfterWork'},
   {label: '작업지시기한', key: 'orderDate' },
   {label: '작업완료기한', key: 'requiredDate'}
+]
+
+
+export const workSite = [
+  {label: "생산 과정 코드", key: "productionProcessCode"},
+  {label: "작업장 코드", key: "workSiteCode"},
+  {label: "작업장 분류", key: "workSiteName"}
+]
+
+
+export const workPlaceDetailColumns = [
+  {label: "생산 주문 번호", key: "workOrderNo"},
+  {label: "아이템 코드", key: "itemCode"},
+  {label: "아이템 이름", key: "itemName"},
+  {label: "과정", key: "progress"},
+  {label: "작업장명", key: "workSiteName"},
+  {label: "생산 날짜", key: "workDate"},
+  {label: "생산 과정 코드", key: "productionProcessCode"},
+  {label: "생산 과정 이름", key: "productionProcessName"}
 ]

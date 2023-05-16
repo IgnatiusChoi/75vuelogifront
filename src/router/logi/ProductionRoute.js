@@ -5,7 +5,7 @@ const ProductionRoute = [
     name: 'mps',
     component: () => import('@/views/logistic/production/mps/MpsPage'),
     meta: {
-      pageTitle: 'Mps 조회/등록',
+      pageTitle: 'Mps 등록',
       breadcrumb: [
         {
           text: '생산관리',
@@ -63,7 +63,7 @@ const ProductionRoute = [
   {
     path: '/logi/production/workPlace',
     name: 'workPlace',
-    component: () => import('@/views/logistic/production/WorkPlacePage'),
+    component: () => import('@/views/logistic/production/WorkPlacePage.vue'),
     meta: {
       pageTitle: '작업장/작업장로그',
       breadcrumb: [

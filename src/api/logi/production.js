@@ -94,11 +94,12 @@ function searchMrpGathering(payload) {
   })
 }
 
-
+//작업지시 필요항목 조회
 function searchWorkOrderList() {
   return logiApi.get('/production/getWorkOrderableMrpList')
 }
 
+//생산실적관리-생산실적조회Button
 function productionPerformanceInfoList(){
   return logiApi.get('/production/getProductionPerformanceInfoList')
 }
@@ -111,6 +112,54 @@ function showWorkOrderDialog(payload){
     },
   })
 }
+
+function searchWorkOrderListInfo(){
+  return logiApi.get('/production/getWorkOrderableMrpList')
+}
+
+
+
+function searchWorkOrderInfoListStatus(){
+  console.log('searchWorkOrderInfoListStatus')
+  return logiApi.get('/production/getWorkOrderInfoListStatus')
+}
+
+function searchWorkSite(){
+  return logiApi.get('/production/getWorkSiteList')
+}
+
+//작업장 로그 조회(작업장 조회-상세)
+function searchProductionProcessCode(payload){
+  console.log('searchProductionProcessCode')
+  console.log(payload)
+  const processcode = payload.productionProcessCode
+  console.log(sitecode)
+  const sitecode=payload.workSiteCode
+  console.log(processcode)
+  return logiApi.get('/production/getProductionProcessCode', {
+    params: {
+      workSiteCode : sitecode,
+      productionProcessCode :processcode,
+
+    },
+  })
+}
+
+//작업장 추가
+function insertWorkPlaceList(workPlaceList){
+  console.log("workPlaceList" + workPlaceList)
+  return logiApi.post('/production/insertWorkPlaceList', workPlaceList)
+}
+
+//작업장 삭제
+function deleteWorkPlaceList(workPlaceList){
+  console.log("deleteWorkPlaceList" + workPlaceList)
+  return logiApi.post('/production/deleteWorkPlaceList', workPlaceList)
+}
+
+
+
+
 export {
   searchContractDetailInMpsAvailable,
   convertContractDetailToMps,
@@ -124,5 +173,11 @@ export {
   showWorkInfoList,
   searchWorkOrderList,
   productionPerformanceInfoList,
-  showWorkOrderDialog
+  showWorkOrderDialog,
+  searchWorkOrderListInfo,
+  searchWorkOrderInfoListStatus,
+  searchWorkSite,
+  searchProductionProcessCode,
+  insertWorkPlaceList,
+  deleteWorkPlaceList,
 }

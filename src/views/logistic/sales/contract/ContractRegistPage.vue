@@ -2,33 +2,30 @@
   <div>
     <ContractRegistEditableGrid @page-refresh="searchEstimate">
       <template v-slot:header>
-        <h2
-          class="mb-md-1"
-          style="width: 50px"
-        >
-          수주
-        </h2>
-        <b-input-group
-          class="mb-md-1"
-          style="width: 170px; margin: 0 10px 0 10px;"
+
+        <h2 class="mb-md-1" style="width: 350px"> 수주로 등록 가능한 견적목록 </h2>
+
+       <b-input-group
+            class="mb-md-1"
+            style="width: 170px; margin: 0 10px 0 10px;"
         >
           <b-form-input
-            v-model="startDate"
-            type="text"
-            placeholder="YYYY-MM-DD"
-            autocomplete="off"
-            show-decade-nav
+              v-model="startDate"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              autocomplete="off"
+              show-decade-nav
           />
           <b-input-group-append style="height: 37px;">
             <b-form-datepicker
-              v-model="startDate"
-              show-decade-nav
-              button-only
-              button-variant="outline-primary"
-              right
-              size="sm"
-              locale="en-US"
-              aria-controls="example-input"
+                v-model="startDate"
+                show-decade-nav
+                button-only
+                button-variant="outline-primary"
+                right
+                size="sm"
+                locale="en-US"
+                aria-controls="example-input"
             />
           </b-input-group-append>
         </b-input-group>
@@ -38,43 +35,42 @@
         </h2>
 
         <b-input-group
-          class="mb-md-1"
-          style="width: 170px; margin: 0 10px 0 10px;"
+            class="mb-md-1"
+            style="width: 170px; margin: 0 10px 0 10px;"
         >
           <b-form-input
-            v-model="endDate"
-            type="text"
-            placeholder="YYYY-MM-DD"
-            autocomplete="off"
-            show-decade-nav
+              v-model="endDate"
+              type="text"
+              placeholder="YYYY-MM-DD"
+              autocomplete="off"
+              show-decade-nav
           />
           <b-input-group-append style="height: 37px;">
             <b-form-datepicker
-              v-model="endDate"
-              show-decade-nav
-              button-only
-              button-variant="outline-primary"
-              right
-              size="sm"
-              locale="en-US"
-              aria-controls="example-input"
+                v-model="endDate"
+                show-decade-nav
+                button-only
+                button-variant="outline-primary"
+                right
+                size="sm"
+                locale="en-US"
+                aria-controls="example-input"
             />
           </b-input-group-append>
         </b-input-group>
         <b-button
-          variant="primary"
-          size="md"
-          class="mb-md-1"
-          @click="searchEstimate"
+            variant="primary"
+            size="md"
+            class="mb-md-1"
+            @click="searchEstimate"
         >
           검색
         </b-button>
-
       </template>
     </ContractRegistEditableGrid>
     <ContractRegistDetailEditableGrid>
       <template v-slot:header>
-        <h2>수주상세</h2>
+        <h2>등록 가능한 견적 상세정보</h2>
       </template>
     </ContractRegistDetailEditableGrid>
   </div>
@@ -163,11 +159,13 @@ export default {
     const lastday = new Date(year, month, 0).getDate()
     this.startDate = `${year}-${month}-01`
     this.endDate = `${year}-${month}-${lastday}`
+
     const sendDate = { startDate: this.startDate, endDate: this.endDate }
-    /* 수주등록가능한 견적 조회 */
     this.$store.dispatch('logi/sales/searchEstimateInContractAvailable', sendDate)
+
   },
   methods: {
+    /* 수주등록가능한 견적 조회 */
     searchEstimate() {
       const sendDate = { startDate: this.startDate, endDate: this.endDate }
       this.$store.dispatch('logi/sales/searchEstimateInContractAvailable', sendDate)
@@ -181,31 +179,31 @@ export default {
 </style>
 
 <style lang="scss">
-  .scrollStyle::-webkit-scrollbar-track
-  {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: rgba(50,60,150,1);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
-  }
+.scrollStyle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: rgba(50,60,150,1);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
+}
 
-  .scrollStyle::-webkit-scrollbar
-  {
-    width: 10px;
-    background-color: rgba(50,50,150,0);
-  }
+.scrollStyle::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: rgba(50,50,150,0);
+}
 
-  .scrollStyle::-webkit-scrollbar-thumb
-  {
-    background-clip: padding-box;
-    border: 4px solid transparent;
-    border-radius: 10px;
-    /*    background-image: -webkit-gradient(linear,
-    left bottom,
-    left top,
-    color-stop(0.44, rgb(122,153,217)),
-    color-stop(0.72, rgb(73,125,189)),
-    color-stop(0.86, rgb(28,58,148)));*/
-    background-color: #7367f0;
-  }
+.scrollStyle::-webkit-scrollbar-thumb
+{
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  /*    background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.44, rgb(122,153,217)),
+  color-stop(0.72, rgb(73,125,189)),
+  color-stop(0.86, rgb(28,58,148)));*/
+  background-color: #7367f0;
+}
 </style>

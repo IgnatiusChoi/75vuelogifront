@@ -276,7 +276,7 @@ export default {
       console.log('가입버튼')
       this.$emit('regist-data')
     },
-    onRowSelected(val) {
+      onRowSelected(val) {
       this.$emit('row-selected', val)
     },
     closeEditModal() {
