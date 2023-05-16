@@ -2,13 +2,10 @@
   <div>
     <ContractRegistEditableGrid @page-refresh="searchEstimate">
       <template v-slot:header>
-        <h2
-            class="mb-md-1"
-            style="width: 350px"
-        >
-          수주로 등록 가능한 견적목록
-        </h2>
-        <b-input-group
+
+        <h2 class="mb-md-1" style="width: 350px"> 수주로 등록 가능한 견적목록 </h2>
+
+       <b-input-group
             class="mb-md-1"
             style="width: 170px; margin: 0 10px 0 10px;"
         >
@@ -69,7 +66,6 @@
         >
           검색
         </b-button>
-
       </template>
     </ContractRegistEditableGrid>
     <ContractRegistDetailEditableGrid>

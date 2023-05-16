@@ -5,18 +5,18 @@ export default [
     icon: 'CpuIcon',
     children: [
       {
-        title: '주생산계획 (mps)',
+        title: '주계획작성 (MPS)',
         route: 'mps',
       },
       {
-        title: '소요량 전개/취합 (mrp)',
+        title: '소요량전개 (MRP)',
         children: [
           {
-            title: '소요량전개 등록/취합',
+            title: '소요량전개',
             route: 'mrpRegister',
           },
           {
-            title: '소요량전개/취합 조회',
+            title: '소요량취합',
             route: 'mrpInfo',
           },
         ],

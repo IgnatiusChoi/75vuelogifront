@@ -53,7 +53,10 @@
             class="d-flex justify-content-start mb-3"
           >
             <div style="width: 110px; ">
-              <label style="font-size: 15px; float:right; margin-top:8px"><span style="color:hotpink">*</span>&nbsp 납기일 : &nbsp</label>
+              <label style="font-size: 15px; float:right; margin-top:8px">
+                <span style="color:hotpink">*</span>
+                &nbsp 납기일 : &nbsp
+              </label>
             </div>
             <b-col>
               <b-input-group
