@@ -57,11 +57,11 @@
           :table-row-data="tableColumnsData"
           @close="closeEditModal"
           @input-modal="inputModal"
-          @ok="inputDataModal"
       />
     </transition>
   </b-card>
 </template>
+<!--@ok="inputDataModal"-->
 
 <script>
 
@@ -201,18 +201,21 @@ export default{
     inputModal(rowData) {
       const row = {}
       row.rowData = rowData
+      row.rowData[0].status='INSERT';
       console.log("모달 rowData:::",row.rowData)
       row.gridType = this.gridType
-      console.log("모달 gridType:::",row.gridType)
-      this.$emit('input-modal', rowData)
-      console.log('마지막emit::',rowData)
-      console.log('코드리스트',this.codeList)
+      // console.log("모달 gridType:::",row.gridType)
+      // // this.$emit('input-modal', rowData)
+      // console.log('마지막emit::',rowData)
+      // console.log('코드리스트',this.codeList)
       this.tableEditModal = false
-      this.ADD_DIVISION_CODE_NO(rowData) //확인하기
+      // this.$store.dispatch('logi/base/addCode',row.rowData)
+      // this.ADD_DIVISION_CODE_NO(rowData) //확인하기
     },
-    inputDataModal(){
-
-    },
+    // inputDataModal(){
+    //   console.log(this.tableColumnsData)
+    //   this.closeEditModal()
+    // },
     itemCodeClick(item) {
       console.log("itemCodeClick 실행")
       console.log("itemList::::",item)
