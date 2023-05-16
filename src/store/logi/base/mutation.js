@@ -37,6 +37,9 @@ export default {
   GET_WAREHOUSE_DETAIL_LIST(state,payload){
     state.warehouseDetailList=payload
   },
+  SET_CODE(state, data){
+    state.codeList = data
+  },
 
   // logi 모듈에서 warehouseList 상태를 삭제하는 mutation 함수
 
@@ -45,6 +48,7 @@ export default {
     state.warehouseList = state.warehouseList.filter((item)=>item.customerCode !== customerCode);
 
   },
+
 
 
 
