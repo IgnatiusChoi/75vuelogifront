@@ -16,7 +16,7 @@ const salesRoute = [
         },
         {
           text: '견적 조회/수정',
-          active: true,
+          active: true, //속성이 true이면 해당 항목은 현재 위치를 나타내는 항목으로 표시
         },
       ],
     },
@@ -94,6 +94,23 @@ const salesRoute = [
         },
         {
           text: '납품 관리',
+          active: true,
+        },
+      ],
+    },
+  },
+  {
+    path: `${ERP}/salesplan`,
+    name: 'salesplan',
+    component: () => import('@/views/logistic/sales/salesplan/salesplanPage.vue'),
+    meta: {
+      pageTitle: '판매 계획',
+      breadcrumb: [
+        {
+          text: '영업 관리',
+        },
+        {
+          text: '판매 계획',
           active: true,
         },
       ],
