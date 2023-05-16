@@ -1,21 +1,36 @@
-import mutations from '@/store/logi/production/workInstruction/mutation';
-import actions from '@/store/logi/production/workInstruction/action';
-export class WorkInstruction {
-    constructor() {
-        this.contractDetailList = [];
-        this.grid = [];
-        this.detailGrid = [];
-        this.tableColumns = [];
-        this.detailTableColumns = [];
-        this.workOrderListItem = [];
-        this.workPerformanceManagementListItem = [];
-        this.workOrderDialog=[];
-    }
+import Vuex, { Module } from 'vuex'
+import mutations from './mutation.js'
+import actions from './action.js'
+
+// export class WorkInstruction {
+
+export default {
+  namespaced: true,
+  state: {
+    contractDetailList:[],
+    grid:[],
+    detailGrid:[],
+    tableColumns:[],
+    detailTableColumns:[],
+    workOrderListItem:[],
+    workPerformanceManagementListItem:[],
+    workOrderDialog:[],
+    workOrderInfo:[],
+    workSiteList:[],
+    workSiteLogList:[],
+    workSite:[],
+    workOrderInfoListStatus:[],
+    workPlaceDetailList: [],
+    workPlaceDetailColumns: []
+  },
+  mutations,
+  actions
 }
-const Production = {
-    namespaced: true,
-    state: new WorkInstruction(),
-    mutations,
-    actions,
-};
-export default Production;
+
+// const Production: Module<WorkInstruction, Object> = {
+//   namespaced: true,
+//   state: new WorkInstruction(),
+//   mutations,
+//   actions,
+//
+// }
