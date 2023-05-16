@@ -84,6 +84,7 @@ function searchDeliverableContractList(searchData) {
 }
 function addNewEstimate(newEstimate) {
   console.log(newEstimate)
+  console.log("newEstimateDFF")
   return logiApi.post('/sales/addNewEstimates', newEstimate)
 }
 export {

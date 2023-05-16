@@ -86,7 +86,7 @@
               <b-form-input
                 v-model="row.value"
                 type="text"
-                disabled
+
                 autocomplete="off"
                 show-decade-nav
                 :value="row.value"

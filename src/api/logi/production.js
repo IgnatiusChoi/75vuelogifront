@@ -37,7 +37,7 @@ function searchMps(){
 
 
 /**
- *  소요량전개 등록/취합 Tab-MRP등록
+ *  소요량전개 등록/취합 -> MRP등록 -> MPS조회 버튼
  */
 // Mps조회
 function searchMpsList(payload) {

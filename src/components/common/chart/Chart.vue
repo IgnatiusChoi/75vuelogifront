@@ -129,7 +129,7 @@ export default {
   display: flex;
   justify-content: center;
   height: 100vh; /* 화면 전체 높이로 설정 */
-  width: 1500px;
+  width: 1000px;
 }
 </style>
 

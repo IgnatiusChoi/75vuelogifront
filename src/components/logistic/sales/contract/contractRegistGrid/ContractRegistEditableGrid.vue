@@ -63,6 +63,7 @@
           @row-selected="onRowSelected"
       />
     </div>
+
     <div class="mx-2 mb-2">
       <b-row />
     </div>
@@ -340,6 +341,9 @@ export default {
   methods: {
     onRowSelected(items) {
       this.selected = items[0]
+      console.log(items)
+      console.log("items")
+
       this.$store.dispatch('logi/sales/searchEstimateDetailInfo', items[0].estimateNo)
     },
     editEstimate(condition) {
@@ -395,8 +399,7 @@ export default {
           customerCode: this.selected.customerCode,
           description: this.selected.description,
         },
-        editdueDateOfEstimate: {
-        },
+        dueDateOfEstimate: this.selected.dueDateOfEstimate,
         contractDate: dateString,
         personCodeInCharge: 'EMP-01',
         estimateDetail: this.detailGrid,

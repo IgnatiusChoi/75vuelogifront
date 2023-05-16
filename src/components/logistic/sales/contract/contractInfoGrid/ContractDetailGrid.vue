@@ -23,6 +23,8 @@
 
       <b-row /></div>
 
+
+
     <b-table
         hover
         :items="detailGrid"

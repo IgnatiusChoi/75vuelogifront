@@ -9,9 +9,11 @@
       MPS 등록가능한 수주 조회
     </b-button>
 
+    <!--  화면 중상단 설명구  -->
     <span class="alert-class">
     {{alert}}
     </span>
+    <!--  화면 중상단 설명구  -->
 
     <b-button-group style="float: right">
       <b-button
@@ -23,9 +25,7 @@
       </b-button>
     </b-button-group>
 
-    <div
-      style="margin: 0 0 10px 0; float:left; width: 260px;"
-    >
+    <div  style="margin: 0 0 10px 0; float:left; width: 260px;"  >
       <b-col>
 
         <b-form-group>
@@ -44,12 +44,25 @@
         :items="this.contractDetailList"
         class="editable-table"
         hover
+        hoverble
         selectable
         :select-mode="'single'"
         :fields="fields"
         @row-selected="handleInput"
       >
+
+        <!--  초기납품 popover -->
+        <template #head(stockAmountUse)="scope">
+          <div>
+            <b-icon-question-circle v-b-popover.hover.top="'안전재고량을  제외한 재고 사용량'"/>
+            {{ scope.label }}
+          </div>
+        </template>
+        <!--  초기납품 popover -->
+
+        <!--  MPS 계획일 날짜선택 -->
         <template v-slot:cell(mpsPlanDate)="row">
+
           <b-form-group class="padding-top">
             <flat-pickr
               v-model="row.item.mpsPlanDate"
@@ -58,6 +71,8 @@
             />
           </b-form-group>
         </template>
+
+        <!--  출하예정일 날짜선택 -->
         <template v-slot:cell(scheduledEndDate)="row">
           <b-form-group class="padding-top">
             <flat-pickr
@@ -152,6 +167,8 @@ export default {
       if (this.contractDetail[0].mpsPlanDate === null && this.contractDetail[0].scheduledEndDate === null) {
         throw new Error('계획일자, 출하예정일 선택')
       } else {
+console.log(this.contractDetail[0])
+console.log("this.contractDetail[0]")
 
         this.CONVERT_CONTRACT_DETAIL_TO_MPS(this.contractDetail[0])
         this.$toast({
@@ -162,13 +179,11 @@ export default {
             variant: 'success',
           },
         })
-        // this.openAlert()
       }
     },
-    test() {
-      console.log(this.fields)
-    },
+
   },
+
 }
 </script>
 <style  lang="scss">
