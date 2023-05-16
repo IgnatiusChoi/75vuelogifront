@@ -128,3 +128,22 @@ export const workOrderSimultaion = [
   {label: '작업지시기한', key: 'orderDate' },
   {label: '작업완료기한', key: 'requiredDate'}
 ]
+
+
+export const workSite = [
+  {label: "생산 과정 코드", key: "productionProcessCode"},
+  {label: "작업장 코드", key: "workSiteCode"},
+  {label: "작업장 분류", key: "workSiteName"}
+]
+
+
+export const workPlaceDetailColumns = [
+  {label: "생산 주문 번호", key: "workOrderNo"},
+  {label: "아이템 코드", key: "itemCode"},
+  {label: "아이템 이름", key: "itemName"},
+  {label: "과정", key: "progress"},
+  {label: "작업장명", key: "workSiteName"},
+  {label: "생산 날짜", key: "workDate"},
+  {label: "생산 과정 코드", key: "productionProcessCode"},
+  {label: "생산 과정 이름", key: "productionProcessName"}
+]

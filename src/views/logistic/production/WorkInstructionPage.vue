@@ -5,8 +5,8 @@
           active
       >
         <template #title>
-          <feather-icon
-              icon="CornerDownRightIcon"
+          <feather-iconh
+              icon="CornherDownRightIcon"
               size="16"
               class="mr-0 mr-sm-50"
           />
@@ -19,7 +19,7 @@
       <b-tab>
         <template #title>
           <feather-icon
-              icon="CornerDownRightIcon"
+              icon="CornerDownRigbhtIcon"
               size="16"
               class="mr-0 mr-sm-50"
           />
@@ -37,30 +37,30 @@
               class="mr-0 mr-sm-50"
           />
           <span class="d-none d-sm-inline">생산실적관리</span>
-        </template>
+        </template>ㅐ
         <!--  내용물 컴포넌트       -->
         <WorkPerformanceManagement />
       </b-tab>
 
     </b-tabs>
   </component>
-<!--  <div>
-    <CommonGrid
-      title="작업지시"
-      grid-type="grid"
-      :buttonlist="buttonList"
-      :search-customer="true"
-      @get-date="getDate"
-      @get-customer="getCustomer"
-      @find-data="getGridData"
-      @row-selected="showGridData"
-    />
-    <CommonGrid
-      grid-type="detailGrid"
-      title="작업지시상세"
-    />
+  <!--  <div>
+      <CommonGrid
+        title="작업지시"
+        grid-type="grid"
+        :buttonlist="buttonList"
+        :search-customer="true"
+        @get-date="getDate"
+        @get-customer="getCustomer"
+        @find-data="getGridData"
+        @row-selected="showGridData"
+      />
+      <CommonGrid
+        grid-type="detailGrid"
+        title="작업지시상세"
+      />
 
-  </div>-->
+    </div>-->
 
 </template>
 
@@ -229,8 +229,6 @@ export default {
     const lastday = new Date(year, month, 0).getDate()
     this.startDate = `${year}-${month}-01`
     this.endDate = `${year}-${month}-${lastday}`
-
-    // this.searchContract('searchByDate')
   },
   methods: {
     showMe() {
