@@ -69,8 +69,14 @@ function addCode(payload){
     status: payload[0].status
   })
 }
+function searchItemList(){
+  return logiApi.get('base/searchItemList')
+}
+function searchItemGroupList(){
+  return logiApi.get('base/searchItemGroupList')
+}
 
 export {
   searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
-  insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode
+  insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode, searchItemList, searchItemGroupList
 }

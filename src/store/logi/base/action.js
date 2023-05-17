@@ -10,7 +10,9 @@ import {
   insertClient,
   deleteClient,
   searchCodeList,
-  addCode
+  addCode,
+  searchItemList,
+  searchItemGroupList
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
@@ -134,6 +136,9 @@ export default {
       throw new Error(err)
     }
   },
+  resetCodeList({commit}){
+    commit('RESET_CODE_LIST')
+  },
   async addCode({commit}, payload) {
     try {
       return await addCode(payload)
@@ -143,10 +148,27 @@ export default {
   },
   async searchItemList({commit}) {
     try {
-      await null;
+      const {data}=await searchItemList();
+      console.log(data.gridRowJson)
+      commit('SET_ITEM',data.gridRowJson)
     } catch (err) {
       throw new Error(err)
     }
+  },
+  resetItemList({commit}){
+    commit('RESET_ITEM_LIST')
+  },
+  async searchItemGroupList({commit}){
+    try {
+      const {data}=await searchItemGroupList();
+      console.log(data.gridRowJson)
+      commit('SET_ITEM_GROUP',data.gridRowJson)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  resetItemGroupList({commit}){
+    commit('RESET_ITEM_GROUP_LIST')
   }
 
 

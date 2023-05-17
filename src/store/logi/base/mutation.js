@@ -40,7 +40,9 @@ export default {
   SET_CODE(state, data){
     state.codeList = data
   },
-
+  RESET_CODE_LIST(state){
+    state.codeList=[];
+  },
   // logi 모듈에서 warehouseList 상태를 삭제하는 mutation 함수
 
   DELETE_WAREHOUSE_LIST(state, warehouseList) {
@@ -50,8 +52,16 @@ export default {
   },
   SET_ITEM(state, item) {
     state.itemList=item;
+  },
+  RESET_ITEM_LIST(state){
+    state.itemList=[];
+  },
+  SET_ITEM_GROUP(state, item){
+    state.itemGroupList=item;
+  },
+  RESET_ITEM_GROUP_LIST(state){
+    state.itemGroupList=[];
   }
-
 
 
 }
