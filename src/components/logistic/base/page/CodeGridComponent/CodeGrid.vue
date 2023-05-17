@@ -57,11 +57,11 @@
           :table-row-data="tableColumnsData"
           @close="closeEditModal"
           @input-modal="inputModal"
-          @ok="inputDataModal"
       />
     </transition>
   </b-card>
 </template>
+<!--@ok="inputDataModal"-->
 
 <script>
 

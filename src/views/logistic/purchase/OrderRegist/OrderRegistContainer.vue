@@ -66,12 +66,14 @@
       <b-button
           variant="primary"
           style="float: left; display: inline-flex"
+          @click="updateOrderList"
       >
         모의재고처리 및 취합발주
       </b-button>
       <b-button
           variant="primary"
           style="float: left; display: inline-flex"
+          @click="simulationOrderList"
       >
         임의발주
       </b-button>
@@ -112,7 +114,7 @@ export default {
       startDate: '0000-00-0',
       endDate:'0000-00-0',
       tableColumns: [
-        {key: 'mrpGatheringNo', label: '소요량취합번호', sortable: 'true',},
+        {key: 'mrpGatheringNo', label: '소요량취합번호', sortable: true},
         {key: 'itemClassification', label: '품목분류',},
         {key: 'itemCode', label: '품목코드',},
         {key: 'itemName', label: '품목명',},
@@ -120,8 +122,8 @@ export default {
         {key: 'inputAmount', label: '투입예정재고량',},
         {key: 'requiredAmount', label: '재고소요/제품제작수량',},
         {key: 'stockAfterWork', label: '재고량(재고소요이후)',},
-        {key: 'orderDate', label: '작업지시기한',},
-        {key: 'requiredDate', label: '작업완료기한',},
+        {key: 'orderDate', label: '작업지시기한', sortable: true },
+        {key: 'requiredDate', label: '작업완료기한', sortable: true },
       ],
     }
   },
@@ -137,8 +139,22 @@ export default {
         startDate: this.$data.startDate,
         endDate: this.$data.endDate,
       }
-      this.$store.dispatch('logi/order/SEARCH_ORDER_LIST', payload)
-    }
+        this.$store.dispatch('logi/order/SEARCH_ORDER_LIST', payload)
+    },
+      updateOrderList(){
+          this.$swal.fire(
+              '취합 발주 완료!',
+              '취합 발주가 완료되었습니다.',
+              'success'
+          ).then(this.$emit('page-refresh'))
+      },
+      simulationOrderList(){
+          this.$swal.fire(
+              '임의 발주 완료!',
+              '임의 발주가 완료되었습니다.',
+              'success'
+          ).then(this.$emit('page-refresh'))
+      }
   },
   created() {
   },

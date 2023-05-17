@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 
 import { logiApi } from '../index'
+import {SelectDepartmentCode} from "@/api/logi/base";
+
 
 // 조회
 function searchEstimateInfo(payload) {
@@ -87,7 +89,19 @@ function addNewEstimate(newEstimate) {
   console.log("newEstimateDFF")
   return logiApi.post('/sales/addNewEstimates', newEstimate)
 }
+
+
+function Selectsalesplane() {
+  return logiApi.get('/sales/Selectsalesplane')
+}
+
+function InsertSalesplan(payload) {
+  console.log("여기??");
+  console.log(payload);
+  return logiApi.post('/sales/Insertsalesplan', payload);
+}
+
 export {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract, addNewEstimate,
-  searchDeliverableContractList, searchInputContract
+  searchDeliverableContractList,Selectsalesplane,InsertSalesplan,searchInputContract
 }

@@ -10,14 +10,6 @@ export default {
     state.detailTableColumns = tableColumns[0].detailTableColumns
   },
 
-  setGrid(state, gridRow) {
-    state.grid = gridRow
-  },
-
-  GET_WAREHOUSE_DETAIL_LIST(state,payload){
-    state.warehouseDetailList=payload
-  },
-
   GET_COMPANY_INFO(state, payload) {
     state.companyInfo = payload
   },
@@ -29,6 +21,26 @@ export default {
     state.nClientList=[]
   },
 
+  setGrid(state, gridRow) {
+    state.grid = gridRow
+  },
+
+  LogiCompany(state, companyCode){
+    state.companyCode = companyCode
+    console.log(companyCode)
+  },
+
+  GET_DEPT_INFO(state, payload){
+    state.deptInfo = payload
+  },
+
+  GET_WAREHOUSE_DETAIL_LIST(state,payload){
+    state.warehouseDetailList=payload
+  },
+  SET_CODE(state, data){
+    state.codeList = data
+  },
+
   // logi 모듈에서 warehouseList 상태를 삭제하는 mutation 함수
 
   DELETE_WAREHOUSE_LIST(state, warehouseList) {
@@ -36,6 +48,7 @@ export default {
     state.warehouseList = state.warehouseList.filter((item)=>item.customerCode !== customerCode);
 
   },
+
 
 
 

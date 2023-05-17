@@ -7,8 +7,12 @@ export default {
     itemList: [],
     codeList: [],
 
+    companyCode:[],
+
     warehouseList: [],
     warehouseDetailList: [],
+
+    deptInfo:[],
 
     grid: [],
     detailGrid: [],
@@ -18,10 +22,10 @@ export default {
     nClientList: [],
     fClientList: [],
 
+
   },
   getters: {
   },
-
 
   mutations,
 
