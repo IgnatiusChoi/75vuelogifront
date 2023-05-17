@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       fields: [
-        {label: '일반거래처코드', key: 'customerCode',},
+        {label: '일반거래처코드', key: 'customerCode', sortable: true},
         // {label: "NO", width: 55, valueGetter: "node.rowIndex + 1", hide: true,},
         {label: '사업장코드', key: 'workplaceCode', resizable: true},
         {label: '거래처명', key: 'customerName', width: 300, editable: true,},
@@ -45,7 +45,7 @@ export default {
         {label: '거래처대표자명', key: 'customerCeo', editable: true,},
         {label: 'status', key: 'status',},
         {label: '사업자등록번호', key: 'businessLicenseNumber'},
-        {label: '개인거래처 주민등록번호', key: 'socialSecurityNumber',},
+        {label: '개인거래처 주민등록번호', key: 'socialSecurityNumber', sortable: true},
         {label: '업태', key: 'customerBusinessConditions', editable: true},
         {label: '종목', key: 'customerBusinessItems', editable: true},
         {label: '우편번호', key: 'customerZipCode', editable: true, hide: true},

@@ -48,8 +48,9 @@ export default {
     state.warehouseList = state.warehouseList.filter((item)=>item.customerCode !== customerCode);
 
   },
-
-
+  SET_ITEM(state, item) {
+    state.itemList=item;
+  }
 
 
 

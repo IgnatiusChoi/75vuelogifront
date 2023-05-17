@@ -5,6 +5,7 @@ export default {
   namespaced: true,
   state: {
     itemList: [],
+    itemGroupList: [],
     codeList: [],
 
     companyCode:[],
