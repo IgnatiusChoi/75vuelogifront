@@ -1,10 +1,9 @@
 <template>
   <div style="font-family: '배달의민족 도현'">
     <div
-      style="margin: 30px 0 0 -14px; width: 550px; display: flex"
+      style="display: flex; margin: 0 0 20px 0;"
     >
-      <b-col>
-        <b-form-group>
+        <b-form-group style="margin: 0 20px 0 150px; width: 250px;">
           <flat-pickr
             v-model="rangeDate"
             placeholder="MPS 계획일자 (기간)선택"
@@ -12,22 +11,68 @@
             :config="{ mode: 'range'}"
           />
         </b-form-group>
-      </b-col>
-      <b-button-group style="height: 80%">
+
+      <b-button-group
+          style="height: 80%; display: flex;"
+          class="justify-content-md-center"
+      >
         <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
           @click="searchMps"
         >
-          MPS조회
+          MPS 조회
         </b-button>
         <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
-          @click="simulateMRP"
+          @click="updateModal"
         >
-          MRP모의전개
+          MPS 수정
         </b-button>
+      </b-button-group>
+
+      <b-modal
+          :visible="this.mpsUpdateModal"
+          size="lg"
+          hide-backdrop
+          ok-only
+          no-close-on-backdrop
+          title="MPS 수정"
+          cancel-variant="outline-secondary"
+          ok-title="수정 완료"
+          ok-variant="outline-primary"
+          @ok="updateMps"
+          @change="closeUpdateModal"
+      >
+          <b-container>
+            <b-row class="my-1" v-for="(field,index) in searchMpsList" :key="index" style="font-family: '배달의민족 도현'">
+              <b-col sm="4" >
+                <label :for="`field-${field}`" class="label-font">{{ field.label }} &nbsp :</label>
+              </b-col>
+              <b-col sm="6">
+                <template>
+                <b-input-group class="mb-md-1" style="width: 270px; margin: 0 10px 0 10px;">
+                  <b-form-input v-model="selectedMps[0][field.key]"
+                                type="text"
+                                autocomplete="off"
+                                show-decade-nav />
+                </b-input-group>
+                </template>
+              </b-col>
+            </b-row>
+          </b-container>
+
+      </b-modal>
+        <b-button
+            style="margin: 0 0 0 800px;"
+            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+            variant="outline-primary"
+            @click="simulateMRP"
+        >
+          MRP 모의전개
+        </b-button>
+    </div >
         <b-modal
           id="MRPSimulation"
           :visible="this.isVisible"
@@ -37,27 +82,27 @@
           no-close-on-backdrop
           title="MRP Simulation"
           cancel-variant="outline-secondary"
-          ok-title="전개결과 MRP 등록"
+          ok-title="MRP 등록"
           ok-variant="outline-primary"
           @ok="MrpInsert"
           @change="closeModal"
         >
           <template>
-            <flat-pickr
-              v-model="mrpRegisterDate"
-              style="margin-bottom: 10px; margin-right: 10px; width: 166px; float: right;"
-              placeholder="소요량전개 일자"
-              class="form-control"
-            />
             <b-table
               hover
+              style="font-family: '배달의민족 도현'"
               :fields="openMrp"
               :items="this.mrpList"
             />
+            <flat-pickr
+              v-model="mrpRegisterDate"
+              style=" width: 166px; float: right; font-family: '배달의민족 도현'"
+              placeholder="MRP 등록 일자"
+              class="form-control custom-placeholder"
+            />
           </template>
         </b-modal>
-      </b-button-group>
-    </div>
+
     <div>
       <b-table
         class="editable-table"
@@ -71,6 +116,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import flatPickr from 'vue-flatpickr-component'
 import {
@@ -98,7 +144,8 @@ export default {
   data() {
     return {
       isVisible: false,
-      mpsNo: null,
+      mpsUpdateModal: false,
+      selectedMps: [{}],
       searchMpsList,
       openMrp,
       mrpRegisterDate: null,
@@ -111,13 +158,14 @@ export default {
     ...mapState('logi/mrp', ['mpsList', 'mrpList']),
   },
   methods: {
-    ...mapActions('logi/mrp', ['SEARCH_MPS_LIST', 'SEARCH_MRP_LIST', 'REGISTER_MRP']),
+    ...mapActions('logi/mrp', ['SEARCH_MPS_LIST', 'SEARCH_MRP_LIST', 'REGISTER_MRP', 'UPDATE_MPS']),
     extractDate() {
       this.startDate = this.rangeDate.split('to')[0].trim()
       this.endDate = this.rangeDate.split('to')[1].trim()
     },
     handleInput(payload) {
-      this.mpsNo = payload
+      this.selectedMps = payload
+
     },
     alert(msg) {
       this.$toast({
@@ -139,25 +187,36 @@ export default {
         this.alert('조회 성공')
       }
     },
+    updateModal(){
+      if (this.selectedMps === null) {
+        throw new Error('수정할 MPS 선택해애애애')
+      }
+      this.mpsUpdateModal = true
+    },
+    updateMps(){
+      this.UPDATE_MPS(this.selectedMps)
+    },
     closeModal() {
-      // 모달이 사라질 때만 작동... change라면서요...
       this.isVisible = false
     },
+    closeUpdateModal(){
+      this.mpsUpdateModal = false
+    },
     simulateMRP() {
-      if (this.mpsNo === null) {
+      if (this.selectedMps === null) {
         throw new Error('모의전개 할 MPS 선택하셈.')
       }
-      if (this.mpsNo[0].mrpApplyStatus === 'Y') {
+      if (this.selectedMps[0].mrpApplyStatus === 'Y') {
         throw new Error('MRP적용 완료된 상태임')
       }
-
       this.isVisible = true
-      this.SEARCH_MRP_LIST(this.mpsNo)
+      this.SEARCH_MRP_LIST(this.selectedMps)
     },
+
     async MrpInsert(e) {
       if (this.mrpRegisterDate === null) {
         e.preventDefault()
-        throw new Error('소요량전개 일자 선택하셈.')
+        throw new Error('MRP 등록 일자 선택하셈.')
       } else {
         const payload = { mrpRegisterDate: this.mrpRegisterDate, batchList: this.mrpList }
         await this.REGISTER_MRP(payload)
@@ -178,4 +237,9 @@ export default {
   color: #ed5017;
   text-align: center;
 }
+
+.label-font{
+  font-size : 20px;
+}
+
 </style>

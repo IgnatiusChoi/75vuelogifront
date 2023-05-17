@@ -1,6 +1,6 @@
 import router from '@/router/index'
 import mps from '@/store/logi/production/mps/state'
-import mrp from '@/store/logi/production/mrp/state'
+import mrp from './production/mrp/state'
 import order from '@/store/logi/purchase/order/state'
 import workInstruction from './production/workInstruction/state'
 import sales from './sales/state'

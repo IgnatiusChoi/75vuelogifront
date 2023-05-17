@@ -8,10 +8,14 @@ const axiosConfig = {
   },
 }
 
+/********************
+     주생산계획(MPS)
+ *********************/
+
+
 /**
- *  주생산계획(MPS)
+ * MPS 등록가능 수주 조회
  */
-// 전체조회
 function searchContractDetailInMpsAvailable(payload) {
   return logiApi.get('/production/searchContractDetailInMpsAvailable', {
     params: {
@@ -22,17 +26,37 @@ function searchContractDetailInMpsAvailable(payload) {
   })
 }
 
-// 수주상세 -> Mps
+/**
+ *  MPS 등록
+ */
+
 function convertContractDetailToMps(payload) {
   return logiApi.post('/production/convertContractDetailToMps', payload)
 }
 
 /**
- *  소요량전개 등록/취합 Tab-MRP등록
+
+ * 차트 데이터 용 MPS List 조회
  */
-// Mps조회
+function searchMps(){
+  return logiApi.get('/production/searchMpsList')
+}
+
+
+
+
+/********************
+     소요량전개(MRP)
+ *********************/
+
+/**
+ *  MPS 조회
+
+ *  소요량전개 등록/취합 Tab-MRP등록
+
+ */
 function searchMpsList(payload) {
-  return logiApi.get('/production/searchMpsInfo', {
+  return logiApi.get('/logistics/production/searchMpsInfo', {
     params: {
       startDate: payload.startDate,
       endDate: payload.endDate,
@@ -40,23 +64,36 @@ function searchMpsList(payload) {
   })
 }
 
-// MRP모의전개 모달 값 가져오기
+/**
+ *  MPS 수정
+ */
+function updateMps(payload){
+  return logiApi.post('/logistics/production/updateMps', payload[0])
+}
+
+/**
+ *  MRP 모의전개 모달
+ */
 function searchMrpList(payload) {
   return logiApi.get('/logistics/production/openMrp', {
     params: {
-      mpsNoListStr: payload[0].mpsNo,
+      mpsNo: payload[0].mpsNo,
     },
   })
 }
 
-// 전개결과 MRP 등록
+/**
+ *  전개결과 MRP 등록
+ */
+
 function registerMrp(payload) {
   return logiApi.put('/logistics/production/registerMrp', payload, axiosConfig)
 }
 
-/**
- *  소요량전개 등록/취합 Tab-소요량취합
- */
+
+/*****************
+     소요량취합
+ *****************/
 // MrpGather Tab 조회
 function mrpGatherList(payload) {
   return logiApi.get('/logistics/production/getMrpList', {
@@ -112,6 +149,7 @@ function showWorkOrderDialog(payload){
     },
   })
 }
+
 
 function searchWorkOrderListInfo(){
   return logiApi.get('/production/getWorkOrderableMrpList')
@@ -174,10 +212,15 @@ export {
   searchWorkOrderList,
   productionPerformanceInfoList,
   showWorkOrderDialog,
+
+  searchMps,
+  updateMps
+
   searchWorkOrderListInfo,
   searchWorkOrderInfoListStatus,
   searchWorkSite,
   searchProductionProcessCode,
   insertWorkPlaceList,
   deleteWorkPlaceList,
+
 }
