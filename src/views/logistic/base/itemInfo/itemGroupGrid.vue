@@ -11,7 +11,8 @@
           style="max-height: 300px; overflow: auto; width: 100%"
           responsive
           selectable
-          :items="null"
+          :select-mode="selectMode"
+          :items="itemGroupList"
           :fields="this.tableColumns"
           class="mb-0 scrollStyle"
       />
@@ -50,10 +51,11 @@ export default {
   data() {
     return {
       tableColumns: [
-        { key: 'itemCode', label: '품목군코드', sortable: true },
-        { key: 'itemName', label: '품목군명', sortable: true },
+        { key: 'itemGroupCode', label: '품목군코드', sortable: true },
+        { key: 'itemGroupName', label: '품목군명', sortable: true },
         { key: 'description', label: '비고', sortable: true },
       ],
+      selectMode: 'single'
     }
   },
   setup() {
@@ -65,8 +67,11 @@ export default {
   },
   methods: {
     searchItemList(){
-      this.$store.dispatch('logi/base/searchItemList')
+      this.$store.dispatch('logi/base/searchItemGroupList')
     }
+  },
+  mounted() {
+    this.$store.dispatch('logi/base/resetItemGroupList')
   }
 }
 </script>

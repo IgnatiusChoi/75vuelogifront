@@ -135,6 +135,9 @@ export default {
       // this.$store.dispatch('account/base/SAVE_CUSTOMER_CODE', this.selectData)
     }
   },
+  mounted(){
+    this.$store.dispatch('logi/base/resetCodeList')
+  }
 }
 
 </script>

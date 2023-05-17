@@ -9,9 +9,10 @@
     <div>
       <b-table
           style="max-height: 300px; overflow: auto; width: 100%"
+          :select-mode="selectMode"
           responsive
           selectable
-          :items="null"
+          :items="itemList"
           :fields="this.tableColumns"
           class="mb-0 scrollStyle"
       />
@@ -60,6 +61,7 @@ export default {
           { key: 'standardUnitPrice', label: '표준단가', sortable: true },
           { key: 'description', label: '비고', sortable: true },
         ],
+        selectMode: 'single'
       }
   },
   setup() {
@@ -73,6 +75,9 @@ export default {
     searchItemList(){
       this.$store.dispatch('logi/base/searchItemList')
     }
+  },
+  mounted() {
+    this.$store.dispatch('logi/base/resetItemList')
   }
 }
 </script>
