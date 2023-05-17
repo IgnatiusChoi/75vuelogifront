@@ -17,7 +17,7 @@ import {searchDeptList} from "@/api/logi/compinfo";
 import {searchCustomerInfoList} from "@/api/account/base";
 
 export default {
-  async SEARCH_ITEM({ commit }, divisionCode) {
+  async SEARCH_ITEM({commit}, divisionCode) {
     try {
       const res = await searchItem(divisionCode)
       const itemList = res.data.detailCodeList
@@ -28,7 +28,7 @@ export default {
     }
     // getStandardUnitPrice
   },
-  async GET_STANDARD_UNIT_PRICE({ commit }, itemCode) {
+  async GET_STANDARD_UNIT_PRICE({commit}, itemCode) {
     try {
       const res = await getStandardUnitPrice(itemCode)
       const gridRow = res.data.gridRowJson
@@ -41,7 +41,7 @@ export default {
   },
 
   //창고조회
-  async GET_WAREHOUSE_LIST ({commit}){
+  async GET_WAREHOUSE_LIST({commit}) {
     try {
       const {data} = await getWarehouseList();
       console.log("data of getWarehouseList")
@@ -50,21 +50,21 @@ export default {
       console.log(data.gridRowJson[0].warehouseCode)
       console.log(data.gridRowJson)
       commit('GET_WAREHOUSE_LIST', data.gridRowJson)
-    } catch (err){
+    } catch (err) {
       throw new Error(err)
     }
   },
   //창고삭제
-  async DELETE_WAREHOUSE_LIST ({commit}, payload){
+  async DELETE_WAREHOUSE_LIST({commit}, payload) {
     try {
       const {data} = await deleteWarehouseList(payload);
       //commit('GET_WAREHOUSE_LIST', data.gridRowJson)
-    } catch (err){
+    } catch (err) {
       throw new Error(err)
     }
   },
 
-  async FETCH_ALL_CompanyCode({ commit }) { // 객체로 넘어오면 {}
+  async FETCH_ALL_CompanyCode({commit}) { // 객체로 넘어오면 {}
     try {
       const response = await SelectCompanyCode()
       console.log(response)
@@ -76,7 +76,7 @@ export default {
     }
   },
 
-  async GET_COMPANY_INFO ({commit}){
+  async GET_COMPANY_INFO({commit}) {
     try {
       const {data} = await getCompanyInfo();
       commit('GET_COMPANY_INFO', data.companyInfo)
@@ -86,7 +86,7 @@ export default {
     }
   },
 
-  async GET_DEPT_INFO({ commit }) { // 객체로 넘어오면 {}
+  async GET_DEPT_INFO({commit}) { // 객체로 넘어오면 {}
     try {
       const {data} = await getDeptInfo();
       commit('GET_DEPT_INFO', data.deptInfo)
@@ -95,49 +95,56 @@ export default {
       throw new Error(err)
     }
   },
-  async SEARCH_CLIENT_LIST({ commit }) {
-    try{
+  async SEARCH_CLIENT_LIST({commit}) {
+    try {
       const {data} = await searchClientList()
       commit('SEARCH_CLIENT_LIST', data.clientInfo)
     } catch (err) {
       throw new Error(err)
     }
   },
-  async INSERT_CLIENT({commit},data){
-    try{
+  async INSERT_CLIENT({commit}, data) {
+    try {
       await insertClient(data);
     } catch (err) {
       throw new Error(err)
     }
   },
-  async DELETE_CLIENT({commit},data){
-    try{
+  async DELETE_CLIENT({commit}, data) {
+    try {
       await deleteClient(data);
     } catch (err) {
       throw new Error(err)
     }
   },
-  setTable({ commit }, tableColumns) {
+  setTable({commit}, tableColumns) {
     commit('setTable', tableColumns)
   },
-  resetSearch({commit}){
+  resetSearch({commit}) {
     commit('RESET_CLIENT')
   },
-  async SEARCH_CODE_LIST({commit}){
+  async SEARCH_CODE_LIST({commit}) {
     try {
       const {data} = await searchCodeList()
       console.log(data.codeList)
       console.log(Array.from(data))
       commit('SET_CODE', data.codeList)
       return data
-    } catch (err){
+    } catch (err) {
       throw new Error(err)
     }
   },
-  async addCode({commit},payload){
+  async addCode({commit}, payload) {
     try {
       return await addCode(payload)
-    } catch (err){
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async searchItemList({commit}) {
+    try {
+      await null;
+    } catch (err) {
       throw new Error(err)
     }
   }
