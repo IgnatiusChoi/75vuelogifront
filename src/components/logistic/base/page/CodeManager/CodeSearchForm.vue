@@ -6,11 +6,6 @@
         title="코드관리"
         column-width="3000px"
         only-one="true"
-        @row-selected="showGridData"
-        @find-data="getGridData"
-        @input-modal="gridInputModal"
-        @regist-data="registData"
-        @delete-data="deleteData"
     />
   </div>
 </template>
@@ -85,12 +80,12 @@ export default {
             event: 'add',
           },
           {
-            value: '삭제',
-            event: 'delete',
+            value: '수정',
+            event: 'update',
           },
           {
-            value: '저장',
-            event: 'save',
+            value: '삭제',
+            event: 'delete',
           },
         ]
 
@@ -113,27 +108,6 @@ export default {
     this.$store.commit('SET_TABLE', tableColumns)
   },
   methods: {
-    showGridData(selectData){
-      console.log(selectData)
-      this.selectData=selectData[0]
-      console.log('클릭하고',selectData)
-    },
-    getGridData(){
-      console.log("getGridData")
-      this.$store.dispatch('logi/base/SEARCH_CODE_LIST')
-    },
-    deleteData(customerCode){
-      console.log("deleteData")
-      // this.$store.dispatch('account/base/DELETE_CUSTOMER_CODE', customerCode)
-    },
-    async gridInputModal(rowData){
-      // await this.$store.dispatch('account/base/GET_CUSTOMER_LIST',rowData[0].item)
-    },
-    async registData(){
-      console.log("폼에서 저장버튼")
-      console.log(this.selectData)
-      // this.$store.dispatch('account/base/SAVE_CUSTOMER_CODE', this.selectData)
-    }
   },
   mounted(){
     this.$store.dispatch('logi/base/resetCodeList')

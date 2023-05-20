@@ -48,7 +48,23 @@ function getDeptInfo() {
 function searchClientList() {
   return logiApi.get('/base/searchClientList')
 }
-
+function searchClientDetailList(payload){
+  return logiApi.get('/base/searchClientDetailList', {
+    params: {
+      customerCode: payload
+    }
+  })
+}
+function searchFinanceList() {
+  return logiApi.get('/base/searchFinanceList')
+}
+function searchFinanceDetailList(payload){
+  return logiApi.get('/base/searchFinanceDetailList', {
+    params: {
+      code: payload
+    }
+  })
+}
 function insertClient(data){
   return logiApi.post('base/insertClient',data)
 }
@@ -60,14 +76,10 @@ function searchCodeList(){
   return logiApi.get('base/searchCodeList')
 }
 function addCode(payload){
-  return logiApi.post('base/batchListProcess', {
-    divisionCodeNo: payload[0].divisionCodeNo,
-    codeType: payload[0].codeType,
-    divisionCodeName: payload[0].divisionCodeName,
-    codeChangeAvailable: payload[0].codeChangeAvailable,
-    description: payload[0].description,
-    status: payload[0].status
-  })
+  return logiApi.post('base/batchListProcess', payload)
+}
+function deleteCode(payload){
+  return logiApi.post('base/batchListProcess', payload)
 }
 function searchItemList(){
   return logiApi.get('base/searchItemList')
@@ -78,5 +90,17 @@ function searchItemGroupList(){
 
 export {
   searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
-  insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode, searchItemList, searchItemGroupList
+  insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode, searchItemList, searchItemGroupList,
+  searchClientDetailList, searchFinanceList, searchFinanceDetailList, deleteCode
 }
+
+
+// {
+//   params:{
+//     divisionCodeNo: null,
+//         codeType: payload.codeType,
+//         divisionCodeName: payload.divisionCodeName,
+//         codeChangeAvailable: payload.codeChangeAvailable,
+//         description: payload.description,
+//         status: payload.status
+//   }}

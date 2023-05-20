@@ -28,7 +28,7 @@
                       v-model="form[field.key]"
                       show-decade-nav
                       button-only
-                      button-variant="outline-primary"
+                      button-variant="primary"
                       right
                       size="sm"
                       locale="en-US"

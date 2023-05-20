@@ -46,7 +46,7 @@ const LogisticsInfoRoute = [
             pageTitle: '품목 정보',
             breadcrumb: [
                 {text: '물류 정보',},
-                {text: '품목 관리',},
+                {text: '품목 관리',active:true},
             ],
         },
     },
@@ -58,7 +58,7 @@ const LogisticsInfoRoute = [
             pageTitle: '코드정보',
             breadcrumb: [
                 {text: '물류 정보',},
-                {text: '창고 관리',},
+                {text: '창고 관리',active:true},
             ],
         },
     },
@@ -83,11 +83,11 @@ const LogisticsInfoRoute = [
         name: 'WorkplaceInfo', // 이건 navigation Route와 같음
         component: () => import('@/views/logistic/base/baseInfo/WorkplaceInfoPage'),
         meta: {
-            pageTitle: '회사 정보',
+            pageTitle: '사업장 정보',
             breadcrumb: [
                 {text: '물류 정보',},
                 {text: '기초 정보',},
-                {text: '회사 정보',active: true,},
+                {text: '사업장 정보',active: true,},
             ],
         },
     },
@@ -96,11 +96,11 @@ const LogisticsInfoRoute = [
         name: 'DeptInfo', // 이건 navigation Route와 같음
         component: () => import('@/views/logistic/base/baseInfo/DeptInfoPage'),
         meta: {
-            pageTitle: '회사 정보',
+            pageTitle: '부서 정보',
             breadcrumb: [
                 {text: '물류 정보',},
                 {text: '기초 정보',},
-                {text: '회사 정보',active: true,},
+                {text: '부서 정보',active: true,},
             ],
         },
     },
@@ -109,11 +109,11 @@ const LogisticsInfoRoute = [
         name: 'ClientInfo', // 이건 navigation Route와 같음
         component: () => import('@/components/logistic/base/page/ClientInfo/ClientInfoMain.vue'),
         meta: {
-            pageTitle: '회사 정보',
+            pageTitle: '거래처 정보',
             breadcrumb: [
                 {text: '물류 정보',},
                 {text: '기초 정보',},
-                {text: '회사 정보',active: true,},
+                {text: '거래처 정보',active: true,},
             ],
         },
     },

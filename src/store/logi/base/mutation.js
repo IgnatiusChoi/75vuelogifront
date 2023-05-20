@@ -13,12 +13,25 @@ export default {
   GET_COMPANY_INFO(state, payload) {
     state.companyInfo = payload
   },
-
   SEARCH_CLIENT_LIST(state, payload){
     state.nClientList = payload
   },
+  SEARCH_CLIENT_DETAIL_LIST(state, payload){
+    state.nClientDetailList = payload
+  },
+  SEARCH_FINANCE_LIST(state, payload){
+    state.fClientList = payload
+  },
+  SEARCH_FINANCE_DETAIL_LIST(state, payload){
+    state.fClientDetailList = payload
+  },
   RESET_CLIENT(state){
     state.nClientList=[]
+    state.nClientDetailList=[]
+  },
+  RESET_FINANCE(state){
+    state.fClientList=[]
+    state.fClientDetailList=[]
   },
 
   setGrid(state, gridRow) {

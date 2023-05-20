@@ -21,8 +21,9 @@ export default {
     detailTableColumns: [],
     companyInfo: [],
     nClientList: [],
+    nClientDetailList: [],
     fClientList: [],
-
+    fClientDetailList: [],
 
   },
   getters: {
