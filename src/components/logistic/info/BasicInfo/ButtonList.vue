@@ -9,6 +9,7 @@
           v-show="activeButton==='workplace'"
           v-ripple.400="'rgba(255, 255, 255, 0.15)'"
           variant="primary"
+          class="mr-1"
           @click="$emit('add')"
       >
         사업장 추가
@@ -18,6 +19,7 @@
           v-if="activeButton==='workplace'"
           v-ripple.400="'rgba(255, 255, 255, 0.15)'"
           variant="primary"
+          class="mr-1"
           @click="$emit('delete')"
       >
         사업장 삭제
@@ -26,6 +28,7 @@
           v-if="activeButton==='workplace'"
           v-ripple.400="'rgba(255, 255, 255, 0.15)'"
           variant="primary"
+          class="mr-1"
           @click="$emit('edit')"
       >
         사업장 수정

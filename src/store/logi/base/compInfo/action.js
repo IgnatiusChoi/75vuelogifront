@@ -6,8 +6,7 @@ import {
   searchClientList,
   deleteWorkplace,
   insertWorkplace,
-  updateWorkplace
-
+  updateWorkplace,
 } from "@/api/logi/compinfo";
 // 액션을 위한 api 통신 대상
 

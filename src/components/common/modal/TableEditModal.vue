@@ -16,97 +16,98 @@
       <hr style="border-top:1px rgba(93, 93, 93, 0.5) solid; width:100%">
 
       <b-card-body class="modal-body" />
-      <div
-        style="max-height: 500px; overflow-y: scroll"
-        class="scrollStyle"
-      >
-        <template v-for="(row, index) in tableRowData">
-          <template v-if="row.dataType === 'selectToInput' && !row.hide">
-            <b-col
-              cols="12"
-              md="10"
-              class="d-flex align-items-center justify-content-start mb-1 mb-md-1"
-            >
-              <div style="width: 190px; ">
-                <label style="font-size: 15px; float:right">{{ row.label }} : &nbsp</label>
-              </div>
-              <b-form-select
-                v-model="row.value"
-                :options="row.options"
-                style="width: 200px; font-size: 15px; font-family: 'Yu Gothic';"
-                :value="row.value"
-              />
-            </b-col>
-            <b-col
-              cols="12"
-              md="10"
-              class="d-flex align-items-center justify-content-start mb-1 mb-md-1"
-            >
-              <div style="width: 190px; ">
-                <label style="font-size: 15px; float:right">{{ row.To.label }} : &nbsp</label>
-              </div>
-              <b-form-input
-                v-model="row.value"
-                :placeholder="row.label"
-                style="width: 200px;"
-                :value="row.value"
-                :disabled="row.disabled"
-              />
-            </b-col>
-          </template>
-          <b-col
-            v-if="row.dataType !== 'selectToInput' && !row.hide"
+      <div>
+        <b-col
             cols="12"
             md="10"
             class="d-flex align-items-center justify-content-start mb-1 mb-md-1"
-          >
-            <div style="width: 190px; ">
-              <label style="font-size: 15px; float:right">{{ row.label }} : &nbsp</label>
-            </div>
-            <b-form-input
-              v-if="!row.hide && row.dataType === 'input' || row.dataType === undefined "
-              v-model="row.value"
-              :placeholder="row.label"
-              style="width: 200px;"
-              :value="row.value"
-              :disabled="row.disabled"
-            />
-
+        >
+        <div style="width: 110px; ">
+          <label style="font-size: 15px; float:right">구분코드번호 : &nbsp</label>
+        </div>
+        <b-form-input
+            v-model="divisionCodeNo"
+            placeholder="구분코드번호(자동생성)"
+            style="width: 200px;"
+            disabled
+        />
+        </b-col>
+        <b-col
+            cols="12"
+            md="10"
+            class="d-flex justify-content-start mb-3"
+        >
+          <div style="width: 110px; ">
+            <label style="font-size: 15px;float:right; margin-top:8px"> 코드타입 : &nbsp</label>
+          </div>
+          <b-col>
             <b-form-select
-              v-else-if="!row.hide && row.dataType === 'select'"
-              v-model="row.value"
-              :options="row.options"
-              style="width: 200px; font-size: 15px; font-family: 'Yu Gothic';"
-              :value="row.value"
+                v-model="codeType"
+                :options="codeTypeOption"
+                style="width: 200px; font-size: 15px; font-family: 'Yu Gothic'; margin-left:-14px"
+                :state="codeTypeStatus"
             />
-            <b-input-group
-              v-else-if="!row.hide && row.dataType === 'date'"
-              style="width: 200px;"
+            <b-form-invalid-feedback
+                tooltip
+                class="mb-3"
+                style="margin-left:-5px"
             >
-              <b-form-input
-                v-model="row.value"
-                type="text"
-
-                autocomplete="off"
-                show-decade-nav
-                :value="row.value"
-              />
-              <b-input-group-append style="height: 37px;">
-                <b-form-datepicker
-                  v-model="row.value"
-                  show-decade-nav
-                  button-only
-                  button-variant="outline-primary"
-                  right
-                  size="sm"
-                  locale="en-US"
-                  aria-controls="example-input"
-                  :disabled="row.disabled"
-                />
-              </b-input-group-append>
-            </b-input-group>
+              코드타입을 선택해주십시오.
+            </b-form-invalid-feedback>
           </b-col>
-        </template>
+        </b-col>
+        <b-col
+            cols="12"
+            md="10"
+            class="d-flex justify-content-start mb-1"
+        >
+          <div style="width: 110px; ">
+            <label style="font-size: 15px; float:right">코드이름 : &nbsp</label>
+          </div>
+          <b-form-input
+              v-model="divisionCodeName"
+              placeholder="코드이름"
+              style="width: 200px;"
+          />
+        </b-col>
+        <b-col
+            cols="12"
+            md="10"
+            class="d-flex justify-content-start mb-1"
+        >
+          <div style="width: 110px; ">
+            <label style="font-size: 15px;float:right; margin-top:8px"> 변경가능여부 : &nbsp</label>
+          </div>
+          <b-col>
+            <b-form-select
+                v-model="codeChangeAvailable"
+                :options="codeChangeAvailableOption"
+                style="width: 200px; font-size: 15px; font-family: 'Yu Gothic'; margin-left:-14px"
+                :state="codeChangeAvailableStatus"
+            />
+            <b-form-invalid-feedback
+                tooltip
+                class="mb-3"
+                style="margin-left:-5px"
+            >
+              변경가능여부 옵션을 선택해주십시오.
+            </b-form-invalid-feedback>
+          </b-col>
+        </b-col>
+        <b-col
+            cols="12"
+            md="10"
+            class="d-flex justify-content-start mb-1"
+        >
+          <div style="width: 110px; ">
+            <label style="font-size: 15px; float:right">구분 : &nbsp</label>
+          </div>
+          <b-form-input
+              v-model="description"
+              placeholder="코드이름"
+              style="width: 200px;"
+          />
+        </b-col>
       </div>
 
       <b-card-footer class="modal-footer">
@@ -155,6 +156,23 @@ export default {
   props: ['tableRowData'],
   data() {
     return {
+      divisionCodeNo: '',
+      codeType: '',
+      divisionCodeName: '',
+      codeChangeAvailable: '',
+      description: '',
+      codeTypeOption: [
+        { value: '공통', text: '공통' },
+        { value: '회계', text: '회계' },
+        { value: '구매', text: '구매' },
+        { value: '영업', text: '영업' }
+      ],
+      codeChangeAvailableOption: [
+        { value: '변경가능', text: '변경가능' },
+        { value: '변경불가능', text: '변경불가능' }
+      ],
+      codeTypeStatus: '',
+      codeChangeAvailableStatus: ''
     }
   },
   methods: {
@@ -162,37 +180,30 @@ export default {
       this.$emit('close', false)
     },
     inputModal() {
-      const rowData = []
-      const data = {}
-      let toData = null
-      let toKeyName = null
-      let originKey = null
-      let originValue = null
-      let isTo = false
-      this.tableRowData.map(e => {
-        const { key, value } = e
-        data[key] = value
-        if (e.To !== undefined) {
-          isTo = true
-          const { toKey } = e.To
-          toKeyName = toKey// to
-          originKey = e.key// origin
-          e.options.filter(option => {
-            if (option.value === e.value) {
-              toData = option.value// to
-              originValue = option.text// origin
-            }
-          })
-        }
-      })
-      if (isTo) {
-        data[toKeyName] = toData// to
-        data[originKey] = originValue// origin
+      if(this.codeType===undefined||this.codeType==0){
+        this.codeTypeStatus=false
+        return
       }
-      rowData.push(data)
-      console.log(rowData)
-
-      this.$emit('input-modal', rowData)
+      if(this.codeChangeAvailable===undefined||this.codeChangeAvailable==0){
+        this.codeChangeAvailableStatus=false
+        return
+      }
+      const data={
+        divisionCodeNo: null,
+        codeType: this.codeType,
+        divisionCodeName: this.divisionCodeName,
+        codeChangeAvailable: this.codeChangeAvailable,
+        description: this.description,
+        status: 'INSERT'
+      }
+      console.log(data)
+      this.closeModal()
+      this.$store.dispatch('logi/base/addCode',data)
+          .then(this.$swal.fire(
+              '등록 완료!',
+              '코드 등록이 완료되었습니다.',
+              'success',
+          ))
     },
   },
 }

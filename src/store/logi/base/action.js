@@ -12,7 +12,11 @@ import {
   searchCodeList,
   addCode,
   searchItemList,
-  searchItemGroupList
+  searchItemGroupList,
+  searchClientDetailList,
+  searchFinanceList,
+  searchFinanceDetailList,
+  deleteCode
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
@@ -105,6 +109,31 @@ export default {
       throw new Error(err)
     }
   },
+  async SEARCH_CLIENT_DETAIL_LIST({commit},payload) {
+    try {
+      const {data} = await searchClientDetailList(payload)
+      commit('SEARCH_CLIENT_DETAIL_LIST', data.clientDetailInfo)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async SEARCH_FINANCE_LIST({commit}) {
+    try {
+      const {data} = await searchFinanceList()
+      commit('SEARCH_FINANCE_LIST', data.financeInfo)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async SEARCH_FINANCE_DETAIL_LIST({commit},payload) {
+    try {
+      const {data} = await searchFinanceDetailList(payload)
+      console.log(data.financeDetailInfo)
+      commit('SEARCH_FINANCE_DETAIL_LIST', data.financeDetailInfo)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
   async INSERT_CLIENT({commit}, data) {
     try {
       await insertClient(data);
@@ -122,8 +151,11 @@ export default {
   setTable({commit}, tableColumns) {
     commit('setTable', tableColumns)
   },
-  resetSearch({commit}) {
+  resetClient({commit}) {
     commit('RESET_CLIENT')
+  },
+  resetFinance({commit}) {
+    commit('RESET_FINANCE')
   },
   async SEARCH_CODE_LIST({commit}) {
     try {
@@ -141,7 +173,16 @@ export default {
   },
   async addCode({commit}, payload) {
     try {
+      console.log('action'+payload)
       return await addCode(payload)
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async deleteCode({commit}, payload) {
+    try {
+      console.log('action'+payload)
+      return await deleteCode(payload)
     } catch (err) {
       throw new Error(err)
     }
