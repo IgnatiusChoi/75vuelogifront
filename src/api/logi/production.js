@@ -138,16 +138,26 @@ function showWorkInfoList() {
   return logiApi.get('/production/showWorkOrderInfoList')
 }
 
-//작업지시 필요항목 조회
+
+
+
+
+
+
+
+
+//작업지시 Tab - 작업지시 필요항목 조회
 function searchWorkOrderList() {
   return logiApi.get('/production/getWorkOrderableMrpList')
 }
 
-//생산실적관리-생산실적조회Button
-function productionPerformanceInfoList(){
-  return logiApi.get('/production/getProductionPerformanceInfoList')
+//작업지시 Tab -  작업지시 필요항목 조회
+function searchWorkOrderListInfo(){
+  return logiApi.get('/production/getWorkOrderableMrpList')
 }
 
+
+//작업지시 Tab -  작업지시 모의전개
 function showWorkOrderDialog(payload){
   return logiApi.get('/production/showWorkOrderDialog',{
     params: {
@@ -158,49 +168,96 @@ function showWorkOrderDialog(payload){
 }
 
 
-function searchWorkOrderListInfo(){
-  return logiApi.get('/production/getWorkOrderableMrpList')
+//작업지시 Tab - 작업지시 모의전개 버튼 누른 후 - 실제 작업 지시 버튼
+function workOrder(payload) {
+  console.log(payload);
+  return logiApi.get('/production/workOrder', {
+    params: {
+      mrpGatheringNo: payload.mrpGatheringNo,
+      workPlaceCode: payload.workPlaceCode,
+      productionProcessCode: payload.productionProcess
+    },
+
+
+  })
 }
-
-
-
+//작업지시현황 Tab - 작업지시현황조회
 function searchWorkOrderInfoListStatus(){
   console.log('searchWorkOrderInfoListStatus')
   return logiApi.get('/production/getWorkOrderInfoListStatus')
 }
 
-function searchWorkSite(){
-  return logiApi.get('/production/getWorkSiteList')
-}
-
-//작업장 로그 조회(작업장 조회-상세)
-function searchProductionProcessCode(payload){
-  console.log('searchProductionProcessCode')
-  console.log(payload)
-  const processcode = payload.productionProcessCode
-  console.log(sitecode)
-  const sitecode=payload.workSiteCode
-  console.log(processcode)
-  return logiApi.get('/production/getProductionProcessCode', {
+//작업지시현황 Tab - 작업완료등록
+function workOrderCompletion(payload){
+  return logiApi.get('/production/workOrderCompletion',{
     params: {
-      workSiteCode : sitecode,
-      productionProcessCode :processcode,
-
+      workOrderNo: payload.workOrderNo,
+      actualCompletionAmount: payload.actualCompletionAmount,
     },
   })
 }
 
-//작업장 추가
-function insertWorkPlaceList(workPlaceList){
-  console.log("workPlaceList" + workPlaceList)
-  return logiApi.post('/production/insertWorkPlaceList', workPlaceList)
+function editCellBlur(payload){
+  return logiApi.put('/production/editCellBlur',payload)
+
 }
 
-//작업장 삭제
-function deleteWorkPlaceList(workPlaceList){
-  console.log("deleteWorkPlaceList" + workPlaceList)
-  return logiApi.post('/production/deleteWorkPlaceList', workPlaceList)
+//생산실적관리 Tab - 생산실적조회
+function productionPerformanceInfoList() {
+  return logiApi.get('/production/getProductionPerformanceInfoList')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//작업장/작업장 로그 = 작업장 조회
+  function searchWorkSite(){
+    return logiApi.get('/production/getWorkSiteList')
+  }
+
+
+//작업장/작업장 로그 = 작업장 로그 조회
+  function searchProductionProcessCode(payload){
+    console.log('searchProductionProcessCode')
+    console.log(payload)
+    const processcode = payload.productionProcessCode
+    console.log(sitecode)
+    const sitecode=payload.workSiteCode
+    console.log(processcode)
+    return logiApi.get('/production/getProductionProcessCode', {
+      params: {
+        workSiteCode : sitecode,
+        productionProcessCode :processcode,
+
+      },
+    })
+  }
+  //작업장/작업장 로그 = 작업장 추가
+//   function insertWorkPlaceList(workPlaceList){
+//     console.log("workPlaceList" + workPlaceList)
+//     return logiApi.post('/production/insertWorkPlaceList', workPlaceList)
+//   }
+//
+// //작업장/작업장 로그 = 작업장 삭제
+//   function deleteWorkPlaceList(workPlaceList){
+//     console.log("deleteWorkPlaceList" + workPlaceList)
+//     return logiApi.post('/production/deleteWorkPlaceList', workPlaceList)
+//   }
+
 
 
 
@@ -227,7 +284,9 @@ export {
   searchWorkOrderInfoListStatus,
   searchWorkSite,
   searchProductionProcessCode,
-  insertWorkPlaceList,
-  deleteWorkPlaceList,
-
+  workOrder,
+  workOrderCompletion,
+  editCellBlur
+  //insertWorkPlaceList,
+  //deleteWorkPlaceList
 }

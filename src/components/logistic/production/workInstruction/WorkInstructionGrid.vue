@@ -10,6 +10,7 @@
 
       <h2 style="margin-bottom: 30px">작업지시 필요 리스트 ( MRP 취합 기반 )</h2>
 
+
       <b-button
           v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
@@ -32,7 +33,27 @@
           title="workOrder"
           size="xl"
           cancel-variant="outline-secondary"
+          ok-only
+          ok-title="실제 작업 지시"
+          ok-variant="outline-primary"
+          @ok="workOrderok"
+          @change="closeModal"
       >
+        <div>
+          <b-form-select
+              class="small-select-01"
+              v-model="productionProcess"
+              :options="productionProcessOptions"
+          >
+          </b-form-select>
+          <b-form-select
+              class="small-select-02"
+              v-model="workPlaceCode"
+              :options="workPlaceCodeOptions"
+          >
+          </b-form-select>
+        </div>
+
         <b-card
             class="scrollStyle"
             style="margin:auto; overflow-y: scroll;  height: 50vh; padding-left: 10px"
@@ -67,65 +88,8 @@
             @row-clicked="mrpNoClick"
         />
       </div>
-
-
-
-<!--      <b-row>
-        &lt;!&ndash; Table Top &ndash;&gt;
-        <b-col
-          cols="12"
-          md="10"
-          class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
-          style="min-width: 1200px;"
-        >
-
-          <slot name="header" />
-
-        </b-col>
-        <b-col
-          cols="12"
-          md="10"
-          class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
-        >
-          <b-button
-            variant="primary"
-            size="md"
-            class="mr-1"
-            @click="addNewContract"
-          >
-            작업지시 필요항목 조회
-          </b-button>
-          <b-button
-            variant="primary"
-            size="md"
-            class="mr-1"
-            @click="addNewContract"
-          >
-            작업지시 모의 전개
-          </b-button>
-        </b-col>
-      </b-row>-->
-
     </div>
-<!--    <div
-      style="overflow-y: scroll; max-height: 210px;"
-      class="scrollStyle"
-    >
-      <b-table
-        :items="grid"
-        :fields="tableColumns"
-        primary-key="id"
-        :sort-by.sync="sortBy"
-        show-empty
-        empty-text="No matching records found"
-        :sort-desc.sync="isSortDirDesc"
-        class="position-relative scrollStyle"
-        selectable
-        :select-mode="selectMode"
-        style="width: 1200px; min-width: 100%;"
-        @row-selected="onRowSelected"
-      />
-    </div>-->
+
     <div class="mx-2 mb-2">
       <b-row />
     </div>
@@ -203,12 +167,23 @@ export default {
     ,mrpNo:''
     ,mrpGatheringNo:''
     ,workOrderModal: false
+    ,workInstructionDate: null,
+    productionProcess: '',
+    workPlaceCode:'',
+
+    productionProcessOptions: [
+      {text: '반제품작업장', value: 'PP001' },
+      {text : '완제품작업장', value : 'PP001' }
+    ],
+    workPlaceCodeOptions: [
+      {text: '(주)세계전자 본사', value: 'BRC-01' },
+      {text: '(주)세계전자 울산지점', value: 'BRC-02' }
+    ]
   }),
   methods: {
-    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST','SHOW_WORK_ORDER_DIALOG']),
+    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_LIST','SHOW_WORK_ORDER_DIALOG', 'WORK_ORDER']),
     searchWorkOrder() {
      this.SEARCH_WORK_ORDER_LIST()
-     // this.$store.dispatch('logi/workInstruction/SEARCH_WORK_ORDER_LIST')
     },
     mrpNoClick(payload) {
       console.log('mrpNo이벤트')
@@ -226,6 +201,7 @@ export default {
         return;
       }
     this.SHOW_WORK_ORDER_DIALOG(sendData)
+      console.log(this.workOrderDialog)
     },
     onRowSelected(items) {
       console.log(items[0].contractDetailTOList)
@@ -236,19 +212,60 @@ export default {
     },
     addNewContract() {
       const today = new Date()
-
       const year = today.getFullYear()
       const month = (`0${today.getMonth() + 1}`).slice(-2)
       const day = (`0${today.getDate()}`).slice(-2)
-
       const dateString = `${year}-${month}-${day}`
-
       const param = [{
-
       }]
       console.log(param)
       this.$store.dispatch('logi/sales/addNewContract', param)
     },
+    workOrderok(){
+      console.log(this.workPlaceCode,this.productionProcess)
+      console.log("실제 작업 지시",this.mrpGatheringNo)
+      const sendData = {
+        mrpGatheringNo: this.mrpGatheringNo,
+        workPlaceCode: this.workPlaceCode,
+        productionProcess: this.productionProcess
+      }
+      if(!this.mrpGatheringNo){
+        alert("행을 선택해주십시오")
+        return;
+      }
+      this.WORK_ORDER(sendData)
+    },
+
+    async MrpInsert(e) {
+      if (this.mrpRegisterDate === null) {
+        e.preventDefault()
+        throw new Error('소요량전개 일자 선택하셈.')
+      } else {
+        const payload = { mrpRegisterDate: this.mrpRegisterDate, batchList: this.mrpList }
+        await this.REGISTER_MRP(payload)
+        this.mrpRegisterDate = null
+        this.alert('등록성공')
+
+        const datePayload = { startDate: this.startDate, endDate: this.endDate }
+        //this.SEARCH_MPS_LIST(datePayload)
+      }
+    },
+
+
+
+
+
+
+    // closeModal() {
+    //   // 모달이 사라질 때만 작동... change라면서요...
+    //   this.isVisible = false
+    // },
+    onContext(ctx){
+      // The date formatted in the locale, or the `label-no - date - selected` string
+      this.formatted = ctx.selectedFormatted
+      // The following will be an empty string until a valid date is entered
+      this.selected = ctx.selectedYMD
+    }
   },
 
   setup() {
@@ -368,5 +385,17 @@ export default {
   }
   .fade-leave-to{
     opacity: 0;
+  }
+  .small-select-01 {
+    font-size: 12px;
+    padding: 3px 6px;
+    height: 26px;
+    width: 120px;
+  }
+  .small-select-02 {
+    font-size: 12px;
+    padding: 3px 6px;
+    height: 26px;
+    width: 120px;
   }
 </style>

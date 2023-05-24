@@ -37,7 +37,7 @@
               class="mr-0 mr-sm-50"
           />
           <span class="d-none d-sm-inline">생산실적관리</span>
-        </template>ㅐ
+        </template>
         <!--  내용물 컴포넌트       -->
         <WorkPerformanceManagement />
       </b-tab>

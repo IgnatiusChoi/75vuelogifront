@@ -3,7 +3,7 @@
       name="fade"
       mode="out-in"
   >
-    <CommonModal>
+    <component>
       <template v-slot:header>
         <b-col>작업장 추가</b-col>
       </template>
@@ -183,13 +183,13 @@
             variant="primary"
             size="md"
             class="mb-md-1"
-            @click="addworkPlaceList"
+            @click="addworkSiteList"
         >
           입력
         </b-button>
       </template>
 
-    </CommonModal>
+    </component>
   </transition>
 </template>
 
@@ -204,6 +204,7 @@ import vSelect from "vue-select";
 import CommonModal from '@/components/common/modal/CommonModal.vue'
 
 export default{
+  name:'WorkSiteAddList',
   components: {
     BCardCode,
     BTableLite,
@@ -250,7 +251,7 @@ export default{
     }
   },
   methods: {
-    addworkPlaceList () {
+    addworkSiteList () {
       console.log('addworkPlaceList')
       if(this.workOrderNo===undefined||this.workOrderNo.length==0){
         this.workOrderNo=false

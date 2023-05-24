@@ -34,7 +34,15 @@
             :fields="workOrderStatusList"
             :items="workOrderInfo"
             @row-clicked="workOrderStatusClick"
-        />
+            @dblclick="editCell(rowIndex, colIndex)">
+
+        <template #cell(actualCompletionAmount)="data">
+          <b-form-input v-if="workOrderInfo[data.index].isEdit" type="text" v-model="workOrderInfo[data.index].actualCompletionAmount" @blur="editCellBlur(data)" ></b-form-input>
+          <span v-else @click="setEditIndex(data.index)">{{data.value}}</span>
+        </template>
+        </b-table>
+
+
       </div>
 
     </div>
@@ -59,10 +67,16 @@ export default {
     selectMode: 'single',
     modal: false,
     workSiteCode : '',
+    workOrderNo:'',
+    actualCompletionAmount:'',
+    selectedCell: {
+      item: null,
+      field: null,
+    },
     workOrderStatusList
   }),
   methods:{
-    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_INFO_LIST_STATUS']),
+    ...mapActions('logi/workInstruction', ['SEARCH_WORK_ORDER_INFO_LIST_STATUS','WORK_ORDER_COMPLETION', 'EDIT_CELL_BLUR']),
 
     searchWorkOrderListInfoStatus(){
       console.log('작업지시현황조회')
@@ -72,25 +86,44 @@ export default {
     workOrderStatusClick(payload){
       console.log('workOrderStatusClick')
       console.log(payload)
-      this.workSiteCode = payload.workSiteCode
+      this.workOrderNo = payload.workOrderNo,
+      this.actualCompletionAmount = payload.actualCompletionAmount
     },
+
     workOrderCompletionClick(){
-      console.log('workOrderCompletionClick', this.workSiteCode)
+      console.log('workOrderCompletionClick')
+      const sendData = {
+        workOrderNo: this.workOrderNo,
+        actualCompletionAmount: this.actualCompletionAmount
+      }
+      if(!this.workOrderNo){
+        alert('행을 선택해주십시오')
+        return;
+      }
+      this.WORK_ORDER_COMPLETION(sendData)
+    },
 
 
 
+    setEditIndex(index) {
+      this.workOrderInfo[index].isEdit = true
+    },
 
+    editCellBlur(data){
+      console.log("data가 뭐지?",data)
+      this.workOrderInfo[data.index].isEdit = false
+      // delete this.workOrderInfo[data.index].isEdit
+      // 업데이트 하는 action을 불러
+      //  workOrderNo ='WO20210702-418' + actualCompletionAmount = 100
+
+      console.log("this.workOrderInfo[data.index",this.workOrderInfo[data.index])
+      const dataList = {
+        workOrderNo:this.workOrderNo,
+        actualCompletionAmount:this.actualCompletionAmount
+      }
+      console.log("dataList=", dataList)
+      this.EDIT_CELL_BLUR(dataList)
     }
-//     console.log('작업시지 모의 전개',this.mrpNo)
-//     const sendData={
-//       mrpNo: this.mrpNo,
-//       mrpGatheringNo: this.mrpGatheringNo
-//     }
-//     if(!this.mrpNo){
-//   alert("행을 선택해주십시오")
-//   return;
-// }
-// this.SHOW_WORK_ORDER_DIALOG(sendData)
 
 
   },

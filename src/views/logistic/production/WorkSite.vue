@@ -11,7 +11,7 @@
       </template>
 
       <!--  내용물 컴포넌트       -->
-      <workPlaceList></workPlaceList>
+      <workSiteList></workSiteList>
     </b-tabs>
   </component>
 </template>
@@ -28,7 +28,7 @@ import WorkInstructionDetailGrid from '@/components/logistic/production/workInst
 import WorkOrderStatus from '@/components/logistic/production/workInstruction/WorkOrderStatus'
 import WorkPerformanceManagement from '@/components/logistic/production/workInstruction/WorkPerformanceManagement'
 import CommonGrid from '@/components/logistic/sales/gridComponent/CommonGrid'
-import workPlaceList from '@/components/logistic/production/workPlace/workPlaceList.vue'
+import workSiteList from '@/components/logistic/production/workSite/workSiteList.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
@@ -61,7 +61,7 @@ export default {
     CommonGrid,
     WorkOrderStatus,
     WorkPerformanceManagement,
-    workPlaceList,
+    workSiteList,
   },
   computed: {
     ...mapState({
