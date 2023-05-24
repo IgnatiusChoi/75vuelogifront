@@ -28,6 +28,11 @@ export default {
     state.workOrderDialog=workOrderDialog
   },
 
+  WORK_ORDER_COMPLETION(state, workOrderCompletion){
+    state.workOrderCompletion=workOrderCompletion
+  },
+
+
   SEARCH_WORK_ORDER_INFO(state, workOrderInfo){
     console.log('SEARCH_WORK_ORDER_INFO', workOrderInfo)
     state.workOrderInfo=workOrderInfo
@@ -49,6 +54,7 @@ export default {
     console.log('SEARCH_PRODUCTION_PROCESS_CODE')
     state.workPlaceDetailList = productionProcessCode
   },
+
 
 
 }

@@ -21,7 +21,8 @@ export default {
     workSite:[],
     workOrderInfoListStatus:[],
     workPlaceDetailList: [],
-    workPlaceDetailColumns: []
+    workPlaceDetailColumns: [],
+    workOrderCompletion: []
   },
   mutations,
   actions

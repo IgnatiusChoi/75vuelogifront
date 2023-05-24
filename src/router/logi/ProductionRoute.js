@@ -63,7 +63,7 @@ const ProductionRoute = [
   {
     path: '/logi/production/workPlace',
     name: 'workPlace',
-    component: () => import('@/views/logistic/production/WorkPlacePage.vue'),
+    component: () => import('@/views/logistic/production/WorkSite.vue'),
     meta: {
       pageTitle: '작업장/작업장로그',
       breadcrumb: [
