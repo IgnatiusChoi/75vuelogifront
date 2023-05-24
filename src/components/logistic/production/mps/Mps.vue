@@ -51,14 +51,14 @@
         @row-selected="handleInput"
       >
 
-        <!--  초기납품 popover -->
+        <!--  재고사용량 popover -->
         <template #head(stockAmountUse)="scope">
           <div>
             <b-icon-question-circle v-b-popover.hover.top="'안전재고량을  제외한 재고 사용량'"/>
             {{ scope.label }}
           </div>
         </template>
-        <!--  초기납품 popover -->
+        <!--  재고사용량 popover -->
 
         <!--  MPS 계획일 날짜선택 -->
         <template v-slot:cell(mpsPlanDate)="row">

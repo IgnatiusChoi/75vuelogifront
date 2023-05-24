@@ -5,7 +5,7 @@ export default [
     icon: 'CpuIcon',
     children: [
       {
-        title: '주계획작성 (MPS)',
+        title: '주생산계획 (MPS)',
         route: 'mps',
       },
       {
