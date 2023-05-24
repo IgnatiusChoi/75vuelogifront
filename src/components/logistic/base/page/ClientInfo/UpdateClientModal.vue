@@ -5,26 +5,18 @@
   >
     <CommonModal>
       <template v-slot:header>
-        <b-col><b>거래처 등록</b></b-col>
+        <b-col><b>거래처 수정</b></b-col>
       </template>
       <template v-slot:body>
         <b-row class="my-1">
           <b-col sm="2" class="text-sm-center" style="font-size: 1.1rem;"><span style="color:red">*</span>&nbsp;거래처코드</b-col>
           <b-col sm="4">
             <b-form-input
-              class="text-sm-center"
-              style="font-size: 1.2rem;"
-              v-model="customerCode"
-              placeholder="일반거래처코드"
-              :state="customerCodeStatus">
+                class="text-sm-center"
+                style="font-size: 1.2rem;"
+                v-model="customerCode"
+                disabled>
             </b-form-input>
-            <b-form-invalid-feedback
-                tooltip
-                class="mb-3"
-                style="margin-left:-5px"
-            >
-              일반거래처코드는 반드시 입력해야 합니다.
-            </b-form-invalid-feedback>
           </b-col>
           <b-col sm="2" class="text-sm-center" style="font-size: 1.1rem;">사업장코드</b-col>
           <b-col sm="4">
@@ -33,9 +25,9 @@
                 disabled
                 style="font-size: 1.2rem;"
                 v-model="workplaceCode"
-                >
+            >
             </b-form-input>
-            </b-col>
+          </b-col>
         </b-row>
         <b-row class="my-1">
           <b-col sm="2" class="text-sm-center" style="font-size: 1.1rem;">거래처명</b-col>
@@ -170,7 +162,7 @@
                 style="font-size: 1.2rem;"
                 v-model="customerFaxNumber"
                 placeholder="거래처 FAX번호"
-                >
+            >
             </b-form-input>
           </b-col>
         </b-row>
@@ -201,7 +193,7 @@
             variant="primary"
             size="md"
             class="mb-md-1"
-            @click="addClient"
+            @click="updateClient"
         >
           입력
         </b-button>
@@ -247,24 +239,25 @@ export default {
 
     CommonModal,
   },
+  props: ['selectClientData'],
   data() {
     return {
-      customerCode: '',
-      workplaceCode: 'BRC-01',
-      customerName: '',
-      customerType: '',
-      customerCeo: '',
+      customerCode: this.selectClientData.customerCode,
+      workplaceCode: this.selectClientData.workplaceCode,
+      customerName: this.selectClientData.customerName,
+      customerType: this.selectClientData.customerType,
+      customerCeo: this.selectClientData.customerCeo,
       status: '',
-      businessLicenseNumber: '',
-      socialSecurityNumber: '',
-      customerBusinessConditions: '',
-      customerBusinessItems: '',
-      customerZipCode: '',
-      customerBasicAddress: '',
-      customerDetailAddress: '',
-      customerTelNumber: '',
-      customerFaxNumber: '',
-      customerNote: '',
+      businessLicenseNumber: this.selectClientData.businessLicenseNumber,
+      socialSecurityNumber: this.selectClientData.socialSecurityNumber,
+      customerBusinessConditions: this.selectClientData.customerBusinessConditions,
+      customerBusinessItems: this.selectClientData.customerBusinessItems,
+      customerZipCode: this.selectClientData.customerZipCode,
+      customerBasicAddress: this.selectClientData.customerBasicAddress,
+      customerDetailAddress: this.selectClientData.customerDetailAddress,
+      customerTelNumber: this.selectClientData.customerTelNumber,
+      customerFaxNumber: this.selectClientData.customerFaxNumber,
+      customerNote: this.selectClientData.customerNote,
 
       customerTypeOption: [
         {value: '일반', text: '일반고객'},
@@ -285,11 +278,7 @@ export default {
       }).open();
     },
 
-    addClient() {
-      if (this.customerCode === undefined || this.customerCode.length == 0) {
-        this.customerCodeStatus = false
-        return
-      }
+    updateClient() {
       if (this.customerType === undefined || this.customerType.length == 0) {
         this.customerTypeStatus = false
         return
@@ -313,12 +302,12 @@ export default {
         customerNote: this.customerNote
       }
       console.log(data)
-      this.$store.dispatch('logi/base/INSERT_CLIENT', data).then(() => {
+      this.$store.dispatch('logi/base/UPDATE_CLIENT', data).then(() => {
         this.$emit('modalClose')
       })
           .then(this.$swal.fire(
-              '거래처 등록 완료!',
-              '거래처 등록이 완료되었습니다.',
+              '거래처 수정 완료!',
+              '거래처 수정이 완료되었습니다.',
               'success',
           )).catch(() => {
             this.$swal.fire({

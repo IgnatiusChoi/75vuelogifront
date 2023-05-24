@@ -304,8 +304,10 @@ export default {
         selectedRowElement.classList.add("deleted-row");
       }*/
       console.log(this.rowData)
-      console.log(this.warehouseList)
-      this.$store.dispatch('logi/base/DELETE_WAREHOUSE_LIST', this.rowData)
+      const payload = [this.rowData]
+      console.log(payload)
+      this.$store.dispatch('logi/base/DELETE_WAREHOUSE_LIST', payload)
+      this.$store.dispatch('logi/base/GET_WAREHOUSE_LIST')
     },
     async saveWarehouse() {
 
