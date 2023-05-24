@@ -2,7 +2,7 @@
   <div>
     <b-button variant="primary" class="mr-1" @click="searchClient">조회</b-button>
     <b-button variant="primary" class="mr-1" @click="openAddModal">추가</b-button>
-    <b-button variant="primary" class="mr-1" @click="">수정</b-button>
+    <b-button variant="primary" class="mr-1" @click="openUpdateModal">수정</b-button>
     <b-button variant="primary" class="mr-1" @click="deleteClient">삭제</b-button>
     <div>
       <b-table
@@ -26,6 +26,7 @@
       />
     </div>
     <add-modal v-if="addModal" @modalClose="addModal=false"></add-modal>
+    <up-modal v-if="updateModal" @modalClose="updateModal=false" :select-client-data="selected"></up-modal>
   </div>
 
 </template>
@@ -34,6 +35,7 @@
 import {BButton, BTable} from "bootstrap-vue";
 import { mapState } from 'vuex'
 import addModal from "@/components/logistic/base/page/ClientInfo/AddClientModal.vue"
+import upModal from "@/components/logistic/base/page/ClientInfo/UpdateClientModal.vue"
 
 export default {
   name: "NormalClientInfo",
@@ -41,6 +43,7 @@ export default {
     BButton,
     BTable,
     addModal,
+    upModal
   },
   data() {
     return {
@@ -93,7 +96,14 @@ methods: {
           '거래처 삭제가 완료되었습니다.',
           'success',
       ))
+    },
+  openUpdateModal(){
+    if (!this.selected || this.selected.customerCode === undefined || this.selected.customerCode.length == 0) {
+      window.alert("수정할 데이터를 선택하십시오")
+      return
     }
+      this.updateModal = true;
+  }
 }
 ,
 computed: {

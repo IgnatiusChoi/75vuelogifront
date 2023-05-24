@@ -57,13 +57,18 @@
           :table-row-data="tableColumnsData"
           @close="closeEditModal"
       />
+      <upModal
+          v-if="updateModal"
+          :update-data="selected"
+          @close="closeUpdateModal"
+      />
     </transition>
   </b-card>
 </template>
 <!--@ok="inputDataModal"-->
 
 <script>
-
+import upModal from "@/components/common/modal/UpdateCodeModal.vue"
 import TableEditModal from "@/components/common/modal/TableEditModal.vue";
 import BCardCode from "@core/components/b-card-code/BCardCode.vue";
 import {
@@ -84,6 +89,7 @@ import {mapMutations, mapState} from "vuex";
 
 export default{
   components: {
+    upModal,
     TableEditModal,
     BCardCode,
     BTableLite,
@@ -134,6 +140,8 @@ export default{
       ],
       componentState: '',
       tableEditModal: false,
+      updateModal: false,
+      selected: ''
     }
   },
   watch: {
@@ -176,6 +184,7 @@ export default{
     },
     updateButton() {
       console.log('수정')
+      this.updateModal = true
     },
     searchButton() {
       console.log('조회')
@@ -204,13 +213,16 @@ export default{
           ))
     },
     onRowSelected(val) {
+      this.selected=val[0]
       this.selectData=val[0]
       console.log('클릭하고',this.selectData)
     },
     closeEditModal(){
       this.tableEditModal = false
     },
-
+    closeUpdateModal(){
+      this.updateModal = false
+    },
     inputDataModal(){
 
     },

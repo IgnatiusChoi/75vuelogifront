@@ -65,67 +65,67 @@
     </b-modal>
 
     <!-- 사업장 수정 모달창 -->
+    <up-modal v-if="isEditModal" @modalClose="isEditModal=false" :selectedWorkplaceRow="selectedTable"></up-modal>
+<!--    <b-modal size="lg"-->
+<!--             v-model="isEditModal"-->
+<!--             title="사업장 정보 수정"-->
+<!--             style="font-family: '배달의민족 도현'"-->
+<!--             @ok="onModalUpdateOk"-->
+<!--    >-->
+<!--      <b-container>-->
+<!--        <b-row class="my-1" v-for="(field,index) in inputFields" :key="index" style="font-family: '배달의민족 도현'">-->
+<!--          <b-col sm="4">-->
+<!--            <label :for="`field-${field}`">{{ field.label }} :</label>-->
+<!--          </b-col>-->
+<!--          <b-col sm="6">-->
+<!--            <template v-if="field.label.includes('월일')">-->
+<!--              <b-input-group class="mb-md-1" style="width: 170px; margin: 0 10px 0 10px;">-->
+<!--                <b-form-input v-model="selectedRowForUpdate[index+4][1]"-->
+<!--                              type="text"-->
+<!--                              placeholder="YYYY-MM-DD"-->
+<!--                              autocomplete="off"-->
+<!--                              show-decade-nav />-->
+<!--                <b-input-group-append style="height: 37px;">-->
+<!--                  <b-form-datepicker-->
+<!--                      v-model="selectedRowForUpdate[index+4][1]"-->
+<!--                      show-decade-nav-->
+<!--                      button-only-->
+<!--                      button-variant="outline-primary"-->
+<!--                      right-->
+<!--                      size="sm"-->
+<!--                      locale="en-US"-->
+<!--                      aria-controls="example-input"-->
+<!--                  />-->
+<!--                </b-input-group-append>-->
+<!--              </b-input-group>-->
+<!--            </template>-->
 
-    <b-modal size="lg"
-             v-model="isEditModal"
-             title="사업장 정보 수정"
-             style="font-family: '배달의민족 도현'"
-             @ok="onModalUpdateOk"
-    >
-      <b-container>
-        <b-row class="my-1" v-for="(field,index) in inputFields" :key="index" style="font-family: '배달의민족 도현'">
-          <b-col sm="4">
-            <label :for="`field-${field}`">{{ field.label }} :</label>
-          </b-col>
-          <b-col sm="6">
-            <template v-if="field.label.includes('월일')">
-              <b-input-group class="mb-md-1" style="width: 170px; margin: 0 10px 0 10px;">
-                <b-form-input v-model="selectedRowForUpdate[index+4][1]"
-                              type="text"
-                              placeholder="YYYY-MM-DD"
-                              autocomplete="off"
-                              show-decade-nav />
-                <b-input-group-append style="height: 37px;">
-                  <b-form-datepicker
-                      v-model="selectedRowForUpdate[index+4][1]"
-                      show-decade-nav
-                      button-only
-                      button-variant="outline-primary"
-                      right
-                      size="sm"
-                      locale="en-US"
-                      aria-controls="example-input"
-                  />
-                </b-input-group-append>
-              </b-input-group>
-            </template>
+<!--                    <template v-else-if="field.key === 'workplaceCode'">-->
+<!--                          <div role="group">-->
+<!--                            <b-form-input-->
+<!--                                id="input-live"-->
+<!--                                v-model="name"-->
+<!--                                :state="nameState"-->
+<!--                                aria-describedby="input-live-help input-live-feedback"-->
+<!--                                placeholder=" ex) OOO-XXXX "-->
+<!--                                trim-->
 
-            <!--            <template v-else-if="field.key === 'workplaceCode'">
-                          <div role="group">
-                            <b-form-input
-                                id="input-live"
-                                v-model="name"
-                                :state="nameState"
-                                aria-describedby="input-live-help input-live-feedback"
-                                placeholder=" ex) OOO-XXXX "
-                                trim
+<!--                            ></b-form-input>-->
 
-                            ></b-form-input>
+<!--                            <b-form-invalid-feedback id="input-live-feedback">-->
+<!--                              1글자 이상 입력해요 혼나기 싫으면-->
+<!--                            </b-form-invalid-feedback>-->
+<!--                            &lt;!&ndash;                <b-form-text id="input-live-help">Your full name.</b-form-text>&ndash;&gt;-->
+<!--                          </div>-->
+<!--                        </template>-->
 
-                            <b-form-invalid-feedback id="input-live-feedback">
-                              1글자 이상 입력해요 혼나기 싫으면
-                            </b-form-invalid-feedback>
-                            &lt;!&ndash;                <b-form-text id="input-live-help">Your full name.</b-form-text>&ndash;&gt;
-                          </div>
-                        </template>-->
-
-            <template v-else>
-              <b-form-input :id="`field-${field}`" :field="field" v-model="selectedRowForUpdate[index+4][1]" />
-            </template>
-          </b-col>
-        </b-row>
-      </b-container>
-    </b-modal>
+<!--            <template v-else>-->
+<!--              <b-form-input :id="`field-${field}`" :field="field" v-model="selectedRowForUpdate[index+4][1]" />-->
+<!--            </template>-->
+<!--          </b-col>-->
+<!--        </b-row>-->
+<!--      </b-container>-->
+<!--    </b-modal>-->
 
 
     <!--테이블안에 버튼넣기 -->
@@ -144,6 +144,7 @@
       <workplace-info-grid
           @selected-item="onSelectedItem"
           @selected-for-update="selectedForUpdate"
+          @update-set="updateSet"
       >
         <template v-slot:header>
           <h2
@@ -179,6 +180,7 @@ import Vue from "vue";
 import {mapActions, mapState} from "vuex";
 import Modal from '@/components/logistic/info/BasicInfo/Modal'
 import tableColumnsData from "@/components/logistic/info/BasicInfo/WorkplaceColumnData";
+import upModal from '@/views/logistic/base/baseInfo/UpdateWorkplaceModal.vue'
 
 export default {
   components: {
@@ -186,7 +188,7 @@ export default {
     WorkplaceInfoGrid,
     WorkplaceDetailInfoGrid,
     buttonList,
-    Modal,
+    upModal,
     tableColumnsData,
 
   },
@@ -221,6 +223,7 @@ export default {
       selectedRowForUpdate: '',
       form: [],
       name: '',
+      selectedTable: '',
     }
   },
 
@@ -248,7 +251,10 @@ export default {
       console.log("this.selectedRow")
 
     },
-
+    updateSet(item){
+      this.selectedTable = item
+      console.log(this.selectedTable+"테이블셋")
+    },
     selectedForUpdate(item){
       this.selectedRowForUpdate = Object.entries(item[0])
     },

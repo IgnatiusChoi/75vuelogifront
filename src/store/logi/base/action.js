@@ -16,7 +16,11 @@ import {
   searchClientDetailList,
   searchFinanceList,
   searchFinanceDetailList,
-  deleteCode
+  deleteCode,
+  updateClient,
+  insertFinance,
+  updateFinance,
+  deleteFinance
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
@@ -141,9 +145,37 @@ export default {
       throw new Error(err)
     }
   },
+  async UPDATE_CLIENT({commit}, data) {
+    try {
+      await updateClient(data);
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
   async DELETE_CLIENT({commit}, data) {
     try {
       await deleteClient(data);
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async INSERT_FINANCE({commit}, data) {
+    try {
+      await insertFinance(data);
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async UPDATE_FINANCE({commit}, data) {
+    try {
+      await updateFinance(data);
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async DELETE_FINANCE({commit}, data) {
+    try {
+      await deleteFinance(data);
     } catch (err) {
       throw new Error(err)
     }

@@ -26,7 +26,7 @@ function getWarehouseList() {
 }
 //창고삭제
 function deleteWarehouseList(payload) {
-  return logiApi.post('/base/warehousebatchListProcess2', payload)
+  return logiApi.post('/base/warehousebatchListProcess', payload)
 }
 //회사 정보 조회
 function getCompanyInfo(){
@@ -68,9 +68,20 @@ function searchFinanceDetailList(payload){
 function insertClient(data){
   return logiApi.post('base/insertClient',data)
 }
-
+function updateClient(data){
+  return logiApi.post('base/updateClient',data)
+}
 function deleteClient(data){
   return logiApi.post('base/deleteClient',data)
+}
+function insertFinance(data){
+  return logiApi.post('base/insertFinance',data)
+}
+function updateFinance(data){
+  return logiApi.post('base/updateFinance',data)
+}
+function deleteFinance(data){
+  return logiApi.post('base/deleteFinance',data)
 }
 function searchCodeList(){
   return logiApi.get('base/searchCodeList')
@@ -91,7 +102,8 @@ function searchItemGroupList(){
 export {
   searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
   insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode, searchItemList, searchItemGroupList,
-  searchClientDetailList, searchFinanceList, searchFinanceDetailList, deleteCode
+  searchClientDetailList, searchFinanceList, searchFinanceDetailList, deleteCode, updateClient, insertFinance, updateFinance,
+  deleteFinance
 }
 
 
