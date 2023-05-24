@@ -41,15 +41,15 @@ export const openMrp = [
 ]
 
 export const mrpGatherList = [
-  { key: 'mrpNo', label: '소요량전개번호' },
-  { key: 'mpsNo', label: '주생산계획번호' },
+  { key: 'mrpNo', label: 'MRP번호' },
   { key: 'itemClassification', label: '품목분류' },
   { key: 'itemCode', label: '품목코드' },
   { key: 'itemName', label: '품목명' },
-  { key: 'orderDate', label: '발주/작업지시 기한' },
-  { key: 'requiredDate', label: '발주/작업지시완료 기한' },
+  { key: 'orderDate', label: '요청일자' },
+  { key: 'requiredDate', label: '소요일자' },
   { key: 'requiredAmount', label: '필요수량' },
-  { key: 'unitOfMrp', label: '단위' },
+  { key: 'mrpGatheringStatus', label: '취합 적용상태' },
+
 ]
 
 export const mrpGatherResultList = [
@@ -57,8 +57,8 @@ export const mrpGatherResultList = [
   { key: 'itemCode', label: '품목코드' },
   { key: 'itemName', label: '품목명' },
   { key: 'unitOfMrpGathering', label: '단위' },
-  { key: 'claimDate', label: '발주/작업지시기한' },
-  { key: 'dueDate', label: '발주/작업지시완료기한' },
+  { key: 'claimDate', label: '지시일' },
+  { key: 'dueDate', label: '납기일' },
   { key: 'necessaryAmount', label: '필요수량' },
 ]
 

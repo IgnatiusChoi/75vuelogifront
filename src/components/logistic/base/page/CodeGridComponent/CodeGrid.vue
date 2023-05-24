@@ -56,15 +56,19 @@
           v-if="tableEditModal"
           :table-row-data="tableColumnsData"
           @close="closeEditModal"
-          @input-modal="inputModal"
-          @ok="inputDataModal"
+      />
+      <upModal
+          v-if="updateModal"
+          :update-data="selected"
+          @close="closeUpdateModal"
       />
     </transition>
   </b-card>
 </template>
+<!--@ok="inputDataModal"-->
 
 <script>
-
+import upModal from "@/components/common/modal/UpdateCodeModal.vue"
 import TableEditModal from "@/components/common/modal/TableEditModal.vue";
 import BCardCode from "@core/components/b-card-code/BCardCode.vue";
 import {
@@ -85,6 +89,7 @@ import {mapMutations, mapState} from "vuex";
 
 export default{
   components: {
+    upModal,
     TableEditModal,
     BCardCode,
     BTableLite,
@@ -135,6 +140,8 @@ export default{
       ],
       componentState: '',
       tableEditModal: false,
+      updateModal: false,
+      selected: ''
     }
   },
   watch: {
@@ -151,10 +158,10 @@ export default{
           e.clickEvent = this.addButton
         } else if (e.event === 'search') {
           e.clickEvent = this.searchButton
+        } else if (e.event === 'update') {
+          e.clickEvent = this.updateButton
         } else if (e.event === 'delete') {
           e.clickEvent = this.deleteButton
-        } else if (e.event === 'save') {
-          e.clickEvent = this.saveButton
         }
       })
     }
@@ -170,45 +177,51 @@ export default{
     } */
   },
   methods: {
-    ...mapMutations('logi/base', ['ADD_DIVISION_CODE_NO']),
+    // ...mapMutations('logi/base', ['ADD_DIVISION_CODE_NO']),
     addButton() {
       console.log('추가버튼')
       this.tableEditModal = true
     },
-    saveButton() {
-      console.log('저장버튼')
-      this.$emit('regist-data')
+    updateButton() {
+      console.log('수정')
+      this.updateModal = true
     },
     searchButton() {
-      console.log('조회버튼')
-      this.$emit('find-data')
+      console.log('조회')
+      this.$store.dispatch('logi/base/SEARCH_CODE_LIST')
     },
     deleteButton(){
       console.log('삭제버튼')
-      let divisionCodeNo=this.divisionCodeNo
-      if(!divisionCodeNo){
+      if(!this.selectData||this.selectData.divisionCodeNo===undefined){
         alert("행을 눌러요")
         return
       }
-      this.$emit('delete-data', divisionCodeNo)
+      const data={
+        divisionCodeNo: this.selectData.divisionCodeNo,
+        codeType: this.selectData.codeType,
+        divisionCodeName: this.selectData.divisionCodeName,
+        codeChangeAvailable: this.selectData.codeChangeAvailable,
+        description: this.selectData.description,
+        status: 'DELETE'
+      }
+      console.log(data)
+      this.$store.dispatch('logi/base/deleteCode',data)
+          .then(this.$swal.fire(
+              '삭제 완료!',
+              '코드 삭제가 완료되었습니다.',
+              'success',
+          ))
     },
     onRowSelected(val) {
-      this.$emit('row-selected',val)
+      this.selected=val[0]
+      this.selectData=val[0]
+      console.log('클릭하고',this.selectData)
     },
     closeEditModal(){
       this.tableEditModal = false
     },
-    inputModal(rowData) {
-      const row = {}
-      row.rowData = rowData
-      console.log("모달 rowData:::",row.rowData)
-      row.gridType = this.gridType
-      console.log("모달 gridType:::",row.gridType)
-      this.$emit('input-modal', rowData)
-      console.log('마지막emit::',rowData)
-      console.log('코드리스트',this.codeList)
-      this.tableEditModal = false
-      this.ADD_DIVISION_CODE_NO(rowData) //확인하기
+    closeUpdateModal(){
+      this.updateModal = false
     },
     inputDataModal(){
 
@@ -229,3 +242,9 @@ export default{
 @import '../../../../../assets/scss/modal';
 @import '../../../../../assets/scss/scrollStyle';
 </style>
+
+
+<!--console.log('마지막emit::',rowData)-->
+<!--console.log('코드리스트',this.codeList)-->
+<!--this.tableEditModal = false-->
+<!--// this.ADD_DIVISION_CODE_NO(rowData) //확인하기-->

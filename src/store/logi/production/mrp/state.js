@@ -1,19 +1,18 @@
-import mutations from '@/store/logi/production/mrp/mutation';
-import actions from '@/store/logi/production/mrp/action';
-export class Mrp {
-    constructor() {
-        this.mpsList = [];
-        this.mrpList = [];
-        this.getMrpGatherList = [];
-        this.mrpResultList = [];
-        this.mrpNoAndItemCodeList = Object;
-        this.searchMrpGatheringList = [];
-    }
-}
-const Production = {
+
+import mutations from './mutation'
+import actions from '@/store/logi/production/mrp/action.js'
+
+export default {
     namespaced: true,
-    state: new Mrp(),
+    state : {
+        mpsList : [],
+        mrpList : [],
+        getMrpGatherList : [],
+        mrpResultList : [],
+        mrpNoAndItemCodeList : [],
+        searchMrpGatheringList : [],
+    },
+
     mutations,
     actions,
-};
-export default Production;
+}

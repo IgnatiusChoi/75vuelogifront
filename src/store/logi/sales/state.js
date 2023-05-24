@@ -12,6 +12,7 @@ export default {
     tableColumns: [],
     detailTableColumns: [],
     editEstimateDetail: [],
+    salesplan:[],
   },
   getters: {
   },

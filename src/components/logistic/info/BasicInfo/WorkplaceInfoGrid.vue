@@ -141,6 +141,7 @@ export default {
 
       this.$emit('selected-item', items[0].workplaceCode);
       this.$emit('selected-for-update', items)
+      this.$emit('update-set', items[0])
       this.$store.dispatch('logi/compInfo/SEARCH_WORKPLACE', items[0].workplaceCode)
     },
   },

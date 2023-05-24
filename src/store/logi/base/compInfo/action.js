@@ -6,8 +6,7 @@ import {
   searchClientList,
   deleteWorkplace,
   insertWorkplace,
-  updateWorkplace
-
+  updateWorkplace,
 } from "@/api/logi/compinfo";
 // 액션을 위한 api 통신 대상
 
@@ -67,16 +66,7 @@ export default {
 
   /** 사업장 수정 **/
   async UPDATE_WORKPLACE(_, payload) {
-    const result = {};
-    for (let i = 0; i < payload.length && i < 22; i++) {
-      const key = payload[i][0];
-      const value = payload[i][1];
-      result[key] = value;
-    }
-
-    console.log(result)
-    console.log("result")
-    await updateWorkplace(result);
+    await updateWorkplace(payload);
   },
 
 

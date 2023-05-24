@@ -2,12 +2,12 @@
   <div class="paymentModal">
     <div class="overlay" />
     <div
-      class="card"
-      style=" min-height:300px; min-width: 500px; max-width: 80vw; border-radius: 10px;"
+        class="card"
+        style=" min-height:300px; min-width: 500px; max-width: 80vw; border-radius: 10px;"
     >
       <b-card-header
-        class="header"
-        style="padding:13px 10px 0 0"
+          class="header"
+          style="padding:13px 10px 0 0"
       >
         <h4 style="margin:auto">
           추가할 행의 데이터를 적어주십시오.
@@ -30,7 +30,7 @@
         </b-col>
       </b-row>
       <b-row class="my-1">
-      <b-col sm="4" class="text-sm-center" style="font-size: 1.1rem;"> <span style="color:red">*</span>&nbsp;코드타입</b-col>
+        <b-col sm="4" class="text-sm-center" style="font-size: 1.1rem;"> <span style="color:red">*</span>&nbsp;코드타입</b-col>
         <b-col sm="7">
           <b-form-select
               class="text-sm-center"
@@ -58,7 +58,7 @@
               style="font-size: 1.2rem;"
               v-model="divisionCodeName"
               placeholder="코드이름"
-              >
+          >
           </b-form-input>
         </b-col>
       </b-row>
@@ -90,25 +90,25 @@
               style="font-size: 1.2rem;"
               v-model="description"
               placeholder="구분"
-              >
+          >
           </b-form-input>
         </b-col>
       </b-row>
 
       <b-card-footer class="modal-footer">
         <b-button
-          variant="primary"
-          size="md"
-          class="mb-md-1"
-          @click="closeModal"
+            variant="primary"
+            size="md"
+            class="mb-md-1"
+            @click="closeModal"
         >
           취소
         </b-button>
         <b-button
-          variant="primary"
-          size="md"
-          class="mb-md-1"
-          @click="inputModal"
+            variant="primary"
+            size="md"
+            class="mb-md-1"
+            @click="inputModal"
         >
           입력
         </b-button>
@@ -138,14 +138,14 @@ export default {
     BInputGroup,
     BInputGroupAppend,
   },
-  props: ['tableRowData'],
+  props: ['updateData'],
   data() {
     return {
-      divisionCodeNo: '',
-      codeType: '',
-      divisionCodeName: '',
-      codeChangeAvailable: '',
-      description: '',
+      divisionCodeNo: this.updateData.divisionCodeNo,
+      codeType: this.updateData.codeType,
+      divisionCodeName: this.updateData.divisionCodeName,
+      codeChangeAvailable: this.updateData.codeChangeAvailable,
+      description: this.updateData.description,
       codeTypeOption: [
         { value: '공통', text: '공통' },
         { value: '회계', text: '회계' },
@@ -174,19 +174,19 @@ export default {
         return
       }
       const data={
-        divisionCodeNo: null,
+        divisionCodeNo: this.divisionCodeNo,
         codeType: this.codeType,
         divisionCodeName: this.divisionCodeName,
         codeChangeAvailable: this.codeChangeAvailable,
         description: this.description,
-        status: 'INSERT'
+        status: 'UPDATE'
       }
       console.log(data)
       this.closeModal()
       this.$store.dispatch('logi/base/addCode',data)
           .then(this.$swal.fire(
-              '등록 완료!',
-              '코드 등록이 완료되었습니다.',
+              '수정 완료!',
+              '코드 수정이 완료되었습니다.',
               'success',
           ))
     },
@@ -194,32 +194,32 @@ export default {
 }
 </script>
 <style lang="scss">
-    @import '../../../assets/scss/modal';
-    #scrollStyle::-webkit-scrollbar-track
-    {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      background-color: rgba(50,60,150,1);
-      border-radius: 10px;
-      box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
-    }
+@import '../../../assets/scss/modal';
+#scrollStyle::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: rgba(50,60,150,1);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgba(50,50,150,1);
+}
 
-    #scrollStyle::-webkit-scrollbar
-    {
-      width: 10px;
-      background-color: rgba(50,50,150,0);
-    }
+#scrollStyle::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: rgba(50,50,150,0);
+}
 
-    #scrollStyle::-webkit-scrollbar-thumb
-    {
-      background-clip: padding-box;
-      border: 4px solid transparent;
-      border-radius: 10px;
-      /*    background-image: -webkit-gradient(linear,
-      left bottom,
-      left top,
-      color-stop(0.44, rgb(122,153,217)),
-      color-stop(0.72, rgb(73,125,189)),
-      color-stop(0.86, rgb(28,58,148)));*/
-      background-color: #7367f0;
-    }
+#scrollStyle::-webkit-scrollbar-thumb
+{
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  /*    background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.44, rgb(122,153,217)),
+  color-stop(0.72, rgb(73,125,189)),
+  color-stop(0.86, rgb(28,58,148)));*/
+  background-color: #7367f0;
+}
 </style>

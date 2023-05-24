@@ -5,6 +5,7 @@ export default {
   namespaced: true,
   state: {
     itemList: [],
+    itemGroupList: [],
     codeList: [],
 
     companyCode:[],
@@ -20,8 +21,9 @@ export default {
     detailTableColumns: [],
     companyInfo: [],
     nClientList: [],
+    nClientDetailList: [],
     fClientList: [],
-
+    fClientDetailList: [],
 
   },
   getters: {
