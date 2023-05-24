@@ -95,6 +95,24 @@ function deleteCode(payload){
 function searchItemList(){
   return logiApi.get('base/searchItemList')
 }
+function insertItem(payload){
+  return logiApi.post('base/itemBatchListProcess',payload)
+}
+function updateItem(payload){
+  return logiApi.post('base/itemBatchListProcess',payload)
+}
+function deleteItem(payload){
+  return logiApi.post('base/itemBatchListProcess',payload)
+}
+function insertItemGroup(payload){
+  return logiApi.post('base/itemGroupBatchListProcess',payload)
+}
+function updateItemGroup(payload){
+  return logiApi.post('base/itemGroupBatchListProcess',payload)
+}
+function deleteItemGroup(payload){
+  return logiApi.post('base/itemGroupBatchListProcess',payload)
+}
 function searchItemGroupList(){
   return logiApi.get('base/searchItemGroupList')
 }
@@ -103,7 +121,7 @@ export {
   searchItem, getStandardUnitPrice,getWarehouseList,getWarehouseDetailList, deleteWarehouseList,getDeptInfo,SelectCompanyCode,
   insertClient, deleteClient, searchClientList, getCompanyInfo, searchCodeList, addCode, searchItemList, searchItemGroupList,
   searchClientDetailList, searchFinanceList, searchFinanceDetailList, deleteCode, updateClient, insertFinance, updateFinance,
-  deleteFinance
+  deleteFinance, insertItem, updateItem, deleteItem, insertItemGroup, updateItemGroup, deleteItemGroup
 }
 
 
