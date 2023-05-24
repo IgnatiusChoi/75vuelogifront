@@ -94,41 +94,48 @@ function registerMrp(payload) {
 /*****************
      소요량취합
  *****************/
-// MrpGather Tab 조회
+
+/**
+ *   품목별 조달계획 디폴트 테이블
+ */
 function mrpGatherList(payload) {
-  return logiApi.get('/logistics/production/getMrpList', {
+  return logiApi.get('/logistics/production/mrpGathering/getMrpList', {
     params: {
       mrpGatheringStatusCondition: payload.mrpGatheringStatusCondition,
     },
   })
 }
 
-// MrpGather 결과 조회
+/**
+ *   품목별 소요량 취합 실행 버튼
+ */
 function mrpGatherResultList(payload) {
-  return logiApi.get('/logistics/production/getMrpGatheringList', {
+  return logiApi.get('/logistics/production/mrpGathering/getMrpGatheringList', {
     params: {
       mpsNoList: payload,
     },
   })
 }
 
-// 취합 결과 등록
+/**
+ *   소요량 취합 실행 모달 -> 소요량 취합 등록 버튼
+ */
 function gatherResultRegist(payload) {
-  return logiApi.put('/logistics/production/registerMrpGathering', payload, axiosConfig)
-}
-function showWorkInfoList() {
-  return logiApi.get('/production/showWorkOrderInfoList')
+  return logiApi.put('/logistics/production/mrpGathering/registerMrpGathering', payload, axiosConfig)
 }
 
 // 소요량취합 조회
 function searchMrpGathering(payload) {
-  return logiApi.get('/logistics/production/searchMrpGathering', {
+  return logiApi.get('/logistics/production/mrpGathering/searchMrpGathering', {
     params: {
       searchDateCondition: payload.searchDateCondition,
       startDate: payload.startDate,
       endDate: payload.endDate,
     },
   })
+}
+function showWorkInfoList() {
+  return logiApi.get('/production/showWorkOrderInfoList')
 }
 
 //작업지시 필요항목 조회

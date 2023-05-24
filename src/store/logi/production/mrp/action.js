@@ -56,7 +56,6 @@ export default {
   /**
    * MRP 등록
    */
-
   async REGISTER_MRP(_, payload) {
     try {
       const { data } = await registerMrp(payload)
@@ -69,7 +68,10 @@ export default {
     }
   },
 
-  // 소요량취합 Tab TableList
+
+  /**
+   * 품목별 조달 계획 디폴트 테이블
+   */
   async SEARCH_MRP_GATHER_LIST_REQUEST({ commit }, payload) {
     try {
       const { data } = await mrpGatherList(payload)
@@ -83,7 +85,9 @@ export default {
     }
   },
 
-  // MrpGather 결과 조회
+  /**
+   * 품목별 조달 계획 - 소요량 취합 실행 버튼
+   */
   async SEARCH_MRP_GATHER_RESULT_LIST({ commit }, payload) {
     try {
       const { data } = await mrpGatherResultList(payload)
@@ -97,7 +101,9 @@ export default {
     }
   },
 
-  // 취합 결과 등록
+  /**
+   * 품목별 조달 계획 - 소요량 취합 실행 버튼 - 취합 결과 등록 버튼
+   */
   async GATHER_RESULT_REGIST(_, payload) {
     try {
       const { data } = await gatherResultRegist(payload)

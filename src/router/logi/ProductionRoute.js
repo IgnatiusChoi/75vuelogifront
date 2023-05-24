@@ -11,7 +11,7 @@ const ProductionRoute = [
           text: '생산관리',
         },
         {
-          text: '주생산계획(mps)',
+          text: '주생산계획(MPS)',
         },
       ],
     },
@@ -22,16 +22,16 @@ const ProductionRoute = [
     name: 'mrpRegister',
     component: () => import('@/views/logistic/production/mrp/MrpRegisterPage'),
     meta: {
-      pageTitle: '소요량전개 등록/취합',
+      pageTitle: '소요량전개',
       breadcrumb: [
         {
           text: '생산관리',
         },
         {
-          text: '소요량전개/취합(MRP)',
+          text: '소요량전개(MRP)',
         },
         {
-          text: '소요량전개 등록/취합(MRP)',
+          text: '소요량전개',
         },
       ],
     },

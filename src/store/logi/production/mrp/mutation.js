@@ -12,7 +12,7 @@ export default {
     state.mrpList = mrpList
   },
 
-  // 소요량취합 탭 눌렀을 시
+  // 품목별 조달구분 탭 눌렀을 시
   SET_MRP_GATHER_LIST(state, mrpGatherList) {
     const mrpNoAndItemCodeList = {}
     const size = mrpGatherList.length
@@ -24,6 +24,7 @@ export default {
 
     state.mrpNoAndItemCodeList = mrpNoAndItemCodeList
     state.getMrpGatherList = mrpGatherList
+
   },
 
   SET_MRP_RESULT_LIST(state, mrpResultList) {

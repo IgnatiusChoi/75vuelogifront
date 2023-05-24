@@ -12,7 +12,7 @@
           />
           <span class="d-none d-sm-inline">MRP 등록</span>
         </template>
-        <!--  내용물 컴포넌트       -->
+        <!--  내용물 컴포넌트   -->
         <MrpRegister />
       </b-tab>
 
@@ -23,7 +23,7 @@
             size="16"
             class="mr-0 mr-sm-50"
           />
-          <span class="d-none d-sm-inline">소요량취합</span>
+          <span class="d-none d-sm-inline">품목별 조달 계획</span>
         </template>
 
         <MrpGather

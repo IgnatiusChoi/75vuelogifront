@@ -46,7 +46,7 @@
           value="dueDate"
           inline
         >
-          발주/작업지시 완료기한
+          발주/작업지시 완료기
         </b-form-radio>
       </b-form-group>
     </div>
