@@ -20,7 +20,13 @@ import {
   updateClient,
   insertFinance,
   updateFinance,
-  deleteFinance
+  deleteFinance,
+    insertItem,
+    updateItem,
+    deleteItem,
+    insertItemGroup,
+    updateItemGroup,
+    deleteItemGroup
 } from '@/api/logi/base'
 import {selectSlips} from "@/api/account/account";
 import {searchDeptList} from "@/api/logi/compinfo";
@@ -196,6 +202,54 @@ export default {
       console.log(Array.from(data))
       commit('SET_CODE', data.codeList)
       return data
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async INSERT_ITEM({commit},payload){
+    try {
+      const {data} = await insertItem(payload)
+      return null
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async UPDATE_ITEM({commit},payload){
+    try {
+      const {data} = await updateItem(payload)
+      return null
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async DELETE_ITEM({commit},payload){
+    try {
+      const {data} = await deleteItem(payload)
+      return null
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async INSERT_ITEM_GROUP({commit},payload){
+    try {
+      const {data} = await insertItemGroup(payload)
+      return null
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async UPDATE_ITEM_GROUP({commit},payload){
+    try {
+      const {data} = await updateItemGroup(payload)
+      return null
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  async DELETE_ITEM_GROUP({commit},payload){
+    try {
+      const {data} = await deleteItemGroup(payload)
+      return null
     } catch (err) {
       throw new Error(err)
     }

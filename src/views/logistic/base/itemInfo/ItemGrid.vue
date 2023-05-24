@@ -3,9 +3,9 @@
     <h1> 품목 관리 </h1>
 
     <b-button variant="primary" class="mr-1" @click="searchItemList">조회</b-button>
-    <b-button variant="primary" class="mr-1" @click="null">추가</b-button>
-    <b-button variant="primary" class="mr-1" @click="">수정</b-button>
-    <b-button variant="primary" class="mr-1" @click="null">삭제</b-button>
+    <b-button variant="primary" class="mr-1" @click="OpenAddModal">추가</b-button>
+    <b-button variant="primary" class="mr-1" @click="OpenUpdateModal">수정</b-button>
+    <b-button variant="primary" class="mr-1" @click="deleteItem">삭제</b-button>
     <div>
       <b-table
           style="max-height: 300px; overflow: auto; width: 100%"
@@ -15,9 +15,13 @@
           :items="itemList"
           :fields="this.tableColumns"
           class="mb-0 scrollStyle"
+          @row-selected="onRowSelected"
       />
     </div>
+    <addModal v-if="addModalPage" @close="addModalPage=false"></addModal>
+    <updateModal v-if="updateModalPage" @close="updateModalPage=false" :itemTable="selectedItem"></updateModal>
   </div>
+
 </template>
 <script>
 import {
@@ -25,6 +29,8 @@ import {
   BBadge, BDropdown, BDropdownItem, BPagination, BTooltip, BFormDatepicker, BInputGroup, BInputGroupAppend, BTab, BTabs,
 } from 'bootstrap-vue'
 import { mapState } from 'vuex'
+import addModal from '@/components/logistic/base/page/ItemInfo/AddItemModal.vue'
+import updateModal from '@/components/logistic/base/page/ItemInfo/UpdateItemModal.vue'
 export default {
   components: {
     BCard,
@@ -47,6 +53,8 @@ export default {
     BFormRadioGroup,
     BCardText,
     BTab, BTabs,
+    addModal,
+    updateModal
   },
   data() {
     return {
@@ -61,7 +69,10 @@ export default {
           { key: 'standardUnitPrice', label: '표준단가', sortable: true },
           { key: 'description', label: '비고', sortable: true },
         ],
-        selectMode: 'single'
+        selectMode: 'single',
+        selectedItem: '',
+        addModalPage: false,
+        updateModalPage: false
       }
   },
   setup() {
@@ -72,8 +83,28 @@ export default {
     ...mapState('logi/base', ['itemList'])
   },
   methods: {
+    OpenAddModal(){
+      this.addModalPage=true
+    },
+    OpenUpdateModal(){
+      this.updateModalPage=true
+    },
     searchItemList(){
       this.$store.dispatch('logi/base/searchItemList')
+    },
+    onRowSelected(item){
+      this.selectedItem=item[0]
+      console.log(this.selectedItem)
+    },
+    deleteItem(){
+      const payload = this.selectedItem
+      payload.status="DELETE"
+      console.log(payload)
+      this.$store.dispatch('logi/base/DELETE_ITEM',payload).then(this.$swal.fire(
+          '삭제 완료!',
+          '품목 삭제가 완료되었습니다.',
+          'success',
+      ))
     }
   },
   mounted() {

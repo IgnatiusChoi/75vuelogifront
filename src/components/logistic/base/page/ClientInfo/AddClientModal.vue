@@ -75,7 +75,7 @@
                 placeholder="거래처대표자명">
             </b-form-input>
           </b-col>
-          <b-col sm="2" class="text-sm-center" style="font-size: 1.1rem;">사업자등록번호</b-col>
+          <b-col sm="2" class="text-sm-center" style="font-size: 1.1rem;">사업자<br/>등록번호</b-col>
           <b-col sm="4">
             <b-form-input
                 class="text-sm-center"
