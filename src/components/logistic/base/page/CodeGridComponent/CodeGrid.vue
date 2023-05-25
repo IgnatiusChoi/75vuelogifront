@@ -69,7 +69,7 @@
 
 <script>
 import upModal from "@/components/common/modal/UpdateCodeModal.vue"
-import TableEditModal from "@/components/common/modal/TableEditModal.vue";
+import TableEditModal from "@/components/logistic/base/page/CodeGridComponent/InsertCode.vue";
 import BCardCode from "@core/components/b-card-code/BCardCode.vue";
 import {
   BAvatar,
