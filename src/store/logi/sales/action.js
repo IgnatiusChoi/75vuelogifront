@@ -1,8 +1,21 @@
 import {
-  searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract,
-  searchDeliverableContractList, addNewEstimate,Selectsalesplane,InsertSalesplan,searchInputContract
+  searchEstimateInfo,
+  searchContract,
+  searchContractDetail,
+  searchEstimateInContractAvailable,
+  searchEstimateDetailInfo,
+  addNewContract,
+  searchDeliverableContractList,
+  addNewEstimate,
+  Selectsalesplane,
+  InsertSalesplan,
+  searchInputContract,
+  UpdateSalesplan,
+  delivery,
+
 } from '@/api/logi/sales'
 import {SelectDepartmentCode} from "@/api/logi/base";
+import async from "async";
 
 export default {
   async searchContract({ commit }, date) {
@@ -91,6 +104,18 @@ export default {
     }
   },
 
+  async deliverycontractDetailTOList({commit},payload){
+    console.log("딜리버리액션",payload)
+
+
+    try {
+      const res = await delivery(payload)
+
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+
   async ADD_NEW_ESTIMATE({ commit }, newEstimate) {
     try {
       await addNewEstimate(newEstimate)
@@ -113,7 +138,6 @@ export default {
   },
 
   async INSERT_SALES_PLAN({ commit }, payload) {
-    console.log('INSERT_SALES_PLAN???');
     try {
       const response = await InsertSalesplan(payload);
       console.log(response); // 응답 확인
@@ -121,7 +145,15 @@ export default {
     } catch (error) {
       throw new Error(error);
     }
-  }
+  },
 
+  async UPDATE_SALES_PLAN({ commit }, payload) {
+    try{
+      const resaponse = await UpdateSalesplan(payload);
+     console.log(resaponse);
+    }catch(error){
+      throw new Error(error);
+    }
+  },
 
 }

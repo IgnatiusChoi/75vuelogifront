@@ -1,0 +1,20 @@
+<template>
+  <div>
+    <b-button
+        variant="primary"
+        size="md"
+        class="mr-1"
+        @click="$emit('add')"
+    >
+      추가
+    </b-button>
+
+    <b-button
+          variant="primary"
+          size="md"
+          @click="$emit('update')"
+    >
+      수정
+    </b-button>
+  </div>
+</template>

@@ -155,7 +155,7 @@ import vSelect from 'vue-select'
 import SearchCustomerCode from '@/components/logistic/sales/SearchCustomerComponent'
 import TableEditModal from '@/components/common/modal/TableEditModal'
 
-export default {
+export default             {
   components: {
     TableEditModal,
     BCardCode,

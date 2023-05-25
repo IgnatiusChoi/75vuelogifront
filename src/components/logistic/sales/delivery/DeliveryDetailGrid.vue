@@ -48,6 +48,7 @@ import BCardCode from '@core/components/b-card-code/BCardCode.vue'
 import { mapActions, mapState, mapGetters } from 'vuex'
 import vSelect from 'vue-select'
 import CommonModal from '@/components/common/modal/CommonModal'
+import detailGrid from "@/components/logistic/sales/gridComponent/DetailGrid.vue";
 
 export default {
   components: {
@@ -81,10 +82,13 @@ export default {
       detailGrid: state => state.logi.sales.detailGrid,
       detailTableColumns: state => state.logi.sales.detailTableColumns,
     }),
-  },
+  }
+
+,
   watch: {
   },
   methods: {
+
     onRowSelected(items) {
       console.log(items[0])
       this.selected = items[0]

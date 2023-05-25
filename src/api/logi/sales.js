@@ -101,7 +101,23 @@ function InsertSalesplan(payload) {
   return logiApi.post('/sales/Insertsalesplan', payload);
 }
 
+function UpdateSalesplan(payload) {
+  console.log("upup");
+  console.log(payload)
+   logiApi.post('/sales/UpdateSalesplan',payload)
+}
+
+function delivery(payload) {
+  console.log("delivery");
+  console.log(payload);
+    logiApi.post('/sales/delivery',
+        {"contractDetailNo":payload}
+
+  )
+}
+
+
 export {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract, addNewEstimate,
-  searchDeliverableContractList,Selectsalesplane,InsertSalesplan,searchInputContract
+  searchDeliverableContractList,Selectsalesplane,InsertSalesplan,searchInputContract,UpdateSalesplan,delivery
 }
