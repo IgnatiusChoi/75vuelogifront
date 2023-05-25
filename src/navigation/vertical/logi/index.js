@@ -15,7 +15,7 @@ export default [
   },
   ...logisticsInfo,
   ...salesMenu,
-  ...outsource,
   ...production,
   ...purchase,
+  ...outsource,
 ]

@@ -1,6 +1,6 @@
 export default [
   {
-    title: '외주관리',
+    title: '외주 관리',
     icon: 'TruckIcon',
     children: [
       {

@@ -184,7 +184,6 @@ export default {
     },
   },
 
-
   methods: {
     ...mapActions('logi/mrp', ['SEARCH_MRP_GATHER_LIST_REQUEST', 'SEARCH_MRP_GATHER_RESULT_LIST', 'GATHER_RESULT_REGIST']),
     alert(msg) {
@@ -214,9 +213,6 @@ export default {
           mpsNoList.push(this.orderTable[mpsNumber].mrpNo)
         }
        this.orderGatherResult = await this.SEARCH_MRP_GATHER_RESULT_LIST(mpsNoList.toString())
-        console.log(this.orderGatherResult.gridRowJson)
-        console.log("orderGatherResult")
-
       }
 
       //생산탭 일때
@@ -226,15 +222,7 @@ export default {
           mpsNoList.push(this.productTable[mpsNumber].mrpNo)
         }
         this.productGatherResult = await this.SEARCH_MRP_GATHER_RESULT_LIST(mpsNoList.toString())
-        console.log(this.productGatherResult.gridRowJson)
-        console.log("productGatherResult")
       }
-    },
-
-    cancel(){
-      console.log(this.orderMrpNoAndItemCodeList)
-      console.log("this.orderMrpNoAndItemCodeList")
-
     },
 
     //모달창 취합 결과 등록
@@ -259,7 +247,6 @@ export default {
       else if(this.selectedTab == 1){
         const batchList = this.productGatherResult.gridRowJson
         const registDate = this.registDate
-
 
         const payload = {
           batchList,

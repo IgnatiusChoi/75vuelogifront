@@ -1,14 +1,14 @@
 <template>
   <div>
-    <MrpInfo />
+    <MrpGatheringInfo />
   </div>
 </template>
 <script>
-import MrpInfo from '@/components/logistic/production/mrp/MrpInfo.vue'
+import MrpGatheringInfo from '@/components/logistic/production/mrp/MrpGatheringInfo.vue'
 
 export default {
   components: {
-    MrpInfo,
+    MrpGatheringInfo,
   },
 }
 </script>

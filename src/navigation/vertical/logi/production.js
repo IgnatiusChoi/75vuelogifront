@@ -1,7 +1,7 @@
 export default [
 
   {
-    title: '생산관리',
+    title: '생산 관리',
     icon: 'CpuIcon',
     children: [
       {
@@ -16,7 +16,7 @@ export default [
             route: 'mrpRegister',
           },
           {
-            title: '소요량취합',
+            title: '소요량취합 결과 조회',
             route: 'mrpInfo',
           },
         ],
