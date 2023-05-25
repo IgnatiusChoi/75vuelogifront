@@ -29,7 +29,7 @@
             variant="primary"
             size="md"
             class="mr-1"
-            @click="addNewContract"
+            @click="delivery"
           >
             납품
           </b-button>
@@ -115,36 +115,29 @@ export default {
   mounted() {
   },
   data: () => ({
+    items : '',
     selected: '',
     selectMode: 'single',
     modal: false,
     contractTypeNameOption: [
       { value: 'CT-01', text: 'CT-01 | 수주일반' },
-      { value: 'CT-02', text: 'CT-02 | 긴급수주' },
+      { value: 'CT-02', text: 'CT-02 | 고추수주' },
     ],
   }),
   methods: {
     onRowSelected(items) {
-      console.log(items[0].contractDetailTOList)
+      console.log(items[0].contractDetailTOList[0].contractDetailNo)
+      this.items = items[0].contractDetailTOList[0].contractDetailNo
       this.$store.commit('logi/sales/setDetailGrid', items[0].contractDetailTOList)
-    },
+     },
     closeModal() {
       this.modal = false
     },
-    addNewContract() {
-      const today = new Date()
-
-      const year = today.getFullYear()
-      const month = (`0${today.getMonth() + 1}`).slice(-2)
-      const day = (`0${today.getDate()}`).slice(-2)
-
-      const dateString = `${year}-${month}-${day}`
-
-      const param = [{
-
-      }]
-      console.log(param)
-      this.$store.dispatch('logi/sales/addNewContract', param)
+    delivery() {
+      console.log(this.items)
+      this.detailGrid.forEach((item)=>{
+        this.$store.dispatch('logi/sales/deliverycontractDetailTOList',item.contractDetailNo)
+      })
     },
   },
 
