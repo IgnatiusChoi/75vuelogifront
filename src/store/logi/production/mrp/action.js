@@ -116,7 +116,9 @@ export default {
     }
   },
 
-  // 소요량취합 조회
+  /**
+   * 소요량 취합 결과 조회
+   */
   async SEARCH_MRP_GATHERING({ commit }, payload) {
     try {
       const { data } = await searchMrpGathering(payload)

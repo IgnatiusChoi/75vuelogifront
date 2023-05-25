@@ -124,7 +124,10 @@ function gatherResultRegist(payload) {
   return logiApi.put('/logistics/production/mrpGathering/registerMrpGathering', payload, axiosConfig)
 }
 
-// 소요량취합 조회
+/**
+ * 소요량취합 결과 조회
+ */
+
 function searchMrpGathering(payload) {
   return logiApi.get('/logistics/production/mrpGathering/searchMrpGathering', {
     params: {

@@ -34,6 +34,5 @@ export default {
   // 소요량취합 조회
   SET_SEARCH_MRP_GATHERING(state, searchMrpGathering) {
     state.searchMrpGatheringList = searchMrpGathering
-    console.log(state.searchMrpGatheringList)
   },
 }

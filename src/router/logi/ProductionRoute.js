@@ -41,16 +41,16 @@ const ProductionRoute = [
     name: 'mrpInfo',
     component: () => import('@/views/logistic/production/mrp/MrpInfoPage'),
     meta: {
-      pageTitle: '소요량전개/취합 조회',
+      pageTitle: '소요량취합 결과 조회',
       breadcrumb: [
         {
           text: '생산관리',
         },
         {
-          text: '소요량전개/취합(MRP)',
+          text: '소요량전개 (MRP)',
         },
         {
-          text: '소요량전개/취합 조회',
+          text: '소요량취합 결과 조회',
         },
       ],
     },

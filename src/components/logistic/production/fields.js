@@ -67,10 +67,9 @@ export const mrpInfoList = [
   { key: 'orderOrProductionStatus', label: '구매 및 생산여부' },
   { key: 'itemCode', label: '품목코드' },
   { key: 'itemName', label: '품목명' },
-  { key: 'unitOfMrpGathering', label: '단위' },
   { key: 'necessaryAmount', label: '필요수량' },
-  { key: 'dueDate', label: '납기일' },
   { key: 'claimDate', label: '지시일' },
+  { key: 'dueDate', label: '납기일' },
 ]
 
 export const workOrderList =[

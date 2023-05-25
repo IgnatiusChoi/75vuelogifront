@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="font-family: '배달의민족 도현';">
     <div>
       <b-button-group style="float: right">
         <b-button
@@ -18,14 +18,14 @@
         <b-form-group>
           <flat-pickr
             v-model="rangeDate"
-            placeholder="시작일 & 종료일"
-            class="form-control"
+            placeholder="조회 날짜 (기간)선택"
+            class="form-control custom-placeholder"
             :config="{ mode: 'range'}"
           />
         </b-form-group>
       </b-col>
     </div>
-    <div>
+    <div style="float: right; margin:  10px 0 0 0 ;">
       <b-form-group
         v-slot="{ ariaDescribedby }"
       >
@@ -36,7 +36,7 @@
           value="claimDate"
           inline
         >
-          발주/작업지시 기한
+          발주/작업 지시일
         </b-form-radio>
         <b-form-radio
           v-model="selected"
@@ -46,7 +46,7 @@
           value="dueDate"
           inline
         >
-          발주/작업지시 완료기
+          납기일
         </b-form-radio>
       </b-form-group>
     </div>
@@ -73,7 +73,7 @@ import ToastificationContent from '@core/components/toastification/Toastificatio
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'Mps',
+  name: 'MrpGatheringInfo',
   components: {
     BCol,
     flatPickr,
@@ -169,5 +169,10 @@ table.editable-table td {
 
 .is-active-col {
   width: 100px
+}
+
+.custom-placeholder::placeholder {
+  color: #ed5017;
+  text-align: center;
 }
 </style>
