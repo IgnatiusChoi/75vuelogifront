@@ -27,12 +27,34 @@ function searchContractDetailInMpsAvailable(payload) {
 }
 
 /**
- *  MPS 등록
+ *  수주 MPS 등록
  */
 
 function convertContractDetailToMps(payload) {
   return logiApi.post('/production/convertContractDetailToMps', payload)
 }
+
+/**
+ * MPS 등록가능 판매계획 조회
+ */
+function searchSalesPlanInMpsAvailable(payload) {
+  return logiApi.get('/production/searchSalesPlan', {
+    params: {
+      startDate: payload.startDate,
+      endDate: payload.endDate,
+      searchCondition: payload.searchCondition,
+    },
+  })
+}
+
+/**
+ *  판매계획 MPS 등록
+ */
+function convertSalesPlanToMps(payload) {
+  return logiApi.post('/production/convertSalesPlanToMps', payload[0])
+}
+
+
 
 /**
 
@@ -127,7 +149,6 @@ function gatherResultRegist(payload) {
 /**
  * 소요량취합 결과 조회
  */
-
 function searchMrpGathering(payload) {
   return logiApi.get('/logistics/production/mrpGathering/searchMrpGathering', {
     params: {
@@ -268,6 +289,8 @@ function productionPerformanceInfoList() {
 export {
   searchContractDetailInMpsAvailable,
   convertContractDetailToMps,
+  searchSalesPlanInMpsAvailable,
+  convertSalesPlanToMps,
   searchMpsList,
   searchMrpList,
   registerMrp,

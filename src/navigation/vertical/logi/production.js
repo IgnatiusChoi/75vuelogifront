@@ -6,7 +6,16 @@ export default [
     children: [
       {
         title: '주생산계획 (MPS)',
-        route: 'mps',
+        children: [
+          {
+            title: '수주->MPS',
+            route: 'contractRegistMps',
+          },
+          {
+            title: '판매계획->MPS',
+            route: 'salesPlanRegistMps',
+          }
+        ]
       },
       {
         title: '소요량전개 (MRP)',

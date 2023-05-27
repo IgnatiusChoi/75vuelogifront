@@ -1,9 +1,9 @@
 const ProductionRoute = [
 
   {
-    path: '/logi/production/mps',
-    name: 'mps',
-    component: () => import('@/views/logistic/production/mps/MpsPage'),
+    path: '/logi/production/contractRegistMps',
+    name: 'contractRegistMps',
+    component: () => import('@/views/logistic/production/mps/contractRegistMps.vue'),
     meta: {
       pageTitle: 'Mps 등록',
       breadcrumb: [
@@ -12,6 +12,28 @@ const ProductionRoute = [
         },
         {
           text: '주생산계획(MPS)',
+        },
+        {
+          text: '수주로 MPS 등록',
+        },
+      ],
+    },
+  },
+  {
+    path: '/logi/production/salesPlanRegistMps',
+    name: 'salesPlanRegistMps',
+    component: () => import('@/views/logistic/production/mps/salesPlanRegistMps.vue'),
+    meta: {
+      pageTitle: 'Mps 등록',
+      breadcrumb: [
+        {
+          text: '생산관리',
+        },
+        {
+          text: '주생산계획(MPS)',
+        },
+        {
+          text: '판매계획으로 MPS 등록',
         },
       ],
     },

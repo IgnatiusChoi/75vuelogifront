@@ -100,7 +100,7 @@ import ToastificationContent from '@core/components/toastification/Toastificatio
 import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
-  name: 'Mps',
+  name: 'contractRegistMps',
   components: {
     BEditableTable,
     BCol,
