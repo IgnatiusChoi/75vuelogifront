@@ -11,6 +11,21 @@ export const Mps = [
   { key: 'itemName', label: '품목명' , thClass:"text-center"},
 ]
 
+export const SalesPlanForMps = [
+  { key: 'salesPlanNo', label: '판매계획번호', thClass:"text-center" },
+  { key: 'itemCode', label: '품목코드', thClass:"text-center"},
+  { key: 'itemName', label: '품목명' , thClass:"text-center"},
+  { key: 'salesAmount', label: '판매계획수량' , thClass:"text-center"},
+  { key: 'unitPriceOfSales', label: '계획단가', thClass:"text-center" },
+  { key: 'sumPriceOfSales', label: '합계액' , thClass:"text-center"},
+  { key: 'salesPlanDate', label: '판매계획일' , thClass:"text-center"},
+  { key: 'dueDateOfSales', label: '판매계획마감일', thClass:"text-center" },
+  { key: 'mpsPlanDate', label: 'MPS 계획일', thClass:"text-center"},
+  { key: 'scheduledEndDate', label: '출하예정일', thClass:"text-center" },
+  { key: 'mpsApplyStatus', label: 'MPS 적용' , thClass:"text-center"},
+  { key: 'description', label: '비고' , thClass:"text-center"},
+]
+
 export const searchMpsList = [
   { key: 'mpsNo', label: '주생산계획번호' },
   { key: 'contractDetailNo', label: '수주상세일련번호' },

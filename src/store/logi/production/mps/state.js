@@ -7,6 +7,8 @@ export default {
     state: {
         contractDetailList: [],
         MpsCount:[],
+
+        salesPlanList: [],
     },
 
   mutations,

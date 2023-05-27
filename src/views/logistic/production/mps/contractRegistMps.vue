@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Mps />
+    <contractRegistMps />
     <hr/>
     <BarChart />
   </div>
 </template>
 <script>
-import Mps from '@/components/logistic/production/mps/Mps.vue'
+import contractRegistMps from '@/components/logistic/production/mps/contractRegistMps.vue'
 import BarChart from '@/components/common/chart/Chart.vue'
 
 export default {
   components: {
-    Mps,
+    contractRegistMps,
     BarChart
   },
 }
