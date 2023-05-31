@@ -19,9 +19,9 @@ export default {
     state.salesPlanList = salesPlanList
   },
 
-  SET_SALESPLAN_LIST(state, salesPlanList) {
+  SET_SALESPLAN_LIST(state, salesPlan) {
     if (state.salesPlanList.length > 1) {
-      const result = state.salesPlanList.filter((list) => list.contractDetailNo !== contractDetail.contractDetailNo);
+      const result = state.salesPlanList.filter((list) => list.salesPlanNo !== salesPlan.salesPlanNo);
       state.salesPlanList = result
     } else {
       state.salesPlanList = []

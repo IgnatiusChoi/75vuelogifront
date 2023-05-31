@@ -14,12 +14,27 @@ import {
 export default {
 
   /**
-   * MPS 계획일자 별 MPS 조회
+   * 수주로 MPS 등록 건 조회
    */
-  async SEARCH_MPS_LIST({ commit }, payload) {
+  async SEARCH_MPS_LIST_BY_CONTRACT({ commit }, payload) {
     try {
       const { data } = await searchMpsList(payload)
-      commit('SET_SEARCH_MPS_LIST', data.result)
+      commit('SET_MPS_LIST_BY_CONTRACT', data.result)
+      return data
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+      return null
+    }
+  },
+  /**
+   * 판매계획으로 MPS 등록 건 조회
+   */
+  async SEARCH_MPS_LIST_BY_SALESPLAN({ commit }, payload) {
+    try {
+      const { data } = await searchMpsList(payload)
+      commit('SET_MPS_LIST_BY_SALESPLAN', data.result)
       return data
     } catch (err) {
       if (err instanceof Error) {
@@ -122,7 +137,7 @@ export default {
   async SEARCH_MRP_GATHERING({ commit }, payload) {
     try {
       const { data } = await searchMrpGathering(payload)
-      commit('SET_SEARCH_MRP_GATHERING', data.gridRowJson)
+      commit('SET_SEARCH_MRP_GATHERING', data)
       return null
     } catch (err) {
       if (err instanceof Error) {

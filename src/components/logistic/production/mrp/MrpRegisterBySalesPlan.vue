@@ -46,7 +46,7 @@
           @change="closeUpdateModal"
       >
           <b-container>
-            <b-row class="my-1" v-for="(field,index) in searchMpsList" :key="index" style="font-family: '배달의민족 도현'">
+            <b-row class="my-1" v-for="(field,index) in searchMpsListBySalesPlan" :key="index" style="font-family: '배달의민족 도현'">
               <b-col sm="4" >
                 <label :for="`field-${field}`" class="label-font">{{ field.label }} &nbsp :</label>
               </b-col>
@@ -109,8 +109,8 @@
         hover
         selectable
         :select-mode="'single'"
-        :fields="searchMpsList"
-        :items="this.mpsListByContract"
+        :fields="searchMpsListBySalesPlan"
+        :items="this.mpsListBySalesPlan"
         @row-selected="handleInput"
       />
     </div>
@@ -124,7 +124,7 @@ import {
   BButton, BFormGroup, BTable,
 } from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
-import { openMrp, searchMpsList } from '@/components/logistic/production/fields'
+import {openMrp, searchMpsListBySalesPlan} from '@/components/logistic/production/fields'
 import { mapActions, mapState } from 'vuex'
 import ToastificationContent from '@core/components/toastification/ToastificationContent'
 
@@ -146,7 +146,7 @@ export default {
       isVisible: false,
       mpsUpdateModal: false,
       selectedMps: [{}],
-      searchMpsList,
+      searchMpsListBySalesPlan,
       openMrp,
       mrpRegisterDate: null,
       rangeDate: null,
@@ -155,10 +155,10 @@ export default {
     }
   },
   computed: {
-    ...mapState('logi/mrp', ['mpsListByContract', 'mrpList']),
+    ...mapState('logi/mrp', ['mpsListBySalesPlan', 'mrpList']),
   },
   methods: {
-    ...mapActions('logi/mrp', ['SEARCH_MPS_LIST_BY_CONTRACT', 'SEARCH_MRP_LIST', 'REGISTER_MRP', 'UPDATE_MPS']),
+    ...mapActions('logi/mrp', ['SEARCH_MPS_LIST_BY_SALESPLAN', 'SEARCH_MRP_LIST', 'REGISTER_MRP', 'UPDATE_MPS']),
     extractDate() {
       this.startDate = this.rangeDate.split('to')[0].trim()
       this.endDate = this.rangeDate.split('to')[1].trim()
@@ -183,7 +183,7 @@ export default {
       } else {
         this.extractDate()
         const payload = { startDate: this.startDate, endDate: this.endDate }
-        this.SEARCH_MPS_LIST_BY_CONTRACT(payload)
+        this.SEARCH_MPS_LIST_BY_SALESPLAN(payload)
         this.alert('조회 성공')
       }
     },
@@ -224,7 +224,7 @@ export default {
         this.alert('등록성공')
 
         const datePayload = { startDate: this.startDate, endDate: this.endDate }
-        this.SEARCH_MPS_LIST_BY_CONTRACT(datePayload)
+        this.SEARCH_MPS_LIST_BY_SALESPLAN(datePayload)
       }
     },
   },
