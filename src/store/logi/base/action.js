@@ -114,6 +114,7 @@ export default {
   async SEARCH_CLIENT_LIST({commit}) {
     try {
       const {data} = await searchClientList()
+      console.log(data.clientInfo)
       commit('SEARCH_CLIENT_LIST', data.clientInfo)
     } catch (err) {
       throw new Error(err)

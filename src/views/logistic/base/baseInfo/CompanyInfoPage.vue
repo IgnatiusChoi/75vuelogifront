@@ -46,17 +46,17 @@ export default {
           label: '대표자명',
         },
         {
-          key: 'companyBusinessCondition',
+          key: 'companyBusinessConditions',
           label: '업태',
         },
         {
-          key: 'companyBusinessItem',
+          key: 'companyBusinessItems',
           label: '종목',
         }
       ],
       detailFields: [
         {
-          key: 'companyZIPCode',
+          key: 'companyzipCode',
           label: '회사우편번호',
         },
         {
