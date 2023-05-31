@@ -15,7 +15,7 @@ const tableColumnsData = [{
         {key: 'workplaceDetailAddress', label: '사업장세부주소', sortable: true},
         {key: 'workplaceTelNumber', label: '사업장전화번호', sortable: true},
         {key: 'workplaceFaxNumber', label: '사업장팩스번호', sortable: true},
-        {key: 'workplaceEstablishmentDate', label: '사업장개업년월일', sortable: true},
+        {key: 'workplaceEstablishDate', label: '사업장개업년월일', sortable: true},
         {key: 'workplaceOpenDate', label: '사업장설립년월일', sortable: true},
         {key: 'workplaceCloseDate', label: '사업장폐업년월일', sortable: true},
         {key: 'approvalStatus', label: '본점여부', sortable: true},

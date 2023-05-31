@@ -358,6 +358,8 @@ export default {
       console.log(data)
       this.$store.dispatch('logi/compInfo/UPDATE_WORKPLACE', data).then(() => {
         this.$emit('modalClose')
+      }).then(() => {
+        this.$store.dispatch('logi/compInfo/SEARCH_WORKPLACE_LIST')
       })
           .then(this.$swal.fire(
               '사업장 수정 완료!',
