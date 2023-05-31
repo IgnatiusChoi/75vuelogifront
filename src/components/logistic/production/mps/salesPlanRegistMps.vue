@@ -219,11 +219,9 @@ table.editable-table td {
 
 .alert-class {
   padding-left: 50px;
-  margin-top: 20px;
-  color: #6b5a5a;
+  color: #2c72da;
   font-size : 15px;
-  font-family: 함초롬바탕;
-
+  font-family: "배달의민족 도현";
 }
 
 .padding-top{

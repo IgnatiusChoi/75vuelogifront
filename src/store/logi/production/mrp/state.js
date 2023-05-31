@@ -5,7 +5,8 @@ import actions from '@/store/logi/production/mrp/action.js'
 export default {
     namespaced: true,
     state : {
-        mpsList : [],
+        mpsListByContract : [],
+        mpsListBySalesPlan : [],
         mrpList : [],
         getMrpGatherList : [],
         mrpResultList : [],

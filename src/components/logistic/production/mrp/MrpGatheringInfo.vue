@@ -1,18 +1,7 @@
 <template>
   <div style="font-family: '배달의민족 도현';">
-    <div>
-      <b-button-group style="float: right">
-        <b-button
-          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-          variant="outline-primary"
-          @click="searchMrpGathering"
-        >
-          소요량취합 조회
-        </b-button>
-      </b-button-group>
-    </div>
     <div
-      style="margin: 0 0 10px 0; float:right;"
+      style="margin: 0 0 10px 0; float:left;"
     >
       <b-col>
         <b-form-group>
@@ -25,7 +14,7 @@
         </b-form-group>
       </b-col>
     </div>
-    <div style="float: right; margin:  10px 0 0 0 ;">
+    <div style="float: left; margin:  10px 0 0 0 ;">
       <b-form-group
         v-slot="{ ariaDescribedby }"
       >
@@ -51,6 +40,48 @@
       </b-form-group>
     </div>
     <div>
+      <b-button-group style="float: left">
+        <b-button
+            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+            variant="outline-primary"
+            @click="searchMrpGathering"
+        >
+          소요량취합 조회
+        </b-button>
+
+        <!--  화면 중상단 설명구  -->
+        <span class="alert-class">
+    {{alert}}
+    </span>
+        <!--  화면 중상단 설명구  -->
+      </b-button-group>
+
+
+    <div>
+      <b-button-group style="float: right">
+        <b-button
+            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+            variant="outline-primary"
+            @click="linkToOrder"
+        >
+          발주 페이지로
+        </b-button>
+      </b-button-group>
+    </div>
+    <div>
+      <b-button-group style="float: right">
+        <b-button
+            v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+            variant="outline-primary"
+            @click="linkToWorkOrder"
+        >
+          작업지시 페이지로
+        </b-button>
+      </b-button-group>
+    </div>
+  </div>
+
+    <div>
       <b-table
         :items="searchMrpGatheringList"
         class="editable-table"
@@ -68,7 +99,7 @@ import {
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
-import { mrpInfoList } from '@/components/logistic/production/fields'
+import {mrpGatheringList} from '@/components/logistic/production/fields'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import { mapActions, mapState } from 'vuex'
 
@@ -91,8 +122,9 @@ export default {
       rangeDate: null,
       startDate: null,
       endDate: null,
-      fields: mrpInfoList,
+      fields: mrpGatheringList,
       selected: 'claimDate',
+      alert : '',
     }
   },
   computed: {
@@ -116,6 +148,7 @@ export default {
         endDate: this.endDate,
       }
       this.SEARCH_MRP_GATHERING(payload)
+      this.alert = '단순 조회 페이지임 발주, 작업지시는 링크따라 이동 👉👉👉'
       this.$toast({
         component: ToastificationContent,
         props: {
@@ -124,6 +157,12 @@ export default {
           variant: 'success',
         },
       })
+    },
+    linkToOrder(){
+      this.$router.push('/logi/purchase/orderRegister')
+    },
+    linkToWorkOrder(){
+      this.$router.push('/logi/production/WorkInstruction')
     },
     test() {
       console.log(mrpInfoList)
@@ -174,5 +213,14 @@ table.editable-table td {
 .custom-placeholder::placeholder {
   color: #ed5017;
   text-align: center;
+}
+
+.alert-class {
+  margin: 10px 0 0 100px;
+  color: rgba(255, 4, 4, 0.7);
+  font-size : 15px;
+  font-weight: bold;
+  font-family: "배달의민족 도현";
+
 }
 </style>

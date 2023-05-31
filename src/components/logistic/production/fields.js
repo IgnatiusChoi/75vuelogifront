@@ -40,6 +40,20 @@ export const searchMpsList = [
   { key: 'description', label: '비고' },
 ]
 
+export const searchMpsListBySalesPlan = [
+  { key: 'mpsNo', label: '주생산계획번호' },
+  { key: 'salesPlanNo', label: '판매계획번호' },
+  { key: 'mpsPlanClassification', label: '계획구분' },
+  { key: 'itemCode', label: '품목코드' },
+  { key: 'itemName', label: '품목명' },
+  { key: 'mpsPlanAmount', label: 'MPS 계획수량' },
+  { key: 'mpsPlanDate', label: 'MPS 계획일자' },
+  { key: 'dueDateOfMps', label: '납기일' },
+  { key: 'scheduledEndDate', label: '출하예정일' },
+  { key: 'mrpApplyStatus', label: 'MRP 적용상태' },
+  { key: 'description', label: '비고' },
+]
+
 export const openMrp = [
   { key: 'mpsNo', label: '주생산계획번호' },
   { key: 'bomNo', label: 'BOM번호' },
@@ -77,7 +91,7 @@ export const mrpGatherResultList = [
   { key: 'necessaryAmount', label: '필요수량' },
 ]
 
-export const mrpInfoList = [
+export const mrpGatheringList = [
   { key: 'mrpGatheringNo', label: '소요량취합번호' },
   { key: 'orderOrProductionStatus', label: '구매 및 생산여부' },
   { key: 'itemCode', label: '품목코드' },

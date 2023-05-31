@@ -1,10 +1,17 @@
 export default {
 
-  // mrpPage -> mps 조회
-  SET_SEARCH_MPS_LIST(state, mpsList) {
-    console.log('test')
-    console.log(mpsList)
-    state.mpsList = mpsList
+  //수주로 MPS 등록 건 조회
+  SET_MPS_LIST_BY_CONTRACT(state, data) {
+    let filteredMpsList = [];
+    filteredMpsList = data.filter((list) => list.mpsPlanClassification==='수주');
+    state.mpsListByContract = filteredMpsList
+  },
+
+  //판매계획으로 MPS 등록 건 조회
+  SET_MPS_LIST_BY_SALESPLAN(state, data) {
+    let filteredMpsList = [];
+    filteredMpsList = data.filter((list) => list.mpsPlanClassification==='판매계획');
+    state.mpsListBySalesPlan = filteredMpsList
   },
 
   // MRP 모의전개 LIST 띄우기
@@ -16,15 +23,13 @@ export default {
   SET_MRP_GATHER_LIST(state, mrpGatherList) {
     const mrpNoAndItemCodeList = {}
     const size = mrpGatherList.length
-    // eslint-disable-next-line no-plusplus
+
     for (let mrpIndex = 0; mrpIndex < size; mrpIndex++) {
-      // @ts-ignore
       mrpNoAndItemCodeList[mrpGatherList[mrpIndex].mrpNo] = mrpGatherList[mrpIndex].itemCode
     }
 
     state.mrpNoAndItemCodeList = mrpNoAndItemCodeList
     state.getMrpGatherList = mrpGatherList
-
   },
 
   SET_MRP_RESULT_LIST(state, mrpResultList) {
