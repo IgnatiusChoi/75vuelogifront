@@ -36,9 +36,11 @@
       />
       <!--품목코드검색 버튼-->
       <b-button
-          variant="outline-primary"
           v-b-modal.itemCodeModal
-          class="mb-md-1 ml-1"
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          variant="outline-primary"
+          size="md"
+          class="mb.md-1 ml-1"
           @click="searchItemCode"
       >
         검색
@@ -65,7 +67,9 @@
       </b-modal>
       <!--BOM 조회 버튼-->
       <b-button
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
           variant="outline-primary"
+          size="md"
           @click="searchBomList"
       >
         BOM 조회
@@ -85,12 +89,16 @@
 <script>
 import {BButton, BTable} from 'bootstrap-vue'
 import {mapActions, mapState} from 'vuex'
+import Ripple from "vue-ripple-directive";
 
 export default {
   name: 'Deploy',
   components: {
     BTable,
     BButton,
+  },
+  directives: {
+    Ripple,
   },
   computed: { /*템플릿의 데이터 표현을 더 직관적이고 간결하게 도와주는 속성*/
     ...mapState('logi/bom', ['itemCodeList']),

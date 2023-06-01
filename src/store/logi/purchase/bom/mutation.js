@@ -8,4 +8,14 @@ export default {
   SEARCH_REGIST_BOM_LIST(state, bomRegistList) {
     state.bomRegistList = bomRegistList
   },
+
+  //dbs
+  SEARCH_BOM_DATA_LIST(state, bomDataList) {
+    state.bomDataList = bomDataList;
+  },
+
+  BATCH_BOM_LIST(state, bomRegistList) {
+    state.bomRegistList = bomRegistList
+  },
+
 }

@@ -18,8 +18,6 @@ function searchOrderList(payload) {
 }
 
 function searchItemCodeList(payload) {
-
-  console.log("searchItemCodeList실행")
   return sys.get('/findPayStepCodeDetailList', {
     params: {
       itemClassificationCondition: payload,
@@ -67,6 +65,24 @@ function getStockList() {
   return logiApi.get('/purchase/searchStockList')
 }
 
+//dbs
+function searchBomDataList(payload) {
+  const {
+    itemClassificationCondition,
+    itemCode,
+  } = payload
+  return logiApi.get('/purchase/searchBomDeploy', {
+    params: {
+      itemClassificationCondition,
+      itemCode,
+    },
+  })
+}
+
+function batchBomList(payload) {
+  return logiApi.post('/purchase/bomdata/batch', payload)
+}
+
 export {
   // eslint-disable-next-line import/prefer-default-export
   searchOrderList,
@@ -76,4 +92,7 @@ export {
   getWarehouseDetailList,
   getStockList,
 
+  //dbs
+  searchBomDataList,
+  batchBomList,
 }
