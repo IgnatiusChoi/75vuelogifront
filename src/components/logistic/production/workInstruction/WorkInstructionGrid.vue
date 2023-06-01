@@ -222,8 +222,10 @@ export default {
       this.$store.dispatch('logi/sales/addNewContract', param)
     },
     workOrderok(){
-      console.log(this.workPlaceCode,this.productionProcess)
-      console.log("실제 작업 지시",this.mrpGatheringNo)
+      console.log('mrpGatheringNo = ', this.mrpGatheringNo)
+      console.log('workPlaceCode = ', this.workPlaceCode)
+      console.log('productionProcess = ', this.productionProcess)
+
       const sendData = {
         mrpGatheringNo: this.mrpGatheringNo,
         workPlaceCode: this.workPlaceCode,

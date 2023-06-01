@@ -191,6 +191,7 @@ export default {
     workSiteListClick(payload){
       console.log('workSiteClick')
       console.log(payload)
+
       this.selected =payload
       this.$store.dispatch('logi/workInstruction/SEARCH_PRODUCTION_PROCESS_CODE', payload)
     },

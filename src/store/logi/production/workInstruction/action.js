@@ -77,11 +77,11 @@ export default {
       console.log('searchWorkOrderInfoListStatus')
       const { data } = await searchWorkOrderInfoListStatus()
       console.log(data)
-      data.gridRowJson.forEach(item => {
+      data.forEach(item => {
         item.isEdit=false
       })
       console.log(data)
-      commit('SEARCH_WORK_ORDER_INFO_LIST_STATUS', data.gridRowJson)
+      commit('SEARCH_WORK_ORDER_INFO_LIST_STATUS', data)
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message)
@@ -123,9 +123,9 @@ export default {
   async SEARCH_PRODUCTION_PERFORMANCE_INFO_LIST({ commit }){
     try {
       const { data } = await productionPerformanceInfoList()
-      console.log("나와랍!!!")
-      console.log('이거',data)
-      commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data.gridRowJson)
+      console.log("SEARCH_PRODUCTION_PERFORMANCE_INFO_LIST")
+      console.log(data)
+      commit('SET_PRODUCTION_PERFORMANCE_INFO_LIST', data)
       // return data
     } catch (err) {
       if (err instanceof Error) {
@@ -165,9 +165,10 @@ export default {
     try {
       console.log('SEARCH_WORK_SITE01')
       const { data } = await searchWorkSite()
-      console.log(data)
+      console.log("data =",data)
+      console.log("data.workSiteList =",data.WorkSiteList)
       console.log('SEARCH_WORK_SITE02')
-      commit('SET_WORK_SITE', data.gridRowJson)
+      commit('SET_WORK_SITE', data.WorkSiteList)
 
 
     } catch (err) {
@@ -184,8 +185,9 @@ export default {
       console.log('SEARCH_PRODUCTION_PROCESS_CODE')
       console.log(payload)
       const res = await searchProductionProcessCode(payload)
-      const gridRow = res.data.gridRowJson
-      commit('SEARCH_PRODUCTION_PROCESS_CODE', gridRow)
+      console.log(res)
+      // const gridRow = res.data.gridRowJson
+      commit('SEARCH_PRODUCTION_PROCESS_CODE', res.data)
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message)

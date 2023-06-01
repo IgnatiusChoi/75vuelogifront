@@ -258,14 +258,13 @@ function productionPerformanceInfoList() {
   function searchProductionProcessCode(payload){
     console.log('searchProductionProcessCode')
     console.log(payload)
-    const processcode = payload.productionProcessCode
-    console.log(sitecode)
-    const sitecode=payload.workSiteCode
-    console.log(processcode)
+    const productionProcessCode = payload.productionProcessCode
+    const workSiteName=payload.workSiteName
+    console.log(productionProcessCode, workSiteName)
     return logiApi.get('/production/getProductionProcessCode', {
       params: {
-        workSiteCode : sitecode,
-        productionProcessCode :processcode,
+        workSiteName : workSiteName,
+        productionProcessCode :productionProcessCode,
 
       },
     })
