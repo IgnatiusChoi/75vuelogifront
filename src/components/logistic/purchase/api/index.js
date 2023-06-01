@@ -1,7 +1,8 @@
+/*
 import axios from 'api/logiApi';
 
 export const inspection = (param) =>
-    axios.put("/purchase/inspection", 
+    axios.put("/purchase/inspection",
     { sendData: param },
     {  headers: {  "Content-Type": "application/json" }},
     );
@@ -97,3 +98,4 @@ return result.data;
 
 
 
+*/

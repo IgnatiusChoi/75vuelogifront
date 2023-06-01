@@ -7,6 +7,9 @@ export default {
         itemCodeList: [],
         bomList: [],
         bomRegistList: [],
+
+        //dbs
+        bomDataList: [],
     },
     getters: {
     },
