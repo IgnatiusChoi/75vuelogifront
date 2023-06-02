@@ -37,7 +37,10 @@
             @dblclick="editCell(rowIndex, colIndex)">
 
         <template #cell(actualCompletionAmount)="data">
-          <b-form-input v-if="workOrderInfo[data.index].isEdit" type="text" v-model="workOrderInfo[data.index].actualCompletionAmount" @blur="editCellBlur(data)" ></b-form-input>
+          <b-form-input v-if="workOrderInfo[data.index].isEdit"
+                        type="text"
+                        v-model="workOrderInfo[data.index].actualCompletionAmount"
+                        @blur="editCellBlur(data)" ></b-form-input>
           <span v-else @click="setEditIndex(data.index)">{{data.value}}</span>
         </template>
         </b-table>
@@ -68,6 +71,7 @@ export default {
     modal: false,
     workSiteCode : '',
     workOrderNo:'',
+    requiredAmount: '',
     actualCompletionAmount:'',
     selectedCell: {
       item: null,
@@ -86,6 +90,7 @@ export default {
     workOrderStatusClick(payload){
       console.log('workOrderStatusClick')
       console.log(payload)
+      this.requiredAmount = payload.requiredAmount
       this.workOrderNo = payload.workOrderNo,
       this.actualCompletionAmount = payload.actualCompletionAmount
     },
@@ -98,9 +103,13 @@ export default {
       }
       if(!this.workOrderNo){
         alert('행을 선택해주십시오')
-        return;
       }
-      this.WORK_ORDER_COMPLETION(sendData)
+      console.log(this.actualCompletionAmount)
+      console.log(this.requiredAmount)
+      if(this.actualCompletionAmount === this.requiredAmount)
+        this.WORK_ORDER_COMPLETION(sendData)
+      else
+        alert('값을 똑같게 입력하시오')
     },
 
 
