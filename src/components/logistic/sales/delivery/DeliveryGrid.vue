@@ -121,7 +121,7 @@ export default {
     modal: false,
     contractTypeNameOption: [
       { value: 'CT-01', text: 'CT-01 | 수주일반' },
-      { value: 'CT-02', text: 'CT-02 | 고추수주' },
+      { value: 'CT-02', text: 'CT-02 | 긴급수주' },
     ],
   }),
   methods: {
