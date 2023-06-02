@@ -92,19 +92,19 @@ function addNewEstimate(newEstimate) {
 
 
 function Selectsalesplane() {
-  return logiApi.get('/sales/Selectsalesplane')
+  return logiApi.get('/sales/jpasalesplan')
 }
 
 function InsertSalesplan(payload) {
   console.log("여기??");
   console.log(payload);
-  return logiApi.post('/sales/Insertsalesplan', payload);
+  return logiApi.post('/sales/jpasalesplansave', payload);
 }
 
 function UpdateSalesplan(payload) {
   console.log("upup");
   console.log(payload)
-   logiApi.post('/sales/UpdateSalesplan',payload)
+   logiApi.post('/sales/jpaupdatesalesplan',payload)
 }
 
 function delivery(payload) {
@@ -116,8 +116,14 @@ function delivery(payload) {
   )
 }
 
+function deleteSalesplan(SalesPlanNo){
+  return logiApi.delete('/sales/deletesalesplan',
+      {params:{SalesPlanNo: SalesPlanNo}
+      })
+}
+
 
 export {
   searchEstimateInfo, searchContract, searchContractDetail, searchEstimateInContractAvailable, searchEstimateDetailInfo, addNewContract, addNewEstimate,
-  searchDeliverableContractList,Selectsalesplane,InsertSalesplan,searchInputContract,UpdateSalesplan,delivery
+  searchDeliverableContractList,Selectsalesplane,InsertSalesplan,searchInputContract,UpdateSalesplan,delivery,deleteSalesplan
 }

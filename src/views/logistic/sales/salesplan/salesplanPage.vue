@@ -6,56 +6,124 @@
     <SearchSalesplan
     @add="addSalePlan"
     @update="updatemodal"
+    @delete="deleteSalePlan"
+
     />
 
     <b-modal title="판매 계획 추가"
              v-model="modalOpen"
              @ok.click="saveSalesplan"
     >
+      <b-row>
+
       <div>
         <label for="salesPlanNo">판매계획일련번호:</label>
-        <b-form-input id="asalesPlanNo" v-model="formData.salesPlanNo"></b-form-input>
+        <b-form-input
+            id="asalesPlanNo"
+            v-model="formData.salesPlanNo"
+            placeholder="판매계획일련번호"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="itemCode">품목코드:</label>
-        <b-form-input id="itemCode" v-model="formData.itemCode"></b-form-input>
+        <b-form-input
+            id="itemCode"
+            v-model="formData.itemCode"
+            placeholder="품목코드"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="itemName">품목명:</label>
-        <b-form-input id="itemName" v-model="formData.itemName"></b-form-input>
+        <b-form-input
+            id="itemName"
+            v-model="formData.itemName"
+            placeholder="품목명"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="unitOfSales">단위:</label>
-        <b-form-input id="unitOfSales" v-model="formData.unitOfSales" placeholder=" ex) EA " ></b-form-input>
+        <b-form-input
+            id="unitOfSales"
+            v-model="formData.unitOfSales"
+            placeholder="단위" ></b-form-input>
       </div>
+
       <div>
         <label for="salesPlanDate">판매계획일:</label>
-        <b-form-input id="salesPlanDate" v-model="formData.salesPlanDate"></b-form-input>
+        <b-form-input
+            id="salesPlanDate"
+            v-model="formData.salesPlanDate"
+            placeholder="판매계획일"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="dueDateOfSales">계획마감일:</label>
-        <b-form-input id="dueDateOfSales" v-model="formData.dueDateOfSales"></b-form-input>
+        <b-form-input
+            id="dueDateOfSales"
+            v-model="formData.dueDateOfSales"
+            placeholder="계획마감일"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="salesAmount">계획수량:</label>
-        <b-form-input id="salesAmount" v-model="formData.salesAmount"></b-form-input>
+        <b-form-input
+            id="salesAmount"
+            v-model="formData.salesAmount"
+            placeholder="계획수량"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="unitPriceOfSales">계획단가:</label>
-        <b-form-input id="unitPriceOfSales" v-model="formData.unitPriceOfSales"></b-form-input>
+        <b-form-input
+            id="unitPriceOfSales"
+            v-model="formData.unitPriceOfSales"
+            placeholder="계획단가"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="sumPriceOfSales">합계액:</label>
-        <b-form-input id="sumPriceOfSales" v-model="formData.sumPriceOfSales" ></b-form-input>
+        <b-form-input
+            id="sumPriceOfSales"
+            v-model="formData.sumPriceOfSales"
+            placeholder="합계액"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="mpsApplyStatus">MPS적용상태:</label>
-        <b-form-input id="mpsApplyStatus" v-model="formData.mpsApplyStatus"></b-form-input>
+        <b-form-input
+            id="mpsApplyStatus"
+            v-model="formData.mpsApplyStatus"
+            placeholder="MPS적용상태"
+        >
+        </b-form-input>
       </div>
+
       <div>
         <label for="description">설명:</label>
-        <b-form-input id="description" v-model="formData.description"></b-form-input>
+        <b-form-input
+            id="description"
+            v-model="formData.description"
+            placeholder="설명"
+        >
+        </b-form-input>
       </div>
+      </b-row>
     </b-modal>
 
 
@@ -65,44 +133,85 @@
     >
       <div>
         <label for="salesPlanNo">판매계획일련번호:</label>
-        <b-form-input id="asalesPlanNo" v-model="formData.salesPlanNo"></b-form-input>
+        <b-form-input
+            id="salesPlanNo"
+            v-model="formData.salesPlanNo"
+        ></b-form-input>
       </div>
+
       <div>
         <label for="itemCode">품목코드:</label>
-        <b-form-input id="itemCode" v-model="formData.itemCode"></b-form-input>
+        <b-form-input
+            id="itemCode"
+            v-model="formData.itemCode"
+        ></b-form-input>
       </div>
+
       <div>
         <label for="itemName">품목명:</label>
-        <b-form-input id="itemName" v-model="formData.itemName"></b-form-input>
+        <b-form-input
+            id="itemName"
+            v-model="formData.itemName">
+        </b-form-input>
       </div>
+
       <div>
         <label for="unitOfSales">단위:</label>
-        <b-form-input id="unitOfSales" v-model="formData.unitOfSales" placeholder=" ex) EA " ></b-form-input>
+        <b-form-input
+            id="unitOfSales"
+            v-model="formData.unitOfSales"
+            placeholder=" ex) EA " >
+        </b-form-input>
       </div>
+
       <div>
         <label for="salesPlanDate">판매계획일:</label>
-        <b-form-input id="salesPlanDate" v-model="formData.salesPlanDate"></b-form-input>
+        <b-form-input
+            id="salesPlanDate"
+            v-model="formData.salesPlanDate"
+        ></b-form-input>
       </div>
+
       <div>
         <label for="dueDateOfSales">계획마감일:</label>
-        <b-form-input id="dueDateOfSales" v-model="formData.dueDateOfSales"></b-form-input>
+        <b-form-input
+            id="dueDateOfSales"
+            v-model="formData.dueDateOfSales">
+        </b-form-input>
       </div>
+
       <div>
         <label for="salesAmount">계획수량:</label>
-        <b-form-input id="salesAmount" v-model="formData.salesAmount"></b-form-input>
+        <b-form-input
+            id="salesAmount"
+            v-model="formData.salesAmount">
+        </b-form-input>
       </div>
+
       <div>
         <label for="unitPriceOfSales">계획단가:</label>
-        <b-form-input id="unitPriceOfSales" v-model="formData.unitPriceOfSales"></b-form-input>
+        <b-form-input
+            id="unitPriceOfSales"
+            v-model="formData.unitPriceOfSales">
+        </b-form-input>
       </div>
+
       <div>
         <label for="sumPriceOfSales">합계액:</label>
-        <b-form-input id="sumPriceOfSales" v-model="formData.sumPriceOfSales" ></b-form-input>
+        <b-form-input
+            id="sumPriceOfSales"
+            v-model="formData.sumPriceOfSales" >
+        </b-form-input>
       </div>
+
       <div>
         <label for="mpsApplyStatus">MPS적용상태:</label>
-        <b-form-input id="mpsApplyStatus" v-model="formData.mpsApplyStatus"></b-form-input>
+        <b-form-input
+            id="mpsApplyStatus"
+            v-model="formData.mpsApplyStatus">
+        </b-form-input>
       </div>
+
       <div>
         <label for="description">설명:</label>
         <b-form-input id="description" v-model="formData.description"></b-form-input>
@@ -173,6 +282,7 @@ export default {
       this.formData.description = '';
       console.log("????")
       this.modalOpen=true
+
     },
 
     editModal() {
@@ -216,6 +326,7 @@ export default {
     saveSalesplan() {
       console.log("saveSalesplan")
       this.INSERT_SALES_PLAN(this.formData);
+      this.FETCH_ALL_SalesPlane()
       this.closeModal();
     },
 
@@ -225,12 +336,17 @@ export default {
 
     UpdateSalePlan(){
       this.UPDATE_SALES_PLAN(this.formData);
+      this.FETCH_ALL_SalesPlane()
       this.closeModal();
     },
 
+    async deleteSalePlan(){
+      console.log("판매계획삭제"+this.formData.salesPlanNo)
+      await this.$store.dispatch('logi/sales/Delete_SalePlan',this.formData.salesPlanNo);
+      this.FETCH_ALL_SalesPlane()
+    }
+
     },
-
-
 
 
   data() {

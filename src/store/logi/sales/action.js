@@ -12,6 +12,7 @@ import {
   searchInputContract,
   UpdateSalesplan,
   delivery,
+  deleteSalesplan
 
 } from '@/api/logi/sales'
 import {SelectDepartmentCode} from "@/api/logi/base";
@@ -128,10 +129,8 @@ export default {
   async FETCH_ALL_SalesPlane({ commit }) {
     try {
       const response = await Selectsalesplane()
-      console.log("이거다",response.data.gridRowJson[0])
-      commit('salesplane', response.data.gridRowJson)
-      // eslint-disable-next-line no-undef
-      console.log(this.salesplane)
+      console.log("JPA데이터",response)
+      commit("salesplane",response.data)
     } catch (err) {
       throw new Error(err)
     }
@@ -155,5 +154,11 @@ export default {
       throw new Error(error);
     }
   },
+
+  async Delete_SalePlan(_,SalesPlanNo){
+  console.log("판매계획삭제액션"+SalesPlanNo);
+
+  await  deleteSalesplan(SalesPlanNo);
+  }
 
 }
