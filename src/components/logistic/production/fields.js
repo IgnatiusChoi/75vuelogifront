@@ -101,6 +101,12 @@ export const mrpGatheringList = [
   { key: 'dueDate', label: '납기일' },
 ]
 
+export const mrpGatheringResult = [
+  { key: 'mrpGatheringNo', label: '소요량취합번호' },
+  { key: 'orderOrProductionStatus', label: '구매 및 생산여부' },
+
+]
+
 export const workOrderList =[
   { label: '소요량전개번호',key: 'mrpNo' },
   { label: '소요량취합번호',key: 'mrpGatheringNo' },

@@ -12,6 +12,7 @@ export default {
         mrpResultList : [],
         mrpNoAndItemCodeList : [],
         searchMrpGatheringList : [],
+        mrpGatheringCalendar : [],
     },
 
     mutations,

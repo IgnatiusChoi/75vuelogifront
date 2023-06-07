@@ -158,6 +158,19 @@ function searchMrpGathering(payload) {
     },
   })
 }
+
+/**
+ * 소요량취합 캘린더
+ */
+function searchMrpGatheringCalendar(month) {
+  return logiApi.get('/logistics/production/mrpGathering/searchMrpGatheringCalendar', {
+    params: {
+      month : month
+    },
+  })
+}
+
+
 function showWorkInfoList() {
   return logiApi.get('/production/showWorkOrderInfoList')
 }
@@ -304,6 +317,7 @@ export {
 
   searchMps,
   updateMps,
+  searchMrpGatheringCalendar,
 
   searchWorkOrderListInfo,
   searchWorkOrderInfoListStatus,
@@ -311,7 +325,7 @@ export {
   searchProductionProcessCode,
   workOrder,
   workOrderCompletion,
-  editCellBlur
+  editCellBlur,
   //insertWorkPlaceList,
   //deleteWorkPlaceList
 }

@@ -22,6 +22,11 @@ import '@/libs/sweet-alerts'
 // v필터
 import { formatDate } from './utils/filters'
 
+import vuetify  from "@/vuetify";
+
+import { MonthPicker } from 'vue-month-picker'
+import { MonthPickerInput } from 'vue-month-picker'
+
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
 Vue.use(ModalPlugin)
@@ -30,6 +35,9 @@ Vue.use(BootstrapVueIcons)
 
 Vue.use(ToastPlugin) // alert창
 Vue.use(ModalPlugin) // 모달
+
+Vue.use(MonthPicker)
+Vue.use(MonthPickerInput)
 
 // Composition API
 Vue.use(VueCompositionAPI)
@@ -47,5 +55,6 @@ new Vue({
   router,
   store,
   Vuex,
+  vuetify,
   render: h => h(App),
 }).$mount('#app')

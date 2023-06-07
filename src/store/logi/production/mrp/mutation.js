@@ -40,4 +40,9 @@ export default {
   SET_SEARCH_MRP_GATHERING(state, searchMrpGathering) {
     state.searchMrpGatheringList = searchMrpGathering
   },
+
+  // 소요량취합 캘린더
+  SET_SEARCH_MRP_GATHERING_CALENDAR(state, searchMrpGatheringCalendar){
+    state.mrpGatheringCalendar = searchMrpGatheringCalendar
+  }
 }
