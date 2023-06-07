@@ -7,7 +7,8 @@ import {
   mrpGatherResultList,
   gatherResultRegist,
   searchMrpGathering,
-  updateMps
+  updateMps,
+  searchMrpGatheringCalendar,
 
 } from '@/api/logi/production'
 
@@ -52,7 +53,7 @@ export default {
   },
 
   /**
-   * MRP모의전개
+   * MRP 모의전개
    */
   async SEARCH_MRP_LIST({ commit }, payload) {
     try {
@@ -146,4 +147,24 @@ export default {
       return null
     }
   },
+
+  /**
+   * 소요량 취합 캘린더
+   */
+  async SEARCH_MRP_GATHERING_CALENDAR({ commit }, month) {
+    try {
+      const { data } = await searchMrpGatheringCalendar(month)
+      console.log(data)
+      console.log("data")
+
+      commit('SET_SEARCH_MRP_GATHERING_CALENDAR', data)
+      return null
+    } catch (err) {
+      if (err instanceof Error) {
+        throw new Error(err.message)
+      }
+      return null
+    }
+  },
+
 }

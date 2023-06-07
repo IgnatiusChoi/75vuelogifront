@@ -4,14 +4,18 @@
       style="margin: 0 0 10px 0; float:left;"
     >
       <b-col>
-        <b-form-group>
-          <flat-pickr
-            v-model="rangeDate"
-            placeholder="조회 날짜 (기간)선택"
-            class="form-control custom-placeholder"
-            :config="{ mode: 'range'}"
-          />
-        </b-form-group>
+<!--        <MonthPickerInput-->
+<!--            style="font-size: 15px"-->
+<!--            class="custom-placeholder"-->
+<!--            placeholder="        조회 월 선택" no-default="true"/>-->
+<!--        <b-form-group>-->
+<!--          <flat-pickr-->
+<!--            v-model="rangeDate"-->
+<!--            placeholder="조회 날짜 (기간)선택"-->
+<!--            class="form-control custom-placeholder"-->
+<!--            :config="{ mode: 'range'}"-->
+<!--          />-->
+<!--        </b-form-group>-->
       </b-col>
     </div>
     <div style="float: left; margin:  10px 0 0 0 ;">
@@ -82,12 +86,7 @@
   </div>
 
     <div>
-      <b-table
-        :items="searchMrpGatheringList"
-        class="editable-table"
-        hover
-        :fields="fields"
-      />
+      <b-table/>
     </div>
   </div>
 </template>
@@ -103,6 +102,7 @@ import {mrpGatheringList} from '@/components/logistic/production/fields'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import { mapActions, mapState } from 'vuex'
 
+import {MonthPickerInput} from "vue-month-picker";
 export default {
   name: 'MrpGatheringInfo',
   components: {
@@ -113,6 +113,7 @@ export default {
     BButton,
     BTable,
     BFormRadio,
+    MonthPickerInput,
   },
   directives: {
     Ripple,
