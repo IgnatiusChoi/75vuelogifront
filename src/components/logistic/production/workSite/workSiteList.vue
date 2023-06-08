@@ -3,7 +3,7 @@
   <component :is="'b-card'">
     <b-card
         no-body
-        style="font-family: '배달의민족 도현'; max-height: 500px"
+        style="font-family: '배달의민족 도현'; overflow-x: scroll; max-height: 800px"
     >
 
       <div class="m-2">
@@ -15,27 +15,7 @@
         >
           작업장 조회
         </b-button>
-<!--        <b-button-->
-<!--            v-ripple.400="'rgba(113, 102, 240, 0.15)'"-->
-<!--            variant="outline-primary"-->
-<!--            v-b-modal="'DepartmentModal'"-->
-<!--        >-->
-<!--          작업장 추가-->
-<!--        </b-button>-->
-<!--        <b-button-->
-<!--            v-ripple.400="'rgba(113, 102, 240, 0.15)'"-->
-<!--            variant="outline-primary"-->
-<!--            @click="deleteWorkPlace()"-->
-<!--        >-->
-<!--          작업장 삭제-->
-<!--        </b-button>-->
-<!--        <b-button-->
-<!--            v-ripple.400="'rgba(113, 102, 240, 0.15)'"-->
-<!--            variant="outline-primary"-->
-<!--            @click="updateWorkPlace"-->
-<!--        >-->
-<!--          작업장 수정-->
-<!--        </b-button>-->
+
         <div style="margin-top: 100px; ">
           <b-table
               class="editable-table"
